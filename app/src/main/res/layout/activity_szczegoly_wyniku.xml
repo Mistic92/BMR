@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2014 Łukasz Byjoś
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  -->rLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	 android:layout_height="fill_parent"
+	android:orientation="vertical"
+	android:background="#E3E3E3" >
+	
+
+	<LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:orientation="vertical"
+		android:paddingBottom="10dp">    
+    
+	    
+		<LinearLayout
+		    android:id="@+id/LinearLayoutSzczegolyWyniku"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+			android:layout_marginLeft="10dp"
+			android:layout_marginRight="10dp"
+			android:layout_marginTop="10dp"
+			android:layout_marginBottom="10dp"
+			android:paddingTop="10dp"
+			android:paddingBottom="10dp"
+			android:background="@drawable/bg_card"
+			android:orientation="vertical">	    
+		    
+	<!-- podpis karty -->
+			<TextView 
+			    android:id="@+id/textViewPodpisSzczegoly"
+			    android:text="@string/title_activity_szczegoly_wyniku"
+			    android:layout_width="wrap_content"
+	        	android:layout_height="wrap_content"
+	        	android:layout_marginLeft="7dp"
+			    style="@style/podpisy_kart"/>		    
+		    
+				<!-- Layout w karcie -->
+				<LinearLayout 		
+				android:padding="3dp"
+			    android:layout_width="fill_parent"
+			    android:layout_height="wrap_content"
+			    android:orientation="vertical" >
+			    <!-- Tabela na bmi i wage -->
+				<TableLayout  
+				    android:id="@+id/tabela_szczegolow"  
+				    android:layout_width="match_parent"  
+				    android:layout_height="wrap_content"  
+				    android:shrinkColumns="*"  
+				    android:stretchColumns="*"
+				    android:layout_marginLeft="10dp"
+					android:background="#FFFFFF">  
+					
+					<!-- ROW WAGA -->
+					
+					<TableRow 				        
+					    android:id="@+id/tableRowSzczegolyWaga"  
+				        android:layout_height="wrap_content"  
+				        android:layout_width="match_parent">
+				    <TextView
+				        android:id="@+id/textViewWaga"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:layout_marginBottom="15dp"
+				        android:text="@string/text_waga"
+				        style="@style/tekst_bmr" 
+				       />  
+				    <EditText
+				        android:id="@+id/EditTextWaga"
+				        android:layout_width="20dp"
+				        android:layout_height="wrap_content"	        
+				        android:ems="10"
+				        android:inputType="numberDecimal" >
+				    </EditText>
+					</TableRow>
+				    
+					<!-- ROW BMI -->
+					<TableRow 				        
+					    android:id="@+id/tableRowSzczegolyBMI"  
+				        android:layout_height="wrap_content"  
+				        android:layout_width="fill_parent">
+				    <TextView
+				        android:id="@+id/textViewBMI"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:layout_marginBottom="15dp"
+				        android:text="@string/text_bmi"
+				        style="@style/tekst_bmr" 
+				       />  
+				    <EditText
+				        android:id="@+id/EditTextBMI"
+				        android:layout_width="20dp"
+				        android:layout_height="wrap_content" 	        
+				        android:ems="10"
+				        android:inputType="numberDecimal" >
+				    </EditText>
+					</TableRow>					
+				</TableLayout>  
+				<!-- KONIEC TABELI SZCZEGOLOW -->
+				    <EditText
+				        android:id="@+id/EditTextNotatka"
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content" 	        
+					    android:ems="10"
+					    android:hint="@string/hint_notatki"
+					    android:inputType="textMultiLine"
+						android:maxLength="60"
+					    android:textSize="16sp" >
+				    </EditText>
+				    <Button
+				        android:id="@+id/buttonUsunWynik"
+				        android:layout_width="fill_parent"
+				        android:layout_height="33dp"
+				        android:text="@string/button_usun_wynik" 
+				        android:layout_marginBottom="15dp"
+				        android:layout_marginTop="8dp"
+				        style="@style/buttons"
+				        />
+				</LinearLayout>
+	    	 	
+		</LinearLayout>
+		
+		<LinearLayout
+		    android:id="@+id/LinearLayoutSzczegolyWyniku2"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+			android:layout_marginLeft="10dp"
+			android:layout_marginRight="10dp"
+			android:layout_marginBottom="10dp"
+			android:paddingTop="10dp"
+			android:paddingBottom="10dp"
+			android:background="@drawable/bg_card"
+			android:orientation="vertical">	    
+				
+	<!-- podpis karty -->
+			<TextView 
+			    android:id="@+id/textViewPodpisSzczegoly2"
+			    android:text="@string/podpis_informacja"
+			    android:layout_width="wrap_content"
+	        	android:layout_height="wrap_content"
+	        	android:layout_marginLeft="10dp"
+			    style="@style/podpisy_kart"/>			    
+		    
+				<!-- Informacja -->
+				    <TextView
+				        android:id="@+id/textViewInformacjaSzczegoly"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:layout_marginTop="7dp"
+				        android:layout_marginLeft="7dp"
+				        android:layout_marginBottom="7dp"
+				        android:text="@string/informacja_szczegoly"
+				        style="@style/tekst_bmr" 
+				       />  	
+				
+			</LinearLayout>	
+	</LinearLayout>
+</LinearLayout>

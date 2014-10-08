@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2014 Łukasz Byjoś
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  -->
+
+<pre-dex-items>
+
+    <item
+        dex="E:\Dropbox\Programowanie\workspace-android\BMR\app\build\intermediates\pre-dexed\release\libGoogleAnalyticsServices-8bd10249ae7368fbbd35a3b277518a06043ae824.jar"
+        jar="E:\Dropbox\Programowanie\workspace-android\BMR\app\libs\libGoogleAnalyticsServices.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="9f1d8489b6d557be8d7fecf6ae070b5718366677"/>
+    <item
+        dex="E:\Dropbox\Programowanie\workspace-android\BMR\app\build\intermediates\pre-dexed\release\GoogleAdMobAdsSdk-6.4.1-653bb1cd9ec05c53307fd3055573d7ed792dfa2b.jar"
+        jar="E:\Dropbox\Programowanie\workspace-android\BMR\app\libs\GoogleAdMobAdsSdk-6.4.1.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="6262c554ef5744538d526465aa73704810705734"/>
+    <item
+        dex="E:\Dropbox\Programowanie\workspace-android\BMR\app\build\intermediates\pre-dexed\release\internal_impl-20.0.0-89abe63713ee119e8ce98d8e9018a3ba0cbc9462.jar"
+        jar="E:\Dropbox\Programowanie\workspace-android\BMR\app\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\libs\internal_impl-20.0.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d"/>
+    <item
+        dex="E:\Dropbox\Programowanie\workspace-android\BMR\app\build\intermediates\pre-dexed\release\classes-73edf4766f15a17a312eaed8fdc4d382db0af5e5.jar"
+        jar="E:\Dropbox\Programowanie\workspace-android\BMR\app\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="8694693636ab36910c8100ce527c258ff3ebece0"/>
+    <item
+        dex="E:\Dropbox\Programowanie\workspace-android\BMR\app\build\intermediates\pre-dexed\release\support-annotations-20.0.0-cf80167a11eea64e4f563ba49792461f5b79b664.jar"
+        jar="D:\Program Files\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\20.0.0\support-annotations-20.0.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="9d9013e9ff35fc3756411e62873c363c70c638fa"/>
+
+</pre-dex-items>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2014 Łukasz Byjoś
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  -->rces xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <string name="app_name">Dbaj o wagę</string>
+    <string name="menu_oprogramie">O programie</string>
+
+    <!-- ActionBar nazwy -->
+    <string name="title_bmr">Kalkulator</string>
+    <string name="title_tabela">Tabela Wyników</string>
+    <string name="title_ustawienia">Ustawienia</string>
+    <string name="title_wykres">Wykresy</string>
+    
+    <!-- KALKULATOR -->
+    <string name="text_wybierz_plec">Wybierz płeć</string>
+    <string name="text_mezczyzna">Mężczyzna</string>
+    <string name="text_kobieta">Kobieta</string>
+    <string name="text_waga">Waga</string>
+    <string name="text_kilogramy">kilogramy</string>
+    <string name="text_kilogramy_funty">funty</string>
+    <string name="text_wzrost">Wzrost</string>
+    <string name="text_centymetry">centymetry</string>
+    <string name="text_cale">cale</string>
+    <string name="text_wiek">Wiek</string>
+    <string name="text_plec">Płeć</string>
+    <string name="text_aktywnosc">Typ aktywności</string>
+    <string name="text_wybierz_aktywnosc">Wybierz typ aktywności</string>
+    <string name="typ_aktywnosc_brak">Prawie brak</string>
+    <string name="typ_aktywnosc_lekka">Lekka aktywność</string>
+    <string name="typ_aktywnosc_umiarkowana">Umiarkowana aktywność</string>
+    <string name="typ_aktywnosc_duza">Duża aktywność</string>
+    <string name="typ_aktywnosc_bduza">Bardzo duża aktywność</string>
+    
+    <!-- TABELA CALC -->
+    <string name="wynikiBmiBrakDanych">Brak danych do wyświetlenia wyniku</string>
+    <string name="twoje_bmi">Twoje BMI to:</string>
+    <string name="twoje_bmr">Twój współczynnik BMR to:</string>
+    <string name="kalorie">Kalorie potrzebne do utrzymania wagi</string>
+    <string name="weglowodany">Weglowodany 55%</string>
+    <string name="bialko">Białko 15%</string>
+    <string name="tluszcz">Tłuszcz 30%</string>
+    <string name="kcal"> kcal</string>
+    <string name="gram"> gram</string>
+    
+    <!-- Znaczenie BMI -->
+    <string name="bmi1_wyglodzenie">&lt; 16,0 – wygłodzenie</string>
+    <string name="bmi2_wychudzenie">16,0–16,99 – wychudzenie</string>
+    <string name="bmi3_niedowaga">17,0–18,49 – niedowaga</string>
+    <string name="bmi4_idealna">18,5–24,99 – idealna waga ciała</string>
+    <string name="bmi5_nadwaga">25,0–29,99 – nadwaga</string>
+    <string name="bmi6_1stopienotylosc">30,0–34,99 – I stopień otyłości</string>
+    <string name="bmi7_2stopienotylosc">35,0–39,99 – II stopień otyłości</string>
+    <string name="bmi8_3stopienotylosc">&gt;= 40,0 – III stopień otyłości</string>
+    
+    <!-- ERRORY -->
+    <string name="error_brak_danych">Wypełnil pola aby uzystać wynik.</string>
+    <string name="error_dane_realne">Dane muszą być realne.</string>
+    <string name="error_wczytywanie_wykresow">Wystąpił błąd podczas\nwczytywania wykresów</string>
+    <string name="error_wykres_brak_danych">Za mało danych \ndo utworzenia wykresu</string>
+    
+    <!-- INNE -->
+    <string name="button_dodaj_wynik">Dodaj wynik</string>
+    <string name="button_zapisz_wynik">Zapisz wynik</string>
+    <string name="button_usun_wynik">Usuń wynik</string>
+    <string name="lastresult">lastresult</string>
+    <string name="powiadomienie">Powiadomienie</string>
+    <string name="zmiana_typu_jednostek">Zmień używany typ jednostek</string>
+    <string name="dialog_zmiana_jednostek"> Wybierz typ jednostek. W razie zmiany zalecane jest skasowanie wszystkich poprzednich wyników z tabeli i restart aplikacji.</string>
+    <string name="odswiez">Odśwież</string>
+    <string name="wybierz_zakres_dat">Wybierz zakres dat</string>
+    <string name="poczatek">Początek</string>
+    <string name="koniec">Koniec</string>
+    <string name="wybierz">Wybierz</string>
+    <string name="anuluj">Anuluj</string>
+    <string name="reklamy_off">Wyłącz reklamy</string>
+    
+    
+    <!-- WYKRESY -->
+    <string name="wartosciX">Pokaż wartości punktów</string>
+    <string name="wartosciY">Pokaż daty punktów (do 7 wyników)</string>
+    <string name="zakres_dat">Zakres dat</string>
+    
+    <!-- PODPISY KART -->
+    <string name="podpis_wyniki">Wyniki</string>
+    <string name="podpis_zakres">Ustawienia wykresów</string>
+    <string name="podpis_informacja">Informacja</string>
+    
+    <!-- TABELA WYNIKOW -->
+    <string name="text_data">Data</string>
+    <string name="text_bmi">BMI</string>
+
+    <string-array name="tabela_zakres">
+        <item>Zeszły tydzień</item>
+        <item>Zeszłe dwa tygodnie</item>
+        <item>Zeszły miesiąc</item>
+        <item>Wybrany okres&#8230;</item>
+    </string-array>
+    
+    <string-array name="tabela_menu">
+        <item>Kalkulator</item>
+        <item>Tabela wyników</item>
+        <item>Wykresy</item>
+        <item>Ustawienia</item>
+    </string-array>
+    
+	<!-- DRAWER MENU -->
+    <string name="rozwin_drawer">Otwórz</string>
+    <string name="zwin_drawer">Zamknij</string>
+
+    <!-- SZCZEGÓŁY WYNIKU -->
+    <string name="hint_notatki">Dodatkowe notatki.</string>
+    <string name="informacja_szczegoly">Wynik zostanie automatycznie\nzaktualizowany po powrocie\ndo głównego okna aplikacji.</string>
+
+    
+    <!-- NIE TLUMACZYC, DON'T TRANSLATE NAZWY DLA SHAREDPREFS -->
+    <string name="shared_waga">Waga(kg)</string>
+    <string name="appPreferences">com.devnoobs.bmr.appPreferences</string>
+    <string name="title_activity_szczegoly_wyniku">Szczegóły wyniku</string>
+    <string name="action_settings">Settings</string>
+    <string name="imperial">imperial</string>
+    
+    
+
+</resources>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2014 Łukasz Byjoś
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  -->inearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+	android:layout_width="match_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical">
+	
+
+	<LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical">       
+	    
+		<LinearLayout
+		    android:id="@+id/LinearLayoutTabela"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+			android:layout_marginLeft="10dp"
+			android:layout_marginRight="10dp"
+			android:layout_marginTop="10dp"
+			android:layout_marginBottom="10dp"
+			android:paddingBottom="10dp"
+			android:background="@drawable/bg_card"
+			android:orientation="vertical">	    
+		    
+		     <!-- PODPIS KARTY -->
+			<TextView 
+			    android:id="@+id/textViewPodpisKalkulator"
+			    android:text="@string/title_ustawienia"
+			    android:layout_width="wrap_content"
+	        	android:layout_height="wrap_content"
+	        	android:layout_marginLeft="10dp"
+			    style="@style/podpisy_kart"/>
+		    
+			<CheckBox
+		      android:id="@+id/checkBox1"
+		      android:layout_width="wrap_content"
+		      android:layout_height="wrap_content"
+		      android:layout_marginLeft="2dp"
+		      android:text="@string/powiadomienie" />
+			
+			<CheckBox
+		      android:id="@+id/checkBoxReklamy"
+		      android:layout_width="wrap_content"
+		      android:layout_height="wrap_content"
+		      android:layout_marginTop="15dp"
+		      android:layout_marginLeft="2dp"
+		      android:text="@string/reklamy_off" />
+			
+		    <Button
+		        android:id="@+id/buttonZmianaTypuJednostek"
+			    android:layout_width="wrap_content"
+			    android:layout_height="25dp"	
+			    android:layout_marginTop="3dp"		    
+			    android:layout_marginLeft="10dp"
+		        style="@style/buttony_ustawienia"
+		        android:text="@string/zmiana_typu_jednostek"/>		
+
+		</LinearLayout>
+	</LinearLayout>
+	
+<!-- REKLAMA 
+
+	  <com.google.ads.AdView
+       android:id="@+id/adView"
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       ads:adSize="SMART_BANNER"
+       ads:adUnitId="ca-app-pub-6410364990892893/1240794727"
+       ads:loadAdOnCreate="true"
+       ads:testDevices="TEST_EMULATOR, FBBD4933C76CB9CF675276EFB6F8F45A"/>	
+	
+	-->	
+	
+</LinearLayout>

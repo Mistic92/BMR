@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2014 Łukasz Byjoś
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  -->
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:layout_weight="1"
+     >
+
+	<LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	   	android:orientation="vertical"
+		android:paddingBottom="10dp">
+		<LinearLayout
+			android:layout_width="fill_parent"
+   			android:layout_height="wrap_content"
+			android:layout_marginLeft="10dp"
+			android:layout_marginRight="10dp"
+			android:layout_marginTop="10dp"
+			android:paddingBottom="15dp"
+			android:background="@drawable/bg_card"
+			android:orientation="vertical">
+		     <!-- PODPIS KARTY -->
+			<TextView 
+			    android:id="@+id/textViewPodpisKalkulator"
+			    android:text="@string/title_bmr"
+			    android:layout_width="wrap_content"
+	        	android:layout_height="wrap_content"
+	        	android:layout_gravity="center_horizontal"
+	        	android:layout_marginBottom="5dp"
+			    style="@style/podpisy_kart"/>
+	<!-- PLEC -->			
+			<TextView 
+			    android:id="@+id/textViewWybierzPlec"
+			    android:text="@string/text_wybierz_plec"
+			    android:layout_width="wrap_content"	
+			    android:layout_gravity="center_horizontal"
+	        	android:layout_height="wrap_content"
+			    style="@style/tekst_bmr_wybierz_cos"/>
+
+		    <RadioGroup
+		        android:id="@+id/radioGroupPlec"
+		        android:layout_gravity="center_horizontal"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:orientation="horizontal" >
+		        <RadioButton
+		            android:id="@+id/radio_plec0"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:checked="true"
+		            android:text="@string/text_mezczyzna"
+		            style="@style/tekst_bmr" 
+		            />
+		        <RadioButton
+		            android:id="@+id/radio_plec1"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:text="@string/text_kobieta" 
+		            style="@style/tekst_bmr"  />
+		    </RadioGroup>			
+			
+		<TableLayout
+			android:layout_width="170dp"
+   			android:layout_height="fill_parent"
+   			android:layout_gravity="center_horizontal"
+			android:focusable="true"
+			android:stretchColumns="*" 
+			android:shrinkColumns="*" 
+			android:layout_marginTop="10dp"
+			android:layout_marginBottom="10dp"
+			android:focusableInTouchMode="true"
+			>	 
+			
+	 <!-- WIEK -->		
+		<TableRow
+		    >		    
+		    <TextView
+		        android:layout_gravity="center_horizontal"
+		        android:id="@+id/textViewWiek"
+		        android:layout_width="10dp"
+		        android:layout_height="wrap_content"
+		        android:text="@string/text_wiek"
+		        android:layout_marginBottom="10dp"
+		        style="@style/tekst_bmr"  
+		        />    
+		    <EditText
+		        android:id="@+id/EditTextWiek"
+		        android:layout_width="10dp"
+		        android:layout_height="wrap_content"
+		        android:gravity="left"
+		        android:ems="10"
+		        style="@style/tekst_bmr_edittext" 
+		        android:inputType="numberDecimal" >
+		    </EditText>
+   
+		 </TableRow>
+		 
+	 <!-- WAGA -->		 
+		<TableRow>
+		    <TextView
+		        android:id="@+id/textViewWaga"
+	        	android:layout_gravity="center_horizontal"
+		        android:layout_width="10dp"
+		        android:layout_height="wrap_content"
+		        android:layout_marginBottom="10dp"
+		        android:text="@string/text_waga"
+		        style="@style/tekst_bmr" 
+		       />    
+		    <EditText
+		        android:id="@+id/EditTextWaga"
+		        android:layout_width="10dp"
+		        style="@style/tekst_bmr_edittext" 
+		        android:hint="@string/text_kilogramy"
+		        android:layout_height="wrap_content" 	        
+		        android:ems="10"
+		        android:inputType="numberDecimal" >
+		    </EditText>
+ 	    
+		</TableRow>  
+		
+	 <!-- WZROST -->	
+		<TableRow
+		    >
+		    <TextView
+		        android:id="@+id/textViewWzrost"
+	        	android:layout_gravity="center_horizontal"
+		        android:layout_width="10dp"
+		        android:layout_height="wrap_content"
+		        android:layout_marginBottom="10dp"
+		        android:text="@string/text_wzrost"
+		        style="@style/tekst_bmr" 
+		        /> 
+		    <EditText
+		        android:id="@+id/EditTextWzrost"
+		        android:layout_width="10dp"
+		        style="@style/tekst_bmr_edittext" 
+		        android:layout_height="wrap_content" 	
+		        android:hint="@string/text_centymetry"        
+		        android:ems="10"
+		        android:inputType="numberDecimal" >
+		    </EditText>  
+  		    
+		</TableRow>
+	</TableLayout>	
+	    	
+	<!-- AKTYWNOSC -->	   
+				<TextView 
+					android:id="@+id/textViewWybierzAktywnosc"
+					android:text="@string/text_wybierz_aktywnosc"
+					android:layout_width="wrap_content"
+			       	android:layout_height="wrap_content"
+			        android:layout_gravity="center_horizontal"
+					style="@style/tekst_bmr_wybierz_cos"/>    
+		
+			    <RadioGroup
+			        android:id="@+id/radioGroupAktywnosci"
+	        		android:layout_gravity="center_horizontal"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content">
+			        <RadioButton
+			            android:id="@+id/radio0"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:checked="true"
+			            style="@style/tekst_bmr"  
+			            android:text="@string/typ_aktywnosc_brak" />
+			        <RadioButton
+			            android:id="@+id/radio1"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            style="@style/tekst_bmr" 
+			            android:text="@string/typ_aktywnosc_lekka" />
+			        <RadioButton
+			            android:id="@+id/radio2"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:checked="true"
+			            style="@style/tekst_bmr"  
+			            android:text="@string/typ_aktywnosc_umiarkowana" />
+			        <RadioButton
+			            android:id="@+id/radio3"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:checked="true"
+			            style="@style/tekst_bmr" 
+			            android:text="@string/typ_aktywnosc_duza" />
+			        <RadioButton
+			            android:id="@+id/radio4"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:checked="true"
+			            style="@style/tekst_bmr" 
+			            android:text="@string/typ_aktywnosc_bduza" />
+			    </RadioGroup>      
+
+	  </LinearLayout>
+	  
+	  <com.google.ads.AdView
+	      android:layout_marginTop="10dp"
+       android:id="@+id/adView"
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       ads:adSize="SMART_BANNER"
+       ads:adUnitId="ca-app-pub-6410364990892893/1240794727"
+       ads:loadAdOnCreate="true"
+       ads:testDevices="TEST_EMULATOR"/>		
+			
+<!-- WYNIKI -->
+		<LinearLayout
+			android:layout_width="fill_parent"
+   			android:layout_height="wrap_content"
+			android:layout_marginLeft="10dp"
+			android:layout_marginRight="10dp"
+			android:layout_marginTop="10dp"
+			android:paddingBottom="15dp"
+			android:background="@drawable/bg_card"
+			android:orientation="vertical"
+			>	  
+
+	     <!-- PODPIS KARTY -->
+		<TextView 
+		    android:id="@+id/textViewPodpisWyniki"
+		    android:text="@string/podpis_wyniki"
+		    android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:layout_gravity="center_horizontal"
+        	android:layout_marginBottom="5dp"
+		    style="@style/podpisy_kart"/>      
+		   <!-- Twoj wynik BMI to -->
+        <TextView  
+            android:id="@+id/textTwojWynikBmi"  
+		    android:layout_width="wrap_content"
+        	android:layout_height="wrap_content" 
+            android:layout_gravity="center_horizontal"
+            style="@style/tekst_bmr"  
+            android:text="@string/twoje_bmi"> 
+        </TextView>
+        <TextView  
+            android:id="@+id/textWynikBMI" 
+            style="@style/tekst_bmr_wyniki"  
+            android:layout_width="wrap_content" 
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="8dp"
+            android:layout_height="wrap_content"
+            android:text=""></TextView> 
+	    <Button
+	        android:id="@+id/buttonDodajWynikWBMR"
+	        android:layout_width="120dp"
+	        android:layout_height="30dp"
+            android:layout_marginBottom="8dp"
+            android:layout_gravity="center_horizontal"
+	        style="@style/buttons"
+	        android:text="@string/button_zapisz_wynik"/>              
+
+	    <!-- znaczenia -->
+	    
+		<TableLayout
+			android:layout_width="280dp"
+   			android:layout_height="fill_parent"
+   			android:layout_gravity="center_horizontal"
+			android:focusable="true"
+			android:stretchColumns="*" 
+			android:shrinkColumns="*" 
+			android:layout_marginTop="10dp"
+			android:layout_marginBottom="10dp"
+			android:focusableInTouchMode="true"
+			>	 
+		    <TableRow >
+		        <TextView  
+		            android:id="@+id/textBMIZnaczenie1"  
+		            android:layout_width="wrap_content"  
+		            android:layout_height="wrap_content"    
+		            style="@style/znaczeniaBMI"   
+		            android:text="@string/bmi1_wyglodzenie"/> 	
+		    </TableRow>
+		    <TableRow >
+		        <TextView  
+		            android:id="@+id/textBMIZnaczenie2"  
+		            android:layout_width="wrap_content"  
+		            android:layout_height="wrap_content"    
+		            style="@style/znaczeniaBMI"   
+		            android:text="@string/bmi2_wychudzenie"/> 
+		    </TableRow>
+		    <TableRow >
+		        <TextView  
+		            android:id="@+id/textBMIZnaczenie3"  
+		            android:layout_width="wrap_content"  
+		            android:layout_height="wrap_content"    
+		            style="@style/znaczeniaBMI"   
+		            android:text="@string/bmi3_niedowaga"/> 
+		    </TableRow>
+		    <TableRow >
+		        <TextView  
+		            android:id="@+id/textBMIZnaczenie4"  
+		            android:layout_width="wrap_content"  
+		            android:layout_height="wrap_content"    
+		            style="@style/znaczeniaBMI"   
+		            android:text="@string/bmi4_idealna"/> 
+		    </TableRow>
+		    <TableRow >
+		        <TextView  
+		            android:id="@+id/textBMIZnaczenie5"  
+		            android:layout_width="wrap_content"  
+		            android:layout_height="wrap_content"    
+		            style="@style/znaczeniaBMI"   
+		            android:text="@string/bmi5_nadwaga"/> 
+		    </TableRow>
+		    <TableRow >
+		        <TextView  
+		            android:id="@+id/textBMIZnaczenie6"  
+		            android:layout_width="wrap_content"  
+		            android:layout_height="wrap_content"    
+		            style="@style/znaczeniaBMI"   
+		            android:text="@string/bmi6_1stopienotylosc"/> 
+		    </TableRow>
+		    <TableRow >
+		        <TextView  
+		            android:id="@+id/textBMIZnaczenie7"  
+		            android:layout_width="wrap_content"   
+		            android:layout_height="wrap_content"    
+		            style="@style/znaczeniaBMI"   
+		            android:text="@string/bmi7_2stopienotylosc"/> 
+		    </TableRow>
+		    <TableRow >
+		        <TextView  
+		            android:id="@+id/textBMIZnaczenie8"  
+		            android:layout_width="wrap_content"  
+		            android:layout_height="wrap_content"    
+		            style="@style/znaczeniaBMI"   
+		            android:text="@string/bmi8_3stopienotylosc"/> 
+		    </TableRow>
+
+	    </TableLayout>
+	    
+ <!-- Koniec znaczen BMI -->
+
+<!-- twoje bmr -->
+	        <TextView  
+	            android:id="@+id/textTwojWynikBmr"  
+	            android:layout_width="wrap_content"  
+         		android:layout_gravity="center_horizontal" 
+	            android:layout_height="wrap_content"   
+	            android:layout_marginTop="8dp" 
+	            style="@style/tekst_bmr"  
+	            android:text="@string/twoje_bmr"> 
+	        </TextView>
+	        <TextView  
+	            android:id="@+id/textWynikBMR"  
+	            android:layout_width="wrap_content"  
+         		android:layout_gravity="center_horizontal" 
+	            android:layout_height="wrap_content"   
+	            style="@style/tekst_bmr_wyniki"   
+	            android:text="">        
+	        </TextView> 
+<!--  kalorie potrzebne -->
+	        <TextView  
+	            android:id="@+id/text_info_Kalorie"  
+	            android:layout_width="wrap_content"  
+         		android:layout_gravity="center_horizontal" 
+	            android:layout_height="wrap_content"    
+	            style="@style/tekst_bmr" 
+	            android:text="@string/kalorie"> 
+	        </TextView>
+	        <TextView  
+	            android:id="@+id/textKalorie"  
+	            android:layout_width="wrap_content"  
+	            android:layout_height="wrap_content"
+         		android:layout_gravity="center_horizontal" 
+	            style="@style/tekst_bmr_wyniki"   			            
+	            android:text="">
+	        </TextView> 
+		    	
+<!-- weglowodany -->
+	        <TextView  
+	            android:id="@+id/text_info_Weglowodany"  
+	            android:layout_width="wrap_content"  
+	            android:layout_marginTop="8dp"
+         		android:layout_gravity="center_horizontal" 
+	            android:layout_height="wrap_content"     
+	            style="@style/tekst_bmr" 
+	            android:text="@string/weglowodany"> 
+	        </TextView>
+	        <LinearLayout 
+		            android:layout_width="wrap_content"  
+	         		android:layout_gravity="center_horizontal" 
+		            android:layout_height="wrap_content" 
+		            android:orientation="horizontal"
+	            >
+		        <TextView  
+		            android:layout_width="wrap_content"  
+	         		android:layout_gravity="center_horizontal" 
+		            android:layout_height="wrap_content" 
+		            android:layout_marginRight="10dp"  
+		            android:id="@+id/textWeglowodany"  
+		            style="@style/tekst_bmr_wyniki"   			            
+		            android:text=""> 
+		        </TextView> 
+	            <TextView  
+		            android:layout_width="wrap_content"  
+	         		android:layout_gravity="center_horizontal" 
+		            android:layout_height="wrap_content"   
+		            android:id="@+id/textWeglowodanyGram"  
+		            style="@style/tekst_bmr_wyniki"   			            
+		            android:text="">    
+	            </TextView>       
+			</LinearLayout>       
+<!-- bialko -->
+	        <TextView  
+	            android:id="@+id/text_info_Bialko"  
+	            android:layout_width="wrap_content"  
+	            android:layout_marginTop="8dp"
+         		android:layout_gravity="center_horizontal" 
+	            android:layout_height="wrap_content"     
+	            style="@style/tekst_bmr" 
+	            android:text="@string/bialko"> 
+	        </TextView>
+	        <LinearLayout 
+		            android:layout_width="wrap_content"  
+	         		android:layout_gravity="center_horizontal" 
+		            android:layout_height="wrap_content" 
+		            android:orientation="horizontal"
+	            >
+		        <TextView  
+		            android:layout_width="wrap_content"  
+	         		android:layout_gravity="center_horizontal" 
+		            android:layout_height="wrap_content"  
+					android:layout_marginRight="10dp" 
+		            android:id="@+id/textBialko"  
+		            style="@style/tekst_bmr_wyniki"   			            
+		            android:text="">
+		        </TextView> 
+	            <TextView  
+		            android:id="@+id/textBialkoGram"
+		            style="@style/tekst_bmr_wyniki"  
+		            android:layout_width="wrap_content"  
+	         		android:layout_gravity="center_horizontal" 
+		            android:layout_height="wrap_content"   
+		            android:text="">
+	            </TextView>   
+			</LinearLayout> 
+<!--  tluszcz -->
+	        <TextView  
+	            android:id="@+id/text_info_Tluszcz"  
+	            android:layout_width="wrap_content" 
+	            android:layout_marginTop="8dp" 
+         		android:layout_gravity="center_horizontal" 
+	            android:layout_height="wrap_content"     
+	            style="@style/tekst_bmr" 
+	            android:text="@string/tluszcz"> 
+	        </TextView>
+	        <LinearLayout 
+		            android:layout_width="wrap_content"  
+	         		android:layout_gravity="center_horizontal" 
+		            android:layout_height="wrap_content" 
+		            android:orientation="horizontal"
+	            >
+		        <TextView  
+		            android:id="@+id/textTluszcz"  
+		            style="@style/tekst_bmr_wyniki"  
+					android:layout_marginRight="10dp"
+		            android:layout_width="wrap_content"  
+	         		android:layout_gravity="center_horizontal" 
+		            android:layout_height="wrap_content"   
+		            android:text="">
+		        </TextView> 
+	            <TextView  
+		            android:id="@+id/textTluszczGram"  
+		            style="@style/tekst_bmr_wyniki"  
+		            android:layout_width="wrap_content"  
+	         		android:layout_gravity="center_horizontal" 
+		            android:layout_height="wrap_content"   
+		            android:text="">
+	            </TextView>               
+			</LinearLayout> 
+
+	   </LinearLayout>
+
+	</LinearLayout>	  
+</ScrollView>

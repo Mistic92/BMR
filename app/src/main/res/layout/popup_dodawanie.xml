@@ -1,0 +1,75 @@
+<!--
+  ~ Copyright (c) 2014 Łukasz Byjoś
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+		<TableLayout  
+		    android:id="@+id/tabela_wynikow"  
+		    android:layout_width="match_parent"  
+		    android:layout_height="wrap_content"  
+		    android:shrinkColumns="*"  
+		    android:stretchColumns="*" 
+		    android:layout_marginLeft="8dp"
+		    android:layout_marginRight="8dp">
+		    <TableRow
+	        android:layout_height="wrap_content"  
+	        android:layout_width="match_parent">  
+		       <TextView 
+		           android:text="@string/text_bmi"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content" />  
+		        <EditText
+		        android:id="@+id/popup_bmi"
+		        android:inputType="numberDecimal"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginTop="16dp"
+		        android:layout_marginLeft="4dp"
+		        android:layout_marginRight="4dp"
+		        android:layout_marginBottom="4dp"
+		        android:hint="@string/text_bmi" />
+			</TableRow>
+			<TableRow
+	        android:layout_height="wrap_content"  
+	        android:layout_width="match_parent">  
+		       <TextView 
+		           android:text="@string/text_waga"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content" />       
+		    <EditText
+		        android:id="@+id/popup_waga"
+		        android:inputType="numberDecimal"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginTop="4dp"
+		        android:layout_marginLeft="4dp"
+		        android:layout_marginRight="4dp"
+		        android:layout_marginBottom="16dp"
+		        android:hint="@string/text_waga"
+		        android:fontFamily="sans-serif"/>
+	    </TableRow>
+	    </TableLayout>
+
+		<EditText
+		    android:id="@+id/popup_dodatkowy_tekst"
+		    android:layout_width="match_parent"
+		    android:layout_height="60dp"
+		    android:ems="10"
+		    android:hint="@string/hint_notatki"
+		    android:inputType="textMultiLine"
+			android:maxLength="60"
+		    android:textSize="14dp" >
+
+		    <requestFocus />
+		</EditText>
+	    
+</LinearLayout>

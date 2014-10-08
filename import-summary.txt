@@ -1,0 +1,201 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+* .gitattributes
+* .gitignore
+* .idea\
+* .idea\.name
+* .idea\compiler.xml
+* .idea\copyright\
+* .idea\copyright\MIT.xml
+* .idea\copyright\profiles_settings.xml
+* .idea\encodings.xml
+* .idea\misc.xml
+* .idea\modules.xml
+* .idea\scopes\
+* .idea\scopes\scope_settings.xml
+* .idea\vcs.xml
+* .idea\workspace.xml
+* README.md
+* app\
+* app\build.gradle
+* app\libs\
+* app\libs\GoogleAdMobAdsSdk-6.4.1.jar
+* app\libs\libGoogleAnalyticsServices.jar
+* app\lint.xml
+* app\src\
+* app\src\main\
+* app\src\main\AndroidManifest.xml
+* app\src\main\java\
+* app\src\main\java\com\
+* app\src\main\java\com\devnoobs\
+* app\src\main\java\com\devnoobs\bmr\
+* app\src\main\java\com\devnoobs\bmr\Baza\
+* app\src\main\java\com\devnoobs\bmr\Baza\WynikiDataSource.java
+* app\src\main\java\com\devnoobs\bmr\Baza\WynikiDbHelper.java
+* app\src\main\java\com\devnoobs\bmr\CustomAdapterWyniki.java
+* app\src\main\java\com\devnoobs\bmr\CustomSpinner.java
+* app\src\main\java\com\devnoobs\bmr\Dane.java
+* app\src\main\java\com\devnoobs\bmr\ExportToCSV.java
+* app\src\main\java\com\devnoobs\bmr\Fragments\
+* app\src\main\java\com\devnoobs\bmr\Fragments\FragmentBMR.java
+* app\src\main\java\com\devnoobs\bmr\Fragments\FragmentTabele.java
+* app\src\main\java\com\devnoobs\bmr\Fragments\FragmentUstawienia.java
+* app\src\main\java\com\devnoobs\bmr\Fragments\FragmentWykres.java
+* app\src\main\java\com\devnoobs\bmr\Interfejsy\
+* app\src\main\java\com\devnoobs\bmr\Interfejsy\IRefreshTabeli.java
+* app\src\main\java\com\devnoobs\bmr\Interfejsy\IReklamy.java
+* app\src\main\java\com\devnoobs\bmr\Interfejsy\WyborDadyDialogFragmentListener.java
+* app\src\main\java\com\devnoobs\bmr\Kalkulator.java
+* app\src\main\java\com\devnoobs\bmr\MainActivity.java
+* app\src\main\java\com\devnoobs\bmr\Powiadomienia.java
+* app\src\main\java\com\devnoobs\bmr\SzczegolyWynikuActivity.java
+* app\src\main\java\com\devnoobs\bmr\WyborDatyDialogFragment.java
+* app\src\main\java\com\devnoobs\bmr\Wynik.java
+* app\src\main\java\com\echo\
+* app\src\main\java\com\echo\holographlibrary\
+* app\src\main\java\com\echo\holographlibrary\Bar.java
+* app\src\main\java\com\echo\holographlibrary\Line.java
+* app\src\main\java\com\echo\holographlibrary\LineGraph.java
+* app\src\main\java\com\echo\holographlibrary\LinePoint.java
+* app\src\main\java\com\echo\holographlibrary\MainActivity.java
+* app\src\main\java\com\echo\holographlibrary\PieGraph.java
+* app\src\main\java\com\echo\holographlibrary\PieSlice.java
+* app\src\main\res\
+* app\src\main\res\color\
+* app\src\main\res\color\date_picker_selector.xml
+* app\src\main\res\color\date_picker_year_selector.xml
+* app\src\main\res\color\done_text_color.xml
+* app\src\main\res\drawable-hdpi\
+* app\src\main\res\drawable-hdpi\drawer_shadow.9.png
+* app\src\main\res\drawable-hdpi\ic_drawer.png
+* app\src\main\res\drawable-hdpi\ic_launcher.png
+* app\src\main\res\drawable-hdpi\ic_refresh.png
+* app\src\main\res\drawable-ldpi\
+* app\src\main\res\drawable-ldpi\ic_launcher.png
+* app\src\main\res\drawable-ldpi\ic_note_small.png
+* app\src\main\res\drawable-mdpi\
+* app\src\main\res\drawable-mdpi\drawer_shadow.9.png
+* app\src\main\res\drawable-mdpi\ic_drawer.png
+* app\src\main\res\drawable-mdpi\ic_launcher.png
+* app\src\main\res\drawable-mdpi\ic_refresh.png
+* app\src\main\res\drawable-xhdpi\
+* app\src\main\res\drawable-xhdpi\drawer_shadow.9.png
+* app\src\main\res\drawable-xhdpi\ic_drawer.png
+* app\src\main\res\drawable-xhdpi\ic_launcher.png
+* app\src\main\res\drawable-xhdpi\ic_refresh.png
+* app\src\main\res\drawable-xxhdpi\
+* app\src\main\res\drawable-xxhdpi\ic_launcher.png
+* app\src\main\res\drawable\
+* app\src\main\res\drawable\bg_card.xml
+* app\src\main\res\drawable\ic_launcher.png
+* app\src\main\res\drawable\ic_note.png
+* app\src\main\res\drawable\ic_note_small.png
+* app\src\main\res\drawable\normal.xml
+* app\src\main\res\drawable\press.xml
+* app\src\main\res\drawable\selector.xml
+* app\src\main\res\layout-sw320dp\
+* app\src\main\res\layout-sw320dp\fragment_bmr.xml
+* app\src\main\res\layout-v14\
+* app\src\main\res\layout-v14\drawer_list_item.xml
+* app\src\main\res\layout\
+* app\src\main\res\layout\activity_main.xml
+* app\src\main\res\layout\activity_main_kopia.xml
+* app\src\main\res\layout\activity_szczegoly_wyniku.xml
+* app\src\main\res\layout\drawer_list_item.xml
+* app\src\main\res\layout\fragment_bmr.xml
+* app\src\main\res\layout\fragment_tabele.xml
+* app\src\main\res\layout\fragment_ustawienia.xml
+* app\src\main\res\layout\fragment_wykres.xml
+* app\src\main\res\layout\listview_wynik.xml
+* app\src\main\res\layout\popup_dodawanie.xml
+* app\src\main\res\layout\wybor_daty_dialog_fragment.xml
+* app\src\main\res\menu\
+* app\src\main\res\menu\main.xml
+* app\src\main\res\menu\szczegoly_wyniku.xml
+* app\src\main\res\values-pl\
+* app\src\main\res\values-pl\strings.xml
+* app\src\main\res\values-sw320dp-v14\
+* app\src\main\res\values-sw320dp-v14\styles.xml
+* app\src\main\res\values-sw320dp\
+* app\src\main\res\values-sw320dp\styles.xml
+* app\src\main\res\values-v11\
+* app\src\main\res\values-v11\styles.xml
+* app\src\main\res\values-v14\
+* app\src\main\res\values-v14\styles.xml
+* app\src\main\res\values-v18\
+* app\src\main\res\values-v18\styles.xml
+* app\src\main\res\values-v21\
+* app\src\main\res\values-v21\styles.xml
+* app\src\main\res\values-w200dp-v14\
+* app\src\main\res\values-w200dp-v14\styles.xml
+* app\src\main\res\values-w200dp\
+* app\src\main\res\values-w200dp\styles.xml
+* app\src\main\res\values\
+* app\src\main\res\values\analytics.xml
+* app\src\main\res\values\colors.xml
+* app\src\main\res\values\dimens.xml
+* app\src\main\res\values\strings.xml
+* app\src\main\res\values\styles.xml
+* app\src\main\res\xml\
+* app\src\main\res\xml\inne.xml
+* build.gradle
+* build.xml
+* gradle\
+* gradle\wrapper\
+* gradle\wrapper\gradle-wrapper.jar
+* gradle\wrapper\gradle-wrapper.properties
+* gradlew
+* gradlew.bat
+* ic_launcher-web.png
+* nbandroid\
+* nbandroid\private.properties
+* proguard-project.txt
+* settings.gradle
+* us.stackdump
+
+Replaced Jars with Dependencies:
+--------------------------------
+The importer recognized the following .jar files as third party
+libraries and replaced them with Gradle dependencies instead. This has
+the advantage that more explicit version information is known, and the
+libraries can be updated automatically. However, it is possible that
+the .jar file in your project was of an older version than the
+dependency we picked, which could render the project not compileable.
+You can disable the jar replacement in the import wizard and try again:
+
+android-support-v4.jar => com.android.support:support-v4:+
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+* AndroidManifest.xml => app\src\main\AndroidManifest.xml
+* assets\ => app\src\main\assets\
+* libs\GoogleAdMobAdsSdk-6.4.1.jar => app\libs\GoogleAdMobAdsSdk-6.4.1.jar
+* libs\libGoogleAnalyticsServices.jar => app\libs\libGoogleAnalyticsServices.jar
+* lint.xml => app\lint.xml
+* res\ => app\src\main\res\
+* src\ => app\src\main\java\
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)
