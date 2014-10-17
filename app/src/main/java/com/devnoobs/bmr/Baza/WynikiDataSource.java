@@ -10,17 +10,17 @@
 
 package com.devnoobs.bmr.Baza;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-
-import com.devnoobs.bmr.Wynik;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.util.Log;
+
+import com.devnoobs.bmr.Wynik;
+
+import java.util.ArrayList;
+import java.util.Calendar;
 
 public class WynikiDataSource {
 
@@ -129,15 +129,15 @@ public class WynikiDataSource {
   	}
   		return wynik;
   	}
-  	
-  
-  	
-	/**
-	 * Sortowanie albo DESC albo ASC
-	 * @param limit
-	 * @param sortowanie
-	 * @return
-	 */
+
+
+    /**
+     * Sortowanie albo DESC albo ASC
+     * @param poczatek
+     * @param koniec
+     * @param sortowanie
+     * @return
+     */
   	public ArrayList<Wynik> getData(long poczatek, long koniec, String sortowanie) {
      
   		ArrayList<Wynik> wynikList = new ArrayList<Wynik>();

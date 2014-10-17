@@ -10,11 +10,6 @@
 
 package com.devnoobs.bmr;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
-import java.util.TimeZone;
-
 import android.app.AlarmManager;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -25,8 +20,11 @@ import android.content.IntentFilter;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
-import android.util.Log;
 import android.widget.Toast;
+
+import java.util.Calendar;
+import java.util.Locale;
+import java.util.TimeZone;
 
 public class Powiadomienia extends BroadcastReceiver {
 

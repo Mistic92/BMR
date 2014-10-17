@@ -19,7 +19,6 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.opengl.Visibility;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -28,7 +27,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.webkit.WebView.FindListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -37,10 +35,10 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.devnoobs.bmr.Baza.WynikiDataSource;
 import com.devnoobs.bmr.Dane;
 import com.devnoobs.bmr.Kalkulator;
 import com.devnoobs.bmr.R;
-import com.devnoobs.bmr.Baza.WynikiDataSource;
 
 public class FragmentBMR extends Fragment implements TextWatcher,
 		OnCheckedChangeListener, OnClickListener

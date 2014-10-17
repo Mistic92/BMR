@@ -6,11 +6,9 @@
  * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
  *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- */ckage com.devnoobs.bmr.Fragments;
+ */
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
+package com.devnoobs.bmr.Fragments;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
@@ -30,15 +28,19 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.devnoobs.bmr.Baza.WynikiDataSource;
 import com.devnoobs.bmr.CustomSpinner;
+import com.devnoobs.bmr.Interfejsy.WyborDadyDialogFragmentListener;
 import com.devnoobs.bmr.R;
 import com.devnoobs.bmr.WyborDatyDialogFragment;
 import com.devnoobs.bmr.Wynik;
-import com.devnoobs.bmr.Baza.WynikiDataSource;
-import com.devnoobs.bmr.Interfejsy.WyborDadyDialogFragmentListener;
 import com.echo.holographlibrary.Line;
 import com.echo.holographlibrary.LineGraph;
 import com.echo.holographlibrary.LinePoint;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 
 public class FragmentWykres extends Fragment implements OnItemSelectedListener, 
 														OnClickListener, 

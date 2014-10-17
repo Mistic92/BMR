@@ -6,25 +6,21 @@
  * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
  *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- */e com.devnoobs.bmr;
+ */
 
-import java.util.ArrayList;
-import java.util.HashMap;
+package com.devnoobs.bmr;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,6 +31,9 @@ import com.google.analytics.tracking.android.EasyTracker;
 import com.google.analytics.tracking.android.Fields;
 import com.google.analytics.tracking.android.GoogleAnalytics;
 import com.google.analytics.tracking.android.Tracker;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class SzczegolyWynikuActivity extends Activity implements TextWatcher, OnClickListener {
 
@@ -47,7 +46,7 @@ public class SzczegolyWynikuActivity extends Activity implements TextWatcher, On
 	private Wynik wynik;
 	private Button przycisk;
 	private Context c ;
-	private static ArrayList<IRefreshTabeli> lista = new ArrayList<IRefreshTabeli>();
+	private static ArrayList<IRefreshTabeli> lista = new ArrayList<>();
 	
 	public void dodajListener(IRefreshTabeli irt)
 	{
@@ -120,7 +119,7 @@ public class SzczegolyWynikuActivity extends Activity implements TextWatcher, On
 	@Override
 	public void onBackPressed() {
 	    super.onBackPressed();
-	    if(edytowano==true)  
+	    if(edytowano)
 	    { 
 	    	zrobUpdate();
 	    	powiadom();
@@ -143,7 +142,7 @@ public class SzczegolyWynikuActivity extends Activity implements TextWatcher, On
 	{
 		//Log.d("TEST", "TEST"); 
 		double b=Double.parseDouble(bmi.getText().toString());
-		double w=Double.parseDouble(waga.getText().toString());;
+		double w=Double.parseDouble(waga.getText().toString());
 		String n=notatka.getText().toString();
 		wynik.setBmi(b);
 		wynik.setNotatka(n);

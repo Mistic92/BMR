@@ -10,8 +10,6 @@
 
 package com.devnoobs.bmr.Fragments;
 
-import java.util.ArrayList;
-
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.DialogInterface;
@@ -24,9 +22,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 
+import com.devnoobs.bmr.Interfejsy.IReklamy;
 import com.devnoobs.bmr.Powiadomienia;
 import com.devnoobs.bmr.R;
-import com.devnoobs.bmr.Interfejsy.*;
+
+import java.util.ArrayList;
 
 public class FragmentUstawienia extends Fragment implements OnClickListener {
 

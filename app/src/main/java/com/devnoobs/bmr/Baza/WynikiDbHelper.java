@@ -6,11 +6,9 @@
  * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
  *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- */ckage com.devnoobs.bmr.Baza;
+ */
 
-import java.util.ArrayList;
-
-import com.devnoobs.bmr.Wynik;
+package com.devnoobs.bmr.Baza;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -18,6 +16,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+
+import com.devnoobs.bmr.Wynik;
+
+import java.util.ArrayList;
 
 public class WynikiDbHelper extends SQLiteOpenHelper {
 
@@ -90,7 +92,7 @@ public class WynikiDbHelper extends SQLiteOpenHelper {
 		        // Insert into DB
 		        db.insert("wyniki", null, contentValues);
 	        }
-			Log.i("wdh wczytaj2", "Wczytywanie zakonczone");
+			Log.i("wdh wczytaj2", "Wczytywanie zako�czone");
 		}
 		catch(Exception e)
 		{
@@ -134,7 +136,7 @@ public class WynikiDbHelper extends SQLiteOpenHelper {
 	            cursor.moveToNext();
 	        }
 	        cursor.close();	
-			Log.i("wdh kopia2", "Kopiowanie bazy zakonczone");
+			Log.i("wdh kopia2", "Kopiowanie bazy zako�czone");
 	        return true;
 	   }
 	   catch(Exception e)

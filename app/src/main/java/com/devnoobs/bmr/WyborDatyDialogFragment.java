@@ -6,12 +6,9 @@
  * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
  *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- */e com.devnoobs.bmr;
+ */
 
-import java.util.ArrayList;
-import java.util.Calendar;
-
-import com.devnoobs.bmr.Interfejsy.WyborDadyDialogFragmentListener;
+package com.devnoobs.bmr;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -19,10 +16,14 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.DatePicker;
+
+import com.devnoobs.bmr.Interfejsy.WyborDadyDialogFragmentListener;
+
+import java.util.ArrayList;
+import java.util.Calendar;
 
 
 
@@ -113,7 +114,7 @@ public class WyborDatyDialogFragment extends DialogFragment  {
 	        int rok_poczatek;
 	        int miesiac_poczatek;
 	        int dzien_poczatek;
-	        
+
 	        rok_poczatek = wybor_poczatek.getYear();
 	        miesiac_poczatek=wybor_poczatek.getMonth();
 	        dzien_poczatek=wybor_poczatek.getDayOfMonth();
@@ -130,7 +131,7 @@ public class WyborDatyDialogFragment extends DialogFragment  {
 	        int rok_koniec;
 	        int miesiac_koniec;
 	        int dzien_koniec;
-     
+
 	        rok_koniec=wybor_koniec.getYear();
 	        miesiac_koniec=wybor_koniec.getMonth();
 	        dzien_koniec=wybor_koniec.getDayOfMonth();

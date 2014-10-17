@@ -6,11 +6,9 @@
  * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
  *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- */e com.devnoobs.bmr.Fragments;
+ */
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
+package com.devnoobs.bmr.Fragments;
 
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
@@ -40,15 +38,19 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.devnoobs.bmr.Baza.WynikiDataSource;
 import com.devnoobs.bmr.CustomAdapterWyniki;
 import com.devnoobs.bmr.CustomSpinner;
+import com.devnoobs.bmr.Interfejsy.IRefreshTabeli;
+import com.devnoobs.bmr.Interfejsy.WyborDadyDialogFragmentListener;
 import com.devnoobs.bmr.R;
 import com.devnoobs.bmr.SzczegolyWynikuActivity;
 import com.devnoobs.bmr.WyborDatyDialogFragment;
 import com.devnoobs.bmr.Wynik;
-import com.devnoobs.bmr.Baza.WynikiDataSource;
-import com.devnoobs.bmr.Interfejsy.IRefreshTabeli;
-import com.devnoobs.bmr.Interfejsy.WyborDadyDialogFragmentListener;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 
 public class FragmentTabele extends Fragment implements OnClickListener,
 						OnItemSelectedListener,
@@ -61,14 +63,13 @@ public class FragmentTabele extends Fragment implements OnClickListener,
 	private EditText bmi;
 	private EditText waga;
 	private EditText notatka;
-	private ArrayList<Wynik> lista;
-	private Button dodaj_wynik; 
+    private Button dodaj_wynik;
 	private SharedPreferences sharedPref;
 	
 	private static ListView ListaWynikow;
 	private BaseAdapter fAdapter;
 	private Context contextFragmentTabele;
-	private ImageView refresh_button;
+//	private ImageView refresh_button;
 	public static boolean refresh = false;
 	
 	
@@ -110,7 +111,7 @@ public class FragmentTabele extends Fragment implements OnClickListener,
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View rootView = inflater.inflate(R.layout.fragment_tabele,container, false);     
-	//	dodaj_wynik = (Button) rootView.findViewById(R.id.buttonDodajWynik);  
+		//dodaj_wynik = (Button) rootView.findViewById(R.id.buttonDodajWynik);
 		ListaWynikow = (ListView) rootView.findViewById(R.id.listViewWyniki);
         wds = new WynikiDataSource(getActivity());   
 	//	refresh_button = (ImageView) rootView.findViewById(R.id.button_tabele_refresh);
@@ -154,15 +155,15 @@ public class FragmentTabele extends Fragment implements OnClickListener,
 	}//oncreateview
 
 
-	
-	/**
-	 * Metoda wczytujaca liste dla ldni oparta na ListView. Ponizej na tabeli
-	 * @param ldni
-	 */
+    /**
+     * Metoda wczytujaca liste dla ldni oparta na ListView. Ponizej na tabeli
+     * @param poczatek
+     * @param koniec
+     */
 	public void wczytajTabele(long poczatek, long koniec)
-	{		
+	{
 
-		lista = wds.getData(poczatek,koniec,"DESC");
+        ArrayList<Wynik> lista = wds.getData(poczatek, koniec, "DESC");
         fAdapter = new CustomAdapterWyniki(lista,contextFragmentTabele);			
 		ListaWynikow.setAdapter(fAdapter) ; 		
 	}//wczytajtabele
@@ -173,8 +174,7 @@ public class FragmentTabele extends Fragment implements OnClickListener,
   
     	   AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
     	    // Get the layout inflater
-        //TODO string
-    	   builder.setTitle("Wprowadz dane do dodania.");
+    	   builder.setTitle("Wprowad� dane do dodania.");
     	    LayoutInflater inflater = getActivity().getLayoutInflater();
     	    // Inflate and set the layout for the dialog
     	    // Pass null as the parent view because its going in the dialog layout
@@ -221,7 +221,7 @@ public class FragmentTabele extends Fragment implements OnClickListener,
     	            	   catch(NullPointerException e)
     	            	   {
 		    	                Toast.makeText(widok.getContext(),
-		    	                        "Pola nie zostal wypelnione.", Toast.LENGTH_SHORT)
+		    	                        "Pola nie zosta� wype�nione.", Toast.LENGTH_SHORT)
 		    	                        .show();
     	            	   }
     	            	   
@@ -255,7 +255,7 @@ public class FragmentTabele extends Fragment implements OnClickListener,
     	            public void onClick(DialogInterface dialog, int which) 
     	            {
     	                Toast.makeText(getActivity(),
-    	                        "Usunin to", Toast.LENGTH_SHORT)
+    	                        "Usuni�to", Toast.LENGTH_SHORT)
     	                        .show();
     					wds.deleteWynik(id);
     					wczytajTydzien();
@@ -294,12 +294,12 @@ public class FragmentTabele extends Fragment implements OnClickListener,
 		{
 			showDialogDodawanie();
 		}
-		else if(v.getId()==refresh_button.getId())
-		{
-			//spinnerWyborWczytania();
-		}
-		else
-		{
+//		else if(v.getId()==refresh_button.getId())
+//		{
+//			//spinnerWyborWczytania();
+//		}
+		//else
+		//{
 			/*
 		
 			SzczegolyWynikuActivity swa = new SzczegolyWynikuActivity();  
@@ -319,7 +319,7 @@ public class FragmentTabele extends Fragment implements OnClickListener,
 			//  }
 			 * 
 			 */
-		}
+		//}
 
 	}
 
