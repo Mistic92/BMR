@@ -23,6 +23,122 @@ public final class R {
         public static final int tabela_zakres=0x7f050001;
     }
     public static final class attr {
+        /**  Background color for CardView. 
+         <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int cardBackgroundColor=0x7f010000;
+        /**  Corner radius for CardView. 
+         <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int cardCornerRadius=0x7f010001;
+        /**  Elevation for CardView. 
+         <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int cardElevation=0x7f010002;
+        /**  Maximum Elevation for CardView. 
+         <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int cardMaxElevation=0x7f010003;
+        /**  Add padding to CardView on v20 and before to prevent intersections between the Card content and rounded corners. 
+         <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int cardPreventCornerOverlap=0x7f010005;
+        /**  Add padding in API v21+ as well to have the same measurements with previous versions. 
+         <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int cardUseCompatPadding=0x7f010004;
+        /**  Inner padding between the edges of the Card and children of the CardView. 
+         <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int contentPadding=0x7f010006;
+        /**  Inner padding between the bottom edge of the Card and children of the CardView. 
+         <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int contentPaddingBottom=0x7f01000a;
+        /**  Inner padding between the left edge of the Card and children of the CardView. 
+         <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int contentPaddingLeft=0x7f010007;
+        /**  Inner padding between the right edge of the Card and children of the CardView. 
+         <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int contentPaddingRight=0x7f010008;
+        /**  Inner padding between the top edge of the Card and children of the CardView. 
+         <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int contentPaddingTop=0x7f010009;
     }
     public static final class bool {
         public static final int ga_autoActivityTracking=0x7f060000;
@@ -33,23 +149,30 @@ public final class R {
         public static final int blue=0x7f070001;
         public static final int calendar_header=0x7f070002;
         public static final int calendar_selected_date_text=0x7f070003;
-        public static final int circle_background=0x7f070004;
-        public static final int darker_blue=0x7f070005;
-        public static final int date_picker_selector=0x7f07000e;
-        public static final int date_picker_text_normal=0x7f070006;
-        public static final int date_picker_view_animator=0x7f070007;
-        public static final int date_picker_year_selector=0x7f07000f;
-        public static final int done_text_color=0x7f070010;
-        public static final int done_text_color_disabled=0x7f070008;
-        public static final int done_text_color_normal=0x7f070009;
-        public static final int line_background=0x7f07000a;
-        public static final int numbers_text_color=0x7f07000b;
-        public static final int transparent_black=0x7f07000c;
-        public static final int white=0x7f07000d;
+        public static final int cardview_dark_background=0x7f070004;
+        public static final int cardview_light_background=0x7f070005;
+        public static final int cardview_shadow_end_color=0x7f070006;
+        public static final int cardview_shadow_start_color=0x7f070007;
+        public static final int circle_background=0x7f070008;
+        public static final int darker_blue=0x7f070009;
+        public static final int date_picker_selector=0x7f070012;
+        public static final int date_picker_text_normal=0x7f07000a;
+        public static final int date_picker_view_animator=0x7f07000b;
+        public static final int date_picker_year_selector=0x7f070013;
+        public static final int done_text_color=0x7f070014;
+        public static final int done_text_color_disabled=0x7f07000c;
+        public static final int done_text_color_normal=0x7f07000d;
+        public static final int line_background=0x7f07000e;
+        public static final int numbers_text_color=0x7f07000f;
+        public static final int transparent_black=0x7f070010;
+        public static final int white=0x7f070011;
     }
     public static final class dimen {
         public static final int activity_horizontal_margin=0x7f080000;
         public static final int activity_vertical_margin=0x7f080001;
+        public static final int cardview_compat_inset_shadow=0x7f080002;
+        public static final int cardview_default_elevation=0x7f080003;
+        public static final int cardview_default_radius=0x7f080004;
     }
     public static final class drawable {
         public static final int bg_card=0x7f020000;
@@ -287,20 +410,253 @@ public final class R {
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f0a0001;
-        public static final int CustomActionBar=0x7f0a0002;
-        public static final int buttons=0x7f0a0003;
-        public static final int buttony_ustawienia=0x7f0a0004;
-        public static final int podpisy_kart=0x7f0a0005;
-        public static final int tekst_bmr=0x7f0a0006;
-        public static final int tekst_bmr_edittext=0x7f0a0007;
-        public static final int tekst_bmr_wybierz_cos=0x7f0a0008;
-        public static final int tekst_bmr_wyniki=0x7f0a0009;
-        public static final int tekst_tabela_wyniki=0x7f0a000d;
-        public static final int wybor_daty_podpisy=0x7f0a000a;
-        public static final int wyniki=0x7f0a000b;
-        public static final int znaczeniaBMI=0x7f0a000c;
+        public static final int CardView=0x7f0a0002;
+        public static final int CardView_Dark=0x7f0a0003;
+        public static final int CardView_Light=0x7f0a0004;
+        public static final int CustomActionBar=0x7f0a0005;
+        public static final int buttons=0x7f0a0006;
+        public static final int buttony_ustawienia=0x7f0a0007;
+        public static final int podpisy_kart=0x7f0a0008;
+        public static final int tekst_bmr=0x7f0a0009;
+        public static final int tekst_bmr_edittext=0x7f0a000a;
+        public static final int tekst_bmr_wybierz_cos=0x7f0a000b;
+        public static final int tekst_bmr_wyniki=0x7f0a000c;
+        public static final int tekst_tabela_wyniki=0x7f0a0010;
+        public static final int wybor_daty_podpisy=0x7f0a000d;
+        public static final int wyniki=0x7f0a000e;
+        public static final int znaczeniaBMI=0x7f0a000f;
     }
     public static final class xml {
         public static final int inne=0x7f040000;
     }
+    public static final class styleable {
+        /** Attributes that can be used with a CardView.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #CardView_cardBackgroundColor com.devnoobs.bmr:cardBackgroundColor}</code></td><td> Background color for CardView.</td></tr>
+           <tr><td><code>{@link #CardView_cardCornerRadius com.devnoobs.bmr:cardCornerRadius}</code></td><td> Corner radius for CardView.</td></tr>
+           <tr><td><code>{@link #CardView_cardElevation com.devnoobs.bmr:cardElevation}</code></td><td> Elevation for CardView.</td></tr>
+           <tr><td><code>{@link #CardView_cardMaxElevation com.devnoobs.bmr:cardMaxElevation}</code></td><td> Maximum Elevation for CardView.</td></tr>
+           <tr><td><code>{@link #CardView_cardPreventCornerOverlap com.devnoobs.bmr:cardPreventCornerOverlap}</code></td><td> Add padding to CardView on v20 and before to prevent intersections between the Card content and rounded corners.</td></tr>
+           <tr><td><code>{@link #CardView_cardUseCompatPadding com.devnoobs.bmr:cardUseCompatPadding}</code></td><td> Add padding in API v21+ as well to have the same measurements with previous versions.</td></tr>
+           <tr><td><code>{@link #CardView_contentPadding com.devnoobs.bmr:contentPadding}</code></td><td> Inner padding between the edges of the Card and children of the CardView.</td></tr>
+           <tr><td><code>{@link #CardView_contentPaddingBottom com.devnoobs.bmr:contentPaddingBottom}</code></td><td> Inner padding between the bottom edge of the Card and children of the CardView.</td></tr>
+           <tr><td><code>{@link #CardView_contentPaddingLeft com.devnoobs.bmr:contentPaddingLeft}</code></td><td> Inner padding between the left edge of the Card and children of the CardView.</td></tr>
+           <tr><td><code>{@link #CardView_contentPaddingRight com.devnoobs.bmr:contentPaddingRight}</code></td><td> Inner padding between the right edge of the Card and children of the CardView.</td></tr>
+           <tr><td><code>{@link #CardView_contentPaddingTop com.devnoobs.bmr:contentPaddingTop}</code></td><td> Inner padding between the top edge of the Card and children of the CardView.</td></tr>
+           </table>
+           @see #CardView_cardBackgroundColor
+           @see #CardView_cardCornerRadius
+           @see #CardView_cardElevation
+           @see #CardView_cardMaxElevation
+           @see #CardView_cardPreventCornerOverlap
+           @see #CardView_cardUseCompatPadding
+           @see #CardView_contentPadding
+           @see #CardView_contentPaddingBottom
+           @see #CardView_contentPaddingLeft
+           @see #CardView_contentPaddingRight
+           @see #CardView_contentPaddingTop
+         */
+        public static final int[] CardView = {
+            0x7f010000, 0x7f010001, 0x7f010002, 0x7f010003,
+            0x7f010004, 0x7f010005, 0x7f010006, 0x7f010007,
+            0x7f010008, 0x7f010009, 0x7f01000a
+        };
+        /**
+          <p>
+          @attr description
+           Background color for CardView. 
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name com.devnoobs.bmr:cardBackgroundColor
+        */
+        public static final int CardView_cardBackgroundColor = 0;
+        /**
+          <p>
+          @attr description
+           Corner radius for CardView. 
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name com.devnoobs.bmr:cardCornerRadius
+        */
+        public static final int CardView_cardCornerRadius = 1;
+        /**
+          <p>
+          @attr description
+           Elevation for CardView. 
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name com.devnoobs.bmr:cardElevation
+        */
+        public static final int CardView_cardElevation = 2;
+        /**
+          <p>
+          @attr description
+           Maximum Elevation for CardView. 
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name com.devnoobs.bmr:cardMaxElevation
+        */
+        public static final int CardView_cardMaxElevation = 3;
+        /**
+          <p>
+          @attr description
+           Add padding to CardView on v20 and before to prevent intersections between the Card content and rounded corners. 
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name com.devnoobs.bmr:cardPreventCornerOverlap
+        */
+        public static final int CardView_cardPreventCornerOverlap = 5;
+        /**
+          <p>
+          @attr description
+           Add padding in API v21+ as well to have the same measurements with previous versions. 
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name com.devnoobs.bmr:cardUseCompatPadding
+        */
+        public static final int CardView_cardUseCompatPadding = 4;
+        /**
+          <p>
+          @attr description
+           Inner padding between the edges of the Card and children of the CardView. 
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name com.devnoobs.bmr:contentPadding
+        */
+        public static final int CardView_contentPadding = 6;
+        /**
+          <p>
+          @attr description
+           Inner padding between the bottom edge of the Card and children of the CardView. 
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name com.devnoobs.bmr:contentPaddingBottom
+        */
+        public static final int CardView_contentPaddingBottom = 10;
+        /**
+          <p>
+          @attr description
+           Inner padding between the left edge of the Card and children of the CardView. 
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name com.devnoobs.bmr:contentPaddingLeft
+        */
+        public static final int CardView_contentPaddingLeft = 7;
+        /**
+          <p>
+          @attr description
+           Inner padding between the right edge of the Card and children of the CardView. 
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name com.devnoobs.bmr:contentPaddingRight
+        */
+        public static final int CardView_contentPaddingRight = 8;
+        /**
+          <p>
+          @attr description
+           Inner padding between the top edge of the Card and children of the CardView. 
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name com.devnoobs.bmr:contentPaddingTop
+        */
+        public static final int CardView_contentPaddingTop = 9;
+    };
 }
