@@ -8,78 +8,63 @@
   ~ The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
   ~
   ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-  --><LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+  -->
+
+<LinearLayout
     xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
-	android:layout_width="match_parent"
-	android:layout_height="fill_parent"
-	android:orientation="vertical">
-	
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
 
-	<LinearLayout
-	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content"
-	    android:orientation="vertical">       
-	    
-		<LinearLayout
-		    android:id="@+id/LinearLayoutTabela"
-		    android:layout_width="fill_parent"
-		    android:layout_height="wrap_content"
-			android:layout_marginLeft="10dp"
-			android:layout_marginRight="10dp"
-			android:layout_marginTop="10dp"
-			android:layout_marginBottom="10dp"
-			android:paddingBottom="10dp"
-			android:background="@drawable/bg_card"
-			android:orientation="vertical">	    
-		    
-		     <!-- PODPIS KARTY -->
-			<TextView 
-			    android:id="@+id/textViewPodpisKalkulator"
-			    android:text="@string/title_ustawienia"
-			    android:layout_width="wrap_content"
-	        	android:layout_height="wrap_content"
-	        	android:layout_marginLeft="10dp"
-			    style="@style/podpisy_kart"/>
-		    
-			<CheckBox
-		      android:id="@+id/checkBox1"
-		      android:layout_width="wrap_content"
-		      android:layout_height="wrap_content"
-		      android:layout_marginLeft="2dp"
-		      android:text="@string/powiadomienie" />
-			
-			<CheckBox
-		      android:id="@+id/checkBoxReklamy"
-		      android:layout_width="wrap_content"
-		      android:layout_height="wrap_content"
-		      android:layout_marginTop="15dp"
-		      android:layout_marginLeft="2dp"
-		      android:text="@string/reklamy_off" />
-			
-		    <Button
-		        android:id="@+id/buttonZmianaTypuJednostek"
-			    android:layout_width="wrap_content"
-			    android:layout_height="25dp"	
-			    android:layout_marginTop="3dp"		    
-			    android:layout_marginLeft="10dp"
-		        style="@style/buttony_ustawienia"
-		        android:text="@string/zmiana_typu_jednostek"/>		
 
-		</LinearLayout>
-	</LinearLayout>
-	
-<!-- REKLAMA 
+    <android.support.v7.widget.CardView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        >
 
-	  <com.google.ads.AdView
-       android:id="@+id/adView"
-       android:layout_width="fill_parent"
-       android:layout_height="wrap_content"
-       ads:adSize="SMART_BANNER"
-       ads:adUnitId="ca-app-pub-6410364990892893/1240794727"
-       ads:loadAdOnCreate="true"
-       ads:testDevices="TEST_EMULATOR, FBBD4933C76CB9CF675276EFB6F8F45A"/>	
-	
-	-->	
-	
+        <LinearLayout
+            android:id="@+id/LinearLayoutTabela"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="10dp">
+
+            <!-- PODPIS KARTY -->
+            <TextView
+                android:id="@+id/textViewPodpisKalkulator"
+                style="@style/podpisy_kart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="@string/title_ustawienia"/>
+
+            <CheckBox
+                android:id="@+id/checkBox1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:text="@string/powiadomienie"/>
+
+            <CheckBox
+                android:id="@+id/checkBoxReklamy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/reklamy_off"/>
+
+            <Button
+                android:id="@+id/buttonZmianaTypuJednostek"
+                style="@style/buttony_ustawienia"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="3dp"
+                android:text="@string/zmiana_typu_jednostek"/>
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
 </LinearLayout>

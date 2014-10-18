@@ -9,67 +9,74 @@
   -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-		<TableLayout  
-		    android:id="@+id/tabela_wynikow"  
-		    android:layout_width="match_parent"  
-		    android:layout_height="wrap_content"  
-		    android:shrinkColumns="*"  
-		    android:stretchColumns="*" 
-		    android:layout_marginLeft="8dp"
-		    android:layout_marginRight="8dp">
-		    <TableRow
-	        android:layout_height="wrap_content"  
-	        android:layout_width="match_parent">  
-		       <TextView 
-		           android:text="@string/text_bmi"
-		        android:layout_width="match_parent"
-		        android:layout_height="wrap_content" />  
-		        <EditText
-		        android:id="@+id/popup_bmi"
-		        android:inputType="numberDecimal"
-		        android:layout_width="match_parent"
-		        android:layout_height="wrap_content"
-		        android:layout_marginTop="16dp"
-		        android:layout_marginLeft="4dp"
-		        android:layout_marginRight="4dp"
-		        android:layout_marginBottom="4dp"
-		        android:hint="@string/text_bmi" />
-			</TableRow>
-			<TableRow
-	        android:layout_height="wrap_content"  
-	        android:layout_width="match_parent">  
-		       <TextView 
-		           android:text="@string/text_waga"
-		        android:layout_width="match_parent"
-		        android:layout_height="wrap_content" />       
-		    <EditText
-		        android:id="@+id/popup_waga"
-		        android:inputType="numberDecimal"
-		        android:layout_width="match_parent"
-		        android:layout_height="wrap_content"
-		        android:layout_marginTop="4dp"
-		        android:layout_marginLeft="4dp"
-		        android:layout_marginRight="4dp"
-		        android:layout_marginBottom="16dp"
-		        android:hint="@string/text_waga"
-		        android:fontFamily="sans-serif"/>
-	    </TableRow>
-	    </TableLayout>
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
 
-		<EditText
-		    android:id="@+id/popup_dodatkowy_tekst"
-		    android:layout_width="match_parent"
-		    android:layout_height="60dp"
-		    android:ems="10"
-		    android:hint="@string/hint_notatki"
-		    android:inputType="textMultiLine"
-			android:maxLength="60"
-		    android:textSize="14dp" >
+    <TableLayout
+        android:id="@+id/tabela_wynikow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:shrinkColumns="*"
+        android:stretchColumns="*">
 
-		    <requestFocus />
-		</EditText>
-	    
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_bmi"/>
+
+            <EditText
+                android:id="@+id/popup_bmi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginTop="16dp"
+                android:hint="@string/text_bmi"
+                android:inputType="numberDecimal"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_waga"/>
+
+            <EditText
+                android:id="@+id/popup_waga"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="sans-serif"
+                android:hint="@string/text_waga"
+                android:inputType="numberDecimal"/>
+        </TableRow>
+    </TableLayout>
+
+    <EditText
+        android:id="@+id/popup_dodatkowy_tekst"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:ems="10"
+        android:hint="@string/hint_notatki"
+        android:inputType="textMultiLine"
+        android:maxLength="60"
+        android:textSize="14dp">
+
+        <requestFocus/>
+    </EditText>
+
 </LinearLayout>

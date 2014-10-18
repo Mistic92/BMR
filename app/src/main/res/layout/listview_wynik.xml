@@ -9,41 +9,45 @@
   ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
     android:id="@+id/listview_wynik_linearLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="48dp"
-    android:orientation="horizontal" 
-    android:paddingLeft="3dp"
-    android:background="#FFFFFF">
+    android:background="#FFFFFF"
+    android:orientation="horizontal"
+    android:paddingLeft="3dp">
 
     <TextView
-	        android:id="@+id/listview_text_data"
-	        android:layout_width="30dp"
-	        android:layout_weight="0.5"
-	        android:layout_height="wrap_content"
-	         android:layout_gravity="left|center_vertical"
-	        android:textSize="17sp"
-	        style="@style/tekst_tabela_wyniki" />
+        android:id="@+id/listview_text_data"
+        style="@style/tekst_tabela_wyniki"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|center_vertical"
+        android:layout_weight="0.5"
+        android:textSize="17sp"/>
+
     <TextView
         android:id="@+id/listview_text_bmi"
+        style="@style/tekst_tabela_wyniki"
         android:layout_width="0dp"
-        android:layout_weight="0.5"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        style="@style/tekst_tabela_wyniki"  />
+        android:layout_weight="0.5"/>
+
     <TextView
         android:id="@+id/listview_text_waga"
+        style="@style/tekst_tabela_wyniki"
         android:layout_width="0dp"
-        android:layout_weight="0.5"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        style="@style/tekst_tabela_wyniki" />
+        android:layout_weight="0.5"/>
+
     <ImageView
-        android:contentDescription="@string/app_name"
+        android:id="@+id/imgview_notatka"
         android:layout_width="wrap_content"
         android:layout_height="15dp"
         android:layout_gravity="center_vertical"
-        android:id="@+id/imgview_notatka"
+        android:contentDescription="@string/app_name"
         android:src="@drawable/ic_note"/>
 </LinearLayout>

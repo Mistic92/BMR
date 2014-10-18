@@ -10,128 +10,146 @@
   -->
 
 <ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
-	android:layout_width="match_parent"
-	android:layout_height="fill_parent"
-	android:orientation="vertical">
-	
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
 
-	<LinearLayout
-	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content"
-	    android:orientation="vertical">    
-	    
-	    <!-- WYBOR ZAKRESU -->
-		<LinearLayout
-		    android:layout_width="fill_parent"
-		    android:layout_height="wrap_content"
-			android:layout_marginLeft="10dp"
-			android:layout_marginRight="10dp"
-			android:layout_marginTop="10dp"
-			android:paddingBottom="10dp"
-			android:paddingTop="5dp"
-			android:background="@drawable/bg_card"
-			android:focusableInTouchMode="true"
-			android:orientation="vertical">		
-			<Spinner
-			    android:id="@+id/spinner_zakres_dat"
-			    android:layout_width="match_parent"
-			    android:layout_height="wrap_content" />
-			    
-		</LinearLayout>
 
-	    <!-- WYSWIETLENIE ZAKRESU -->
-		<LinearLayout
-		    android:layout_width="fill_parent"
-		    android:layout_height="wrap_content"
-			android:layout_marginLeft="10dp"
-			android:layout_marginRight="10dp"
-			android:layout_marginTop="10dp"
-			android:paddingBottom="10dp"
-			android:paddingTop="5dp"
-			android:background="@drawable/bg_card"
-			android:focusableInTouchMode="true"
-			android:orientation="vertical">		
-			<TextView 
-			    android:id="@+id/textzakreswykresu"
-			    android:text=""
-			    android:layout_gravity="center_horizontal"
-			    style="@style/tekst_bmr"
-			    android:layout_width="wrap_content"
-	        	android:layout_height="wrap_content"/>
-			    
-		</LinearLayout>
-	    
-	    <!-- WYKRES BMI -->
-		<LinearLayout
-		    android:layout_width="fill_parent"
-		    android:layout_height="wrap_content"
-			android:layout_marginLeft="10dp"
-			android:layout_marginRight="10dp"
-			android:layout_marginTop="10dp"
-			android:paddingBottom="10dp"
-			android:background="@drawable/bg_card"
-			android:orientation="vertical">	    
-		    
-		     <!-- PODPIS KARTY -->
-			<TextView 
-			    android:text="@string/text_bmi"
-			    android:layout_width="wrap_content"
-	        	android:layout_height="wrap_content"
-	        	android:layout_marginBottom="3dp"
-	        	android:layout_gravity="center_horizontal"
-			    style="@style/podpisy_kart"/>		
-			
-		    <com.echo.holographlibrary.LineGraph
-	        android:layout_width="match_parent"
-	        android:layout_height="150dp"
-	        android:id="@+id/graph_bmi" />
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-		</LinearLayout>
-		
-<!-- REKLAMA 
+        <android.support.v7.widget.CardView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            >
+            <!-- WYBOR ZAKRESU -->
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical"
+                android:paddingBottom="10dp"
+                android:paddingTop="5dp">
 
-	  <com.google.ads.AdView
-       android:id="@+id/adView"
-       android:layout_width="fill_parent"
-       android:layout_height="wrap_content"
-       ads:adSize="SMART_BANNER"
-       ads:adUnitId="ca-app-pub-6410364990892893/1240794727"
-       ads:loadAdOnCreate="true"
-       ads:testDevices="TEST_EMULATOR, FBBD4933C76CB9CF675276EFB6F8F45A"/>	
-	
-	-->			
-		
-		<!-- WYKRES WAGA -->
-		<LinearLayout
-		    android:layout_width="fill_parent"
-		    android:layout_height="wrap_content"
-			android:layout_marginLeft="10dp"
-			android:layout_marginRight="10dp"
-			android:layout_marginBottom="10dp"
-			android:layout_marginTop="10dp"
-			android:paddingBottom="10dp"
-			android:background="@drawable/bg_card"
-			android:orientation="vertical">	    
-		    
-		     <!-- PODPIS KARTY -->
-			<TextView 
-			    android:id="@+id/textViewPodpisKalkulator"
-			    android:text="@string/text_waga"
-			    android:layout_width="wrap_content"
-	        	android:layout_height="wrap_content"
-	        	android:layout_gravity="center_horizontal"
-	        	android:layout_marginBottom="3dp"
-			    style="@style/podpisy_kart"/>		
-			
-		    <com.echo.holographlibrary.LineGraph
-	        android:layout_width="fill_parent"
-	        android:layout_height="150dp"
-	        android:id="@+id/graph_waga" />
+                <Spinner
+                    android:id="@+id/spinner_zakres_dat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
-		</LinearLayout>		
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
 
-	</LinearLayout>
-	
+        <!-- WYSWIETLENIE ZAKRESU -->
+
+        <android.support.v7.widget.CardView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical"
+                android:paddingBottom="10dp"
+                android:paddingTop="5dp">
+
+                <TextView
+                    android:id="@+id/textzakreswykresu"
+                    style="@style/tekst_bmr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text=""/>
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <!-- WYKRES BMI -->
+
+
+        <android.support.v7.widget.CardView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_card"
+                android:orientation="vertical"
+                android:paddingBottom="10dp">
+
+                <!-- PODPIS KARTY -->
+                <TextView
+                    style="@style/podpisy_kart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="3dp"
+                    android:text="@string/text_bmi"/>
+
+                <com.echo.holographlibrary.LineGraph
+                    android:id="@+id/graph_bmi"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"/>
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+        <!-- REKLAMA
+
+              <com.google.ads.AdView
+               android:id="@+id/adView"
+               android:layout_width="fill_parent"
+               android:layout_height="wrap_content"
+               ads:adSize="SMART_BANNER"
+               ads:adUnitId="ca-app-pub-6410364990892893/1240794727"
+               ads:loadAdOnCreate="true"
+               ads:testDevices="TEST_EMULATOR, FBBD4933C76CB9CF675276EFB6F8F45A"/>
+
+            -->
+
+        <!-- WYKRES WAGA -->
+
+        <android.support.v7.widget.CardView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="10dp">
+
+                <!-- PODPIS KARTY -->
+                <TextView
+                    android:id="@+id/textViewPodpisKalkulator"
+                    style="@style/podpisy_kart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="3dp"
+                    android:text="@string/text_waga"/>
+
+                <com.echo.holographlibrary.LineGraph
+                    android:id="@+id/graph_waga"
+                    android:layout_width="fill_parent"
+                    android:layout_height="150dp"/>
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+
 </ScrollView>

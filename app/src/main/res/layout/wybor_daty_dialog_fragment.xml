@@ -9,35 +9,37 @@
   -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
-    <TextView 
+    <TextView
+        style="@style/wybor_daty_podpisy"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="left"
-        android:layout_marginTop="8dp"
-        style="@style/wybor_daty_podpisy"
         android:layout_marginLeft="10dp"
+        android:layout_marginTop="8dp"
         android:text="@string/poczatek"/>
-    
+
     <DatePicker
         android:id="@+id/datePickerPoczatek"
         android:layout_width="fill_parent"
-        android:layout_gravity="center_horizontal"
-        android:layout_height="150dp" />
-    <TextView 
+        android:layout_height="150dp"
+        android:layout_gravity="center_horizontal"/>
+
+    <TextView
+        style="@style/wybor_daty_podpisy"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="left"
-        style="@style/wybor_daty_podpisy"
         android:layout_marginLeft="10dp"
-        android:text="@string/koniec"/>  
+        android:text="@string/koniec"/>
+
     <DatePicker
         android:id="@+id/datePickerKoniec"
         android:layout_width="fill_parent"
-        android:layout_gravity="center_horizontal"
-        android:layout_height="150dp" />       
-	    
+        android:layout_height="150dp"
+        android:layout_gravity="center_horizontal"/>
+
 </LinearLayout>

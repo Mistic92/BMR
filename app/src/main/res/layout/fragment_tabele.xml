@@ -10,178 +10,193 @@
   -->
 
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
-	android:layout_width="match_parent"
-	android:layout_height="wrap_content"
-	android:orientation="vertical">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-    
-	    <!-- WYBOR ZAKRESU -->
-		<LinearLayout
-		    android:layout_width="fill_parent"
-		    android:layout_height="wrap_content"
-			android:layout_marginLeft="10dp"
-			android:layout_marginRight="10dp"
-			android:layout_marginTop="10dp"
-			android:paddingBottom="10dp"
-			android:paddingTop="5dp"
-			android:background="@drawable/bg_card"
-			android:focusableInTouchMode="true"
-			android:orientation="vertical">	
-			
-		<Spinner
-		    android:id="@+id/spinner_zakres_dat"
-		    android:layout_width="match_parent"
-		    android:layout_height="wrap_content" />
-		    
-		</LinearLayout>
 
-	    <!-- WYSWIETLENIE ZAKRESU -->
-		<LinearLayout
-		    android:layout_width="fill_parent"
-		    android:layout_height="wrap_content"
-			android:layout_marginLeft="10dp"
-			android:layout_marginRight="10dp"
-			android:layout_marginTop="10dp"
-			android:paddingBottom="10dp"
-			android:paddingTop="5dp"
-			android:background="@drawable/bg_card"
-			android:focusableInTouchMode="true"
-			android:orientation="vertical">		
-			<TextView 
-			    android:id="@+id/textzakreswykresu"
-			    android:text=""
-			    android:layout_gravity="center_horizontal"
-			    style="@style/tekst_bmr"
-			    android:layout_width="wrap_content"
-	        	android:layout_height="wrap_content"/>
-			    
-		</LinearLayout>
-		
-    
-		<LinearLayout
-		    android:id="@+id/LinearLayoutTabela"
-		    android:layout_width="fill_parent"
-		    android:layout_height="wrap_content"
-			android:layout_marginLeft="10dp"
-			android:layout_marginRight="10dp"
-			android:layout_marginTop="10dp"
-			android:layout_marginBottom="10dp"
-			android:paddingBottom="10dp"
-			android:paddingTop="10dp"
-			android:background="@drawable/bg_card"
-			android:focusableInTouchMode="true"
-			android:orientation="vertical">	    
-		    
-	
-		    
-	  <!-- PODPIS KARTY -->
-		<!-- 
-			<TextView 
-			    android:id="@+id/textViewPodpisKalkulator"
-			    android:text="@string/title_tabela"
-			    android:layout_width="wrap_content"
-	        	android:layout_height="wrap_content"
-	        	android:layout_marginBottom="5dp"
-	        	android:layout_marginLeft="10dp"
-			    style="@style/podpisy_kart"/>
-	   -->
-	   
-		    <!-- linear dla przsyciskow z ustawieniem horizontal -->
-	 <!-- 
-		    <LinearLayout
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-			style="?android:attr/buttonBarStyle"
-	        android:layout_marginLeft="10dp"			
-		    android:layout_marginBottom="2dp"
-		    android:orientation="horizontal">
+    <!-- WYBOR ZAKRESU -->
+    <android.support.v7.widget.CardView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        >
 
-			    <Button
-			        android:id="@+id/buttonDodajWynik"
-				        android:layout_width="125dp"
-				        android:layout_height="30dp"
-				        android:layout_marginRight="3dp"
-			        style="@style/buttons"
-			        android:text="@string/button_dodaj_wynik"/>
-			    <ImageView
-			        android:layout_width="wrap_content"
-			        android:layout_height="wrap_content"
-			        android:id="@+id/button_tabele_refresh"
-			        android:layout_gravity="right"
-			        android:clickable="true"
-			        android:src="@drawable/ic_refresh"/>				
-			</LinearLayout>
-			
-	 -->
-		    
-		    
-			<!-- TABELA -->	
-			 <!-- "#E3E3E3" -->
-				<LinearLayout 
-				android:background="#F2F2F2"
-				android:padding="3dp"
-			    android:layout_width="fill_parent"
-			    android:layout_height="wrap_content"
-			    android:orientation="vertical">
-				<TableLayout  
-				    android:id="@+id/tabela_wynikow"  
-				    android:layout_width="match_parent"  
-				    android:layout_height="wrap_content"  
-				    android:shrinkColumns="*"  
-				    android:layout_marginBottom="2dp"
-				    android:stretchColumns="*"
-				    android:paddingLeft="3dp"
-					android:background="#FFFFFF">  
-				    <TableRow  
-				        android:id="@+id/tableRowTekstyKolumn"  
-				        android:layout_height="wrap_content"  
-				        android:layout_width="match_parent">  
-				        <TextView  
-				            android:id="@+id/TextViewKolumnaData"  
-				            android:text="@string/text_data"  
-				            android:textStyle="bold"  
-				            android:layout_gravity="center_horizontal"
-				            android:background="#FFFFFF"
-				            android:layout_marginRight="1dp"></TextView>   
-				        <TextView  
-				            android:id="@+id/TextViewKolumnaBMI"  
-				            android:text="@string/text_bmi"  
-				            android:layout_width="38dp"
-				            android:textStyle="bold"  
-				            android:gravity="center_horizontal"  
-				            android:background="#FFFFFF"
-				            android:layout_marginRight="1dp"></TextView>  
-				        <TextView  
-				            android:id="@+id/TextViewKolumnaWaga"  
-				            android:text="@string/text_waga"  
-				            android:textStyle="bold"  
-				            android:gravity="center_horizontal"  
-				            android:background="#FFFFFF"></TextView>  	
-			           <TextView  
-			            android:id="@+id/TextView04"  
-			            android:text=""
-			            android:background="#FFFFFF"></TextView>  				            	            	            
-				    </TableRow>  
-				</TableLayout>  
-				<ListView
-				    android:id="@+id/listViewWyniki"
-				    android:layout_width="match_parent"
-				    android:layout_height="wrap_content" >
-				</ListView>
-				</LinearLayout>
-	    	 	<!-- KONIEC TABELI WYNIKOW -->
-		</LinearLayout>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical"
+            android:paddingBottom="10dp"
+            android:paddingTop="5dp">
 
-		<!-- REKLAMA 
-				  <com.google.ads.AdView
-	       android:id="@+id/adView"
-	       android:layout_width="fill_parent"
-	       android:layout_height="wrap_content"
-	       ads:adSize="SMART_BANNER"
-	       ads:adUnitId="ca-app-pub-6410364990892893/1240794727"
-	       ads:loadAdOnCreate="true"
-	       ads:testDevices="TEST_EMULATOR, FBBD4933C76CB9CF675276EFB6F8F45A"/>
-		-->
+            <Spinner
+                android:id="@+id/spinner_zakres_dat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+    <!-- WYSWIETLENIE ZAKRESU -->
+    <android.support.v7.widget.CardView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical"
+            android:paddingBottom="10dp"
+            android:paddingTop="5dp">
+
+            <TextView
+                android:id="@+id/textzakreswykresu"
+                style="@style/tekst_bmr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text=""/>
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+
+    <android.support.v7.widget.CardView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        >
+
+        <LinearLayout
+            android:id="@+id/LinearLayoutTabela"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp">
+
+
+            <!-- PODPIS KARTY -->
+            <!--
+                <TextView
+                    android:id="@+id/textViewPodpisKalkulator"
+                    android:text="@string/title_tabela"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"
+                    style="@style/podpisy_kart"/>
+           -->
+
+            <!-- linear dla przsyciskow z ustawieniem horizontal -->
+            <!--
+                   <LinearLayout
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   style="?android:attr/buttonBarStyle"
+                   android:layout_marginLeft="10dp"
+                   android:layout_marginBottom="2dp"
+                   android:orientation="horizontal">
+
+                       <Button
+                           android:id="@+id/buttonDodajWynik"
+                               android:layout_width="125dp"
+                               android:layout_height="30dp"
+                               android:layout_marginRight="3dp"
+                           style="@style/buttons"
+                           android:text="@string/button_dodaj_wynik"/>
+                       <ImageView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:id="@+id/button_tabele_refresh"
+                           android:layout_gravity="right"
+                           android:clickable="true"
+                           android:src="@drawable/ic_refresh"/>
+                   </LinearLayout>
+
+            -->
+
+
+            <!-- TABELA -->
+            <!-- "#E3E3E3" -->
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#F2F2F2"
+                android:orientation="vertical"
+                android:padding="3dp">
+
+                <TableLayout
+                    android:id="@+id/tabela_wynikow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:background="#FFFFFF"
+                    android:paddingLeft="3dp"
+                    android:shrinkColumns="*"
+                    android:stretchColumns="*">
+
+                    <TableRow
+                        android:id="@+id/tableRowTekstyKolumn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/TextViewKolumnaData"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginRight="1dp"
+                            android:background="#FFFFFF"
+                            android:text="@string/text_data"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:id="@+id/TextViewKolumnaBMI"
+                            android:layout_width="38dp"
+                            android:layout_marginRight="1dp"
+                            android:background="#FFFFFF"
+                            android:gravity="center_horizontal"
+                            android:text="@string/text_bmi"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:id="@+id/TextViewKolumnaWaga"
+                            android:background="#FFFFFF"
+                            android:gravity="center_horizontal"
+                            android:text="@string/text_waga"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:id="@+id/TextView04"
+                            android:background="#FFFFFF"
+                            android:text=""/>
+                    </TableRow>
+                </TableLayout>
+
+                <ListView
+                    android:id="@+id/listViewWyniki"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                </ListView>
+
+            </LinearLayout>
+            <!-- KONIEC TABELI WYNIKOW -->
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+    <!-- REKLAMA
+              <com.google.ads.AdView
+       android:id="@+id/adView"
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       ads:adSize="SMART_BANNER"
+       ads:adUnitId="ca-app-pub-6410364990892893/1240794727"
+       ads:loadAdOnCreate="true"
+       ads:testDevices="TEST_EMULATOR, FBBD4933C76CB9CF675276EFB6F8F45A"/>
+    -->
 </LinearLayout>

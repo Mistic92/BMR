@@ -9,161 +9,167 @@
   ~
   ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   -->
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="match_parent"
-	 android:layout_height="fill_parent"
-	android:orientation="vertical"
-	android:background="#E3E3E3" >
-	
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:background="#E3E3E3"
+    android:orientation="vertical">
 
-	<LinearLayout
-	    android:layout_width="fill_parent"
-	    android:layout_height="fill_parent"
-	    android:orientation="vertical"
-		android:paddingBottom="10dp">    
-    
-	    
-		<LinearLayout
-		    android:id="@+id/LinearLayoutSzczegolyWyniku"
-		    android:layout_width="fill_parent"
-		    android:layout_height="wrap_content"
-			android:layout_marginLeft="10dp"
-			android:layout_marginRight="10dp"
-			android:layout_marginTop="10dp"
-			android:layout_marginBottom="10dp"
-			android:paddingTop="10dp"
-			android:paddingBottom="10dp"
-			android:background="@drawable/bg_card"
-			android:orientation="vertical">	    
-		    
-	<!-- podpis karty -->
-			<TextView 
-			    android:id="@+id/textViewPodpisSzczegoly"
-			    android:text="@string/title_activity_szczegoly_wyniku"
-			    android:layout_width="wrap_content"
-	        	android:layout_height="wrap_content"
-	        	android:layout_marginLeft="7dp"
-			    style="@style/podpisy_kart"/>		    
-		    
-				<!-- Layout w karcie -->
-				<LinearLayout 		
-				android:padding="3dp"
-			    android:layout_width="fill_parent"
-			    android:layout_height="wrap_content"
-			    android:orientation="vertical" >
-			    <!-- Tabela na bmi i wage -->
-				<TableLayout  
-				    android:id="@+id/tabela_szczegolow"  
-				    android:layout_width="match_parent"  
-				    android:layout_height="wrap_content"  
-				    android:shrinkColumns="*"  
-				    android:stretchColumns="*"
-				    android:layout_marginLeft="10dp"
-					android:background="#FFFFFF">  
-					
-					<!-- ROW WAGA -->
-					
-					<TableRow 				        
-					    android:id="@+id/tableRowSzczegolyWaga"  
-				        android:layout_height="wrap_content"  
-				        android:layout_width="match_parent">
-				    <TextView
-				        android:id="@+id/textViewWaga"
-				        android:layout_width="wrap_content"
-				        android:layout_height="wrap_content"
-				        android:layout_marginBottom="15dp"
-				        android:text="@string/text_waga"
-				        style="@style/tekst_bmr" 
-				       />  
-				    <EditText
-				        android:id="@+id/EditTextWaga"
-				        android:layout_width="20dp"
-				        android:layout_height="wrap_content"	        
-				        android:ems="10"
-				        android:inputType="numberDecimal" >
-				    </EditText>
-					</TableRow>
-				    
-					<!-- ROW BMI -->
-					<TableRow 				        
-					    android:id="@+id/tableRowSzczegolyBMI"  
-				        android:layout_height="wrap_content"  
-				        android:layout_width="fill_parent">
-				    <TextView
-				        android:id="@+id/textViewBMI"
-				        android:layout_width="wrap_content"
-				        android:layout_height="wrap_content"
-				        android:layout_marginBottom="15dp"
-				        android:text="@string/text_bmi"
-				        style="@style/tekst_bmr" 
-				       />  
-				    <EditText
-				        android:id="@+id/EditTextBMI"
-				        android:layout_width="20dp"
-				        android:layout_height="wrap_content" 	        
-				        android:ems="10"
-				        android:inputType="numberDecimal" >
-				    </EditText>
-					</TableRow>					
-				</TableLayout>  
-				<!-- KONIEC TABELI SZCZEGOLOW -->
-				    <EditText
-				        android:id="@+id/EditTextNotatka"
-				        android:layout_width="fill_parent"
-				        android:layout_height="wrap_content" 	        
-					    android:ems="10"
-					    android:hint="@string/hint_notatki"
-					    android:inputType="textMultiLine"
-						android:maxLength="60"
-					    android:textSize="16sp" >
-				    </EditText>
-				    <Button
-				        android:id="@+id/buttonUsunWynik"
-				        android:layout_width="fill_parent"
-				        android:layout_height="33dp"
-				        android:text="@string/button_usun_wynik" 
-				        android:layout_marginBottom="15dp"
-				        android:layout_marginTop="8dp"
-				        style="@style/buttons"
-				        />
-				</LinearLayout>
-	    	 	
-		</LinearLayout>
-		
-		<LinearLayout
-		    android:id="@+id/LinearLayoutSzczegolyWyniku2"
-		    android:layout_width="fill_parent"
-		    android:layout_height="wrap_content"
-			android:layout_marginLeft="10dp"
-			android:layout_marginRight="10dp"
-			android:layout_marginBottom="10dp"
-			android:paddingTop="10dp"
-			android:paddingBottom="10dp"
-			android:background="@drawable/bg_card"
-			android:orientation="vertical">	    
-				
-	<!-- podpis karty -->
-			<TextView 
-			    android:id="@+id/textViewPodpisSzczegoly2"
-			    android:text="@string/podpis_informacja"
-			    android:layout_width="wrap_content"
-	        	android:layout_height="wrap_content"
-	        	android:layout_marginLeft="10dp"
-			    style="@style/podpisy_kart"/>			    
-		    
-				<!-- Informacja -->
-				    <TextView
-				        android:id="@+id/textViewInformacjaSzczegoly"
-				        android:layout_width="wrap_content"
-				        android:layout_height="wrap_content"
-				        android:layout_marginTop="7dp"
-				        android:layout_marginLeft="7dp"
-				        android:layout_marginBottom="7dp"
-				        android:text="@string/informacja_szczegoly"
-				        style="@style/tekst_bmr" 
-				       />  	
-				
-			</LinearLayout>	
-	</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:paddingBottom="10dp">
+
+
+        <LinearLayout
+            android:id="@+id/LinearLayoutSzczegolyWyniku"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_card"
+            android:orientation="vertical"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp">
+
+            <!-- podpis karty -->
+            <TextView
+                android:id="@+id/textViewPodpisSzczegoly"
+                style="@style/podpisy_kart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="7dp"
+                android:text="@string/title_activity_szczegoly_wyniku"/>
+
+            <!-- Layout w karcie -->
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="3dp">
+                <!-- Tabela na bmi i wage -->
+                <TableLayout
+                    android:id="@+id/tabela_szczegolow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:background="#FFFFFF"
+                    android:shrinkColumns="*"
+                    android:stretchColumns="*">
+
+                    <!-- ROW WAGA -->
+
+                    <TableRow
+                        android:id="@+id/tableRowSzczegolyWaga"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/textViewWaga"
+                            style="@style/tekst_bmr"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="15dp"
+                            android:text="@string/text_waga"
+                            />
+
+                        <EditText
+                            android:id="@+id/EditTextWaga"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:inputType="numberDecimal">
+                        </EditText>
+                    </TableRow>
+
+                    <!-- ROW BMI -->
+                    <TableRow
+                        android:id="@+id/tableRowSzczegolyBMI"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/textViewBMI"
+                            style="@style/tekst_bmr"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="15dp"
+                            android:text="@string/text_bmi"
+                            />
+
+                        <EditText
+                            android:id="@+id/EditTextBMI"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:inputType="numberDecimal">
+                        </EditText>
+                    </TableRow>
+                </TableLayout>
+                <!-- KONIEC TABELI SZCZEGOLOW -->
+                <EditText
+                    android:id="@+id/EditTextNotatka"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/hint_notatki"
+                    android:inputType="textMultiLine"
+                    android:maxLength="60"
+                    android:textSize="16sp">
+                </EditText>
+
+                <Button
+                    android:id="@+id/buttonUsunWynik"
+                    style="@style/buttons"
+                    android:layout_width="fill_parent"
+                    android:layout_height="33dp"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/button_usun_wynik"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/LinearLayoutSzczegolyWyniku2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/bg_card"
+            android:orientation="vertical"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp">
+
+            <!-- podpis karty -->
+            <TextView
+                android:id="@+id/textViewPodpisSzczegoly2"
+                style="@style/podpisy_kart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="@string/podpis_informacja"/>
+
+            <!-- Informacja -->
+            <TextView
+                android:id="@+id/textViewInformacjaSzczegoly"
+                style="@style/tekst_bmr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="7dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginTop="7dp"
+                android:text="@string/informacja_szczegoly"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

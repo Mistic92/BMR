@@ -20,6 +20,7 @@ import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -100,7 +101,7 @@ public class FragmentBMR extends Fragment implements TextWatcher,
 
 	private TextView[] tablicaPolBMI = new TextView[8];
 	
-	private LinearLayout linearBrakDanych;// = (LinearLayout) getActivity().findViewById(R.id.linearLayoutBrakuDanychWynikow);
+	private CardView linearBrakDanych;// = (LinearLayout) getActivity().findViewById(R.id.linearLayoutBrakuDanychWynikow);
 	private LinearLayout linearWynikow;// = (LinearLayout) getActivity().findViewById(R.id.linearLayoutWynikow);
 
 	public static FragmentBMR init(int val)
@@ -149,7 +150,7 @@ public class FragmentBMR extends Fragment implements TextWatcher,
 			Log.e("com.devnoobs.bmr", "", e.fillInStackTrace());
 		}
 
-		  this.linearBrakDanych = (LinearLayout) rootView.findViewById(R.id.linearLayoutBrakuDanychWynikow);
+		  this.linearBrakDanych = (android.support.v7.widget.CardView) rootView.findViewById(R.id.linearLayoutBrakuDanychWynikow);
 		  this.linearWynikow = (LinearLayout) rootView.findViewById(R.id.linearLayoutWynikow);
 		
 		pole_wiek = (EditText) rootView.findViewById(R.id.EditTextWiek);

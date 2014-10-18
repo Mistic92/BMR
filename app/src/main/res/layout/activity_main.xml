@@ -9,27 +9,28 @@
   -->
 
 <android.support.v4.widget.DrawerLayout
-	    xmlns:android="http://schemas.android.com/apk/res/android"
-	    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
-	    android:id="@+id/drawer_layout"
-	    android:layout_width="match_parent"
-	    android:background="#E3E3E3" 
-	    android:layout_height="match_parent">
-	    <!-- The main content view -->
-	    <FrameLayout
-	        android:id="@+id/content_frame"
-	        android:layout_width="match_parent"
-	        android:layout_height="match_parent" />
-	    <!-- The navigation drawer -->
-	    <ListView android:id="@+id/left_drawer"
-	        android:layout_width="240dp"
-	        android:layout_height="match_parent"
-	        android:layout_gravity="start"
-	        android:choiceMode="singleChoice"
-	        android:divider="@android:color/transparent"
-	        android:dividerHeight="0dp"
-	        android:background="#E3E3E3"/>
-	</android.support.v4.widget.DrawerLayout>
+    android:id="@+id/drawer_layout"
+    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E3E3E3">
+    <!-- The main content view -->
+    <FrameLayout
+        android:id="@+id/content_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    <!-- The navigation drawer -->
+    <ListView
+        android:id="@+id/left_drawer"
+        android:layout_width="240dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="#E3E3E3"
+        android:choiceMode="singleChoice"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="0dp"/>
+</android.support.v4.widget.DrawerLayout>
 
  
 	
