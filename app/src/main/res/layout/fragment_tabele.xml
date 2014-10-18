@@ -18,177 +18,71 @@
 
 
     <!-- WYBOR ZAKRESU -->
-    <android.support.v7.widget.CardView
+
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        >
+        android:focusableInTouchMode="true"
+        android:orientation="vertical"
+        android:paddingBottom="10dp"
+        android:paddingTop="5dp">
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:focusableInTouchMode="true"
-            android:orientation="vertical"
-            android:paddingBottom="10dp"
-            android:paddingTop="5dp">
+        <Spinner
+            android:id="@+id/spinner_zakres_dat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
-            <Spinner
-                android:id="@+id/spinner_zakres_dat"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+    </LinearLayout>
 
-        </LinearLayout>
-    </android.support.v7.widget.CardView>
 
     <!-- WYSWIETLENIE ZAKRESU -->
-    <android.support.v7.widget.CardView
+
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        >
+        android:focusableInTouchMode="true"
+        android:orientation="vertical"
+        android:paddingBottom="10dp"
+        android:paddingTop="5dp">
 
-        <LinearLayout
-            android:layout_width="fill_parent"
+        <TextView
+            android:id="@+id/textzakreswykresu"
+            style="@style/tekst_bmr"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:focusableInTouchMode="true"
-            android:orientation="vertical"
-            android:paddingBottom="10dp"
-            android:paddingTop="5dp">
+            android:layout_gravity="center_horizontal"
+            android:text=""/>
 
-            <TextView
-                android:id="@+id/textzakreswykresu"
-                style="@style/tekst_bmr"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text=""/>
-
-        </LinearLayout>
-    </android.support.v7.widget.CardView>
+    </LinearLayout>
 
 
-    <android.support.v7.widget.CardView
+    <LinearLayout
+        android:id="@+id/LinearLayoutTabela"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical"
         >
 
-        <LinearLayout
-            android:id="@+id/LinearLayoutTabela"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:focusableInTouchMode="true"
-            android:orientation="vertical"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp">
+        <!-- TABELA -->
+        <!-- "#E3E3E3" -->
+        <ListView
+            android:id="@+id/listViewWyniki"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </ListView>
 
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerWyniki"
 
-            <!-- PODPIS KARTY -->
-            <!--
-                <TextView
-                    android:id="@+id/textViewPodpisKalkulator"
-                    android:text="@string/title_tabela"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="10dp"
-                    style="@style/podpisy_kart"/>
-           -->
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical">
+        </android.support.v7.widget.RecyclerView>
 
-            <!-- linear dla przsyciskow z ustawieniem horizontal -->
-            <!--
-                   <LinearLayout
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   style="?android:attr/buttonBarStyle"
-                   android:layout_marginLeft="10dp"
-                   android:layout_marginBottom="2dp"
-                   android:orientation="horizontal">
+        <!-- KONIEC TABELI WYNIKOW -->
+    </LinearLayout>
 
-                       <Button
-                           android:id="@+id/buttonDodajWynik"
-                               android:layout_width="125dp"
-                               android:layout_height="30dp"
-                               android:layout_marginRight="3dp"
-                           style="@style/buttons"
-                           android:text="@string/button_dodaj_wynik"/>
-                       <ImageView
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:id="@+id/button_tabele_refresh"
-                           android:layout_gravity="right"
-                           android:clickable="true"
-                           android:src="@drawable/ic_refresh"/>
-                   </LinearLayout>
-
-            -->
-
-
-            <!-- TABELA -->
-            <!-- "#E3E3E3" -->
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="#F2F2F2"
-                android:orientation="vertical"
-                android:padding="3dp">
-
-                <TableLayout
-                    android:id="@+id/tabela_wynikow"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="2dp"
-                    android:background="#FFFFFF"
-                    android:paddingLeft="3dp"
-                    android:shrinkColumns="*"
-                    android:stretchColumns="*">
-
-                    <TableRow
-                        android:id="@+id/tableRowTekstyKolumn"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:id="@+id/TextViewKolumnaData"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginRight="1dp"
-                            android:background="#FFFFFF"
-                            android:text="@string/text_data"
-                            android:textStyle="bold"/>
-
-                        <TextView
-                            android:id="@+id/TextViewKolumnaBMI"
-                            android:layout_width="38dp"
-                            android:layout_marginRight="1dp"
-                            android:background="#FFFFFF"
-                            android:gravity="center_horizontal"
-                            android:text="@string/text_bmi"
-                            android:textStyle="bold"/>
-
-                        <TextView
-                            android:id="@+id/TextViewKolumnaWaga"
-                            android:background="#FFFFFF"
-                            android:gravity="center_horizontal"
-                            android:text="@string/text_waga"
-                            android:textStyle="bold"/>
-
-                        <TextView
-                            android:id="@+id/TextView04"
-                            android:background="#FFFFFF"
-                            android:text=""/>
-                    </TableRow>
-                </TableLayout>
-
-                <ListView
-                    android:id="@+id/listViewWyniki"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                </ListView>
-
-            </LinearLayout>
-            <!-- KONIEC TABELI WYNIKOW -->
-        </LinearLayout>
-    </android.support.v7.widget.CardView>
     <!-- REKLAMA
               <com.google.ads.AdView
        android:id="@+id/adView"

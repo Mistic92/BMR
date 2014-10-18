@@ -13,41 +13,73 @@
     android:id="@+id/listview_wynik_linearLayout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="48dp"
-    android:background="#FFFFFF"
+    android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:paddingLeft="3dp">
 
-    <TextView
-        android:id="@+id/listview_text_data"
-        style="@style/tekst_tabela_wyniki"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left|center_vertical"
-        android:layout_weight="0.5"
-        android:textSize="17sp"/>
 
-    <TextView
-        android:id="@+id/listview_text_bmi"
-        style="@style/tekst_tabela_wyniki"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_weight="0.5"/>
-
-    <TextView
-        android:id="@+id/listview_text_waga"
-        style="@style/tekst_tabela_wyniki"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_weight="0.5"/>
-
-    <ImageView
-        android:id="@+id/imgview_notatka"
+    <TableLayout
         android:layout_width="wrap_content"
-        android:layout_height="15dp"
-        android:layout_gravity="center_vertical"
-        android:contentDescription="@string/app_name"
-        android:src="@drawable/ic_note"/>
+        android:layout_height="fill_parent"
+        android:shrinkColumns="*"
+        android:stretchColumns="*"
+        >
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/listview_text_data"
+                style="@style/tekst_tabela_wyniki"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|center_vertical"
+                android:layout_weight="0.5"
+                android:textSize="19sp"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/listview_text_wagaInfo"
+                style="@style/tekst_tabela_wyniki"
+                android:text="@string/text_waga"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"/>
+
+            <TextView
+                android:id="@+id/listview_text_waga"
+                style="@style/tekst_tabela_wyniki"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"/>
+
+            <TextView
+                android:id="@+id/listview_text_BMIInfo"
+                style="@style/tekst_tabela_wyniki"
+                android:text="@string/text_bmi"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"/>
+
+            <TextView
+                android:id="@+id/listview_text_bmi"
+                style="@style/tekst_tabela_wyniki"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"/>
+
+            <ImageView
+                android:id="@+id/imgview_notatka"
+                android:layout_width="wrap_content"
+                android:layout_height="15dp"
+                android:layout_gravity="center_vertical"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_note"/>
+        </TableRow>
+
+    </TableLayout>
+
+
 </LinearLayout>

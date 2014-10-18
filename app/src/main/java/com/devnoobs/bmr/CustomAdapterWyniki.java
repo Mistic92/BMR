@@ -23,81 +23,80 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class CustomAdapterWyniki extends BaseAdapter{
+public class CustomAdapterWyniki extends BaseAdapter {
 
-	private ArrayList<Wynik> _data;
+    private ArrayList<Wynik> _data;
     Context _c;
-	
-    public CustomAdapterWyniki (ArrayList<Wynik> data, Context c){
+
+    public CustomAdapterWyniki(ArrayList<Wynik> data, Context c) {
         _data = data;
         _c = c;
     }
-    CustomAdapterWyniki(Context c)
-    {
-    	_c=c;
+
+    CustomAdapterWyniki(Context c) {
+        _c = c;
     }
-    public void setLista(ArrayList<Wynik> data)
-    {
-    	_data=data;
+
+    public void setLista(ArrayList<Wynik> data) {
+        _data = data;
     }
-	
-	@Override
-	public int getCount() {
-		
-		return _data.size();
-	}
 
-	@Override
-	public Object getItem(int position) {
-		return _data.get(position);
-	}
+    @Override
+    public int getCount() {
 
-	@Override
-	public long getItemId(int position) {
-		return position;
-	}
+        return _data.size();
+    }
 
-	@Override
-	public View getView(int position, View convertView, ViewGroup parent) 
-	{
+    @Override
+    public Object getItem(int position) {
+        return _data.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
         View v = convertView;
-        if (v == null)
-        {
-           LayoutInflater vi = (LayoutInflater)_c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-           v = vi.inflate(R.layout.listview_wynik, null);
+        if (v == null) {
+            LayoutInflater vi = (LayoutInflater) _c.getSystemService(Context
+                    .LAYOUT_INFLATER_SERVICE);
+            v = vi.inflate(R.layout.listview_wynik, null);
         }
 
-        
-          ImageView image = (ImageView) v.findViewById(R.id.imgview_notatka);
-          TextView data = (TextView)v.findViewById(R.id.listview_text_data);
-          TextView bmi = (TextView)v.findViewById(R.id.listview_text_bmi);
-          TextView waga = (TextView)v.findViewById(R.id.listview_text_waga);
 
-          Wynik w = _data.get(position);
-          
-	        // URL url = new URL(msg.getUrlLogo());
-          if(w.getNotatka().length()>0)
-        	  image.setVisibility(View.VISIBLE);
-          else
-        	  image.setVisibility(View.INVISIBLE);
-          
-          data.setText(getDate(w.getData(),"dd/MM/yyyy HH:mm:ss"));
-          bmi.setText(Double.toString(w.getBmi()));
-          waga.setText(Double.toString(w.getWaga()));
-                           
-                       
-       return v;
-	}//getview
+        ImageView image = (ImageView) v.findViewById(R.id.imgview_notatka);
+        TextView data = (TextView) v.findViewById(R.id.listview_text_data);
+        TextView bmi = (TextView) v.findViewById(R.id.listview_text_bmi);
+        TextView waga = (TextView) v.findViewById(R.id.listview_text_waga);
 
-	private String getDate(long milliSeconds, String dateFormat)
-	{
-	    // Create a DateFormatter object for displaying date in specified format.
-	    DateFormat formatter = new SimpleDateFormat(dateFormat);
+        Wynik w = _data.get(position);
 
-	    // Create a calendar object that will convert the date and time value in milliseconds to date. 
-	     Calendar calendar = Calendar.getInstance();
-	     calendar.setTimeInMillis(milliSeconds);
-	     return formatter.format(calendar.getTime());
-	}
-	
+        // URL url = new URL(msg.getUrlLogo());
+        if (w.getNotatka().length() > 0)
+            image.setVisibility(View.VISIBLE);
+        else
+            image.setVisibility(View.INVISIBLE);
+
+        data.setText(getDate(w.getData(), "dd/MM/yyyy HH:mm:ss"));
+        bmi.setText(Double.toString(w.getBmi()));
+        waga.setText(Double.toString(w.getWaga()));
+
+
+        return v;
+    }//getview
+
+    private String getDate(long milliSeconds, String dateFormat) {
+        // Create a DateFormatter object for displaying date in specified format.
+        DateFormat formatter = new SimpleDateFormat(dateFormat);
+
+        // Create a calendar object that will convert the date and time value in milliseconds to
+        // date.
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(milliSeconds);
+        return formatter.format(calendar.getTime());
+    }
+
 }//clss
