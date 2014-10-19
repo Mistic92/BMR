@@ -12,48 +12,56 @@ package com.devnoobs.bmr;
 
 
 public class Wynik {
-	public Wynik(){}
-	
-	private int wynik_id;
-	private double bmi;
-	private double waga;
-	private long data;
-	private String notatka;
-	
-	
-	public String getNotatka() {
-		return notatka;
-	}
-	public void setNotatka(String notatka) {
-		this.notatka = notatka;
-	}
-	public int getWynik_id() {
-		return wynik_id;
-	}
-	public void setWynik_id(int wynik_id) {
-		this.wynik_id = wynik_id;
-	}
+    public Wynik() {
+    }
 
-	
-	public double getBmi() {
-		return bmi;
-	}
-	public void setBmi(double bmi) {
-		this.bmi = bmi;
-	}
-	public double getWaga() {
-		return waga;
-	}
-	public void setWaga(double waga) {
-		this.waga = waga;
-	}
-	public long getData() {
-		return data;
-	}
-	public void setData(long data) {
-		this.data = data;
-	}
-	
-	
-	
+    private int wynik_id;
+    private double bmi;
+    private double waga;
+    private long data;
+    private String notatka;
+
+
+    public String getNotatka() {
+        return notatka;
+    }
+
+    public void setNotatka(String notatka) {
+        this.notatka = notatka;
+    }
+
+    public int getWynik_id() {
+        return wynik_id;
+    }
+
+    public void setWynik_id(int wynik_id) {
+        this.wynik_id = wynik_id;
+    }
+
+
+    public double getBmi() {
+        return bmi;
+    }
+
+    public void setBmi(double bmi) {
+        this.bmi = bmi;
+    }
+
+    public double getWaga() {
+        return waga;
+    }
+
+    public void setWaga(double waga) {
+        this.waga = waga;
+    }
+
+    public long getData() {
+        return data;
+    }
+
+    public void setData(long data) {
+        this.data = data;
+    }
+
+
 }

@@ -21,24 +21,23 @@ import java.util.Calendar;
 
 public class ExportToCSV {
 
-	private Context c;
-	public ExportToCSV() 
-	{
-		
-	}
-	public ExportToCSV(Context c)
-	{
-		this.c=c;
-	}
-	
-	public void zapiszCSV(Calendar start, Calendar end)
-	{
-		WynikiDataSource wds = new WynikiDataSource();
-		ArrayList<Wynik> lista = new ArrayList<Wynik>();
-		lista = wds.getData(start.getTimeInMillis(), end.getTimeInMillis(), "asc");
-		
-		File file = Environment.getExternalStorageDirectory();
-		
-	}
-	//TODO dodac do sharedprefs czas wybrany
+    private Context c;
+
+    public ExportToCSV() {
+
+    }
+
+    public ExportToCSV(Context c) {
+        this.c = c;
+    }
+
+    public void zapiszCSV(Calendar start, Calendar end) {
+        WynikiDataSource wds = new WynikiDataSource();
+        ArrayList<Wynik> lista = new ArrayList<Wynik>();
+        lista = wds.getData(start.getTimeInMillis(), end.getTimeInMillis(), "asc");
+
+        File file = Environment.getExternalStorageDirectory();
+
+    }
+    //TODO dodac do sharedprefs czas wybrany
 }

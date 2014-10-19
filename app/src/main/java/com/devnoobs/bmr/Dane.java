@@ -11,41 +11,46 @@
 package com.devnoobs.bmr;
 
 public class Dane {
-	public Dane()
-	{}
-	private static double waga;
-	private static double wzrost;
-	private static double bmi;
-	private static double wiek;
-	
-	
-	public static double getWaga() {
-		return waga;
-	}
-	public static void setWaga(double waga) {
-		Dane.waga = waga;
-	}
-	public static double getWzrost() {
-		return wzrost;
-	}
-	public static void setWzrost(double wzrost) {
-		Dane.wzrost = wzrost;
-	}
-	public static double getBmi() {
-		return bmi;
-	}
-	public static void setBmi(double bmi) {
-		Dane.bmi = bmi;
-	}
-	public static double getWiek() {
-		return wiek;
-	}
-	public static void setWiek(double wiek) {
-		Dane.wiek = wiek;
-	}
-	
-	
-	
+    public Dane() {
+    }
+
+    private static double waga;
+    private static double wzrost;
+    private static double bmi;
+    private static double wiek;
+
+
+    public static double getWaga() {
+        return waga;
+    }
+
+    public static void setWaga(double waga) {
+        Dane.waga = waga;
+    }
+
+    public static double getWzrost() {
+        return wzrost;
+    }
+
+    public static void setWzrost(double wzrost) {
+        Dane.wzrost = wzrost;
+    }
+
+    public static double getBmi() {
+        return bmi;
+    }
+
+    public static void setBmi(double bmi) {
+        Dane.bmi = bmi;
+    }
+
+    public static double getWiek() {
+        return wiek;
+    }
+
+    public static void setWiek(double wiek) {
+        Dane.wiek = wiek;
+    }
 
 
 }

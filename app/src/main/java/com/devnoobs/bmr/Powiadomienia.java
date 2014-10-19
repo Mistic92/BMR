@@ -29,78 +29,79 @@ import java.util.TimeZone;
 public class Powiadomienia extends BroadcastReceiver {
 
 
-	private Context c;
-	private final String S = "com.devnoobs.bmr.Powiadomienia";
-	Powiadomienia(){}
-	
-	public Powiadomienia(Context c){this.c=c;}
+    private Context c;
+    private final String S = "com.devnoobs.bmr.Powiadomienia";
 
-	
-	public void setAlarm(int h, int m)
-	{
-		Calendar calendar = przygotujCzas(h,m);
-		
-		AlarmManager am=(AlarmManager)c.getSystemService(Context.ALARM_SERVICE);
+    Powiadomienia() {
+    }
 
-		Intent i = new Intent(S);
-        PendingIntent pi = PendingIntent.getBroadcast(c, 0, i, PendingIntent.FLAG_CANCEL_CURRENT);    
+    public Powiadomienia(Context c) {
+        this.c = c;
+    }
+
+
+    public void setAlarm(int h, int m) {
+        Calendar calendar = przygotujCzas(h, m);
+
+        AlarmManager am = (AlarmManager) c.getSystemService(Context.ALARM_SERVICE);
+
+        Intent i = new Intent(S);
+        PendingIntent pi = PendingIntent.getBroadcast(c, 0, i, PendingIntent.FLAG_CANCEL_CURRENT);
         IntentFilter intentFilter = new IntentFilter(S);
         Powiadomienia p = new Powiadomienia();
         c.registerReceiver(p, intentFilter);
-        
-        am.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),1000*60*10, pi); // Millisec * Sec * Min
-        //am.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), AlarmManager.INTERVAL_DAY, pi); //   
+
+        am.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 1000 * 60 * 10,
+                pi); // Millisec * Sec * Min
+        //am.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(),
+        // AlarmManager.INTERVAL_DAY, pi); //
         showToast("Powiadomienie wlaczone");
-	}
-	
-	private Calendar przygotujCzas(int h, int m)
-	{
+    }
+
+    private Calendar przygotujCzas(int h, int m) {
         Calendar calendar = Calendar.getInstance(TimeZone.getDefault(), Locale.getDefault());
-        int hourNow =calendar.get(Calendar.HOUR_OF_DAY);
-        int minNow=calendar.get(Calendar.MINUTE);
-        if(hourNow>h || (hourNow==h && minNow>m) )
-        {
-        	calendar.add(Calendar.DAY_OF_YEAR, 1);
-        	//calendar.add(Calendar.MINUTE, minNow+5);
+        int hourNow = calendar.get(Calendar.HOUR_OF_DAY);
+        int minNow = calendar.get(Calendar.MINUTE);
+        if (hourNow > h || (hourNow == h && minNow > m)) {
+            calendar.add(Calendar.DAY_OF_YEAR, 1);
+            //calendar.add(Calendar.MINUTE, minNow+5);
         }
-        calendar.set(Calendar.HOUR_OF_DAY,h);
+        calendar.set(Calendar.HOUR_OF_DAY, h);
         calendar.set(Calendar.MINUTE, m);
 
         return calendar;
-	}
-	// 1379005926443
+    }
+    // 1379005926443
 
-	public void cancelAlarm()
-	     {
-		Intent i = new Intent(S);
-	         PendingIntent sender = PendingIntent.getBroadcast(c, 0, i, 0);
-	         AlarmManager alarmManager = (AlarmManager) c.getSystemService(Context.ALARM_SERVICE);
-	         alarmManager.cancel(sender);
-	         showToast("Powiadomienie wylaczone");
-	     }
+    public void cancelAlarm() {
+        Intent i = new Intent(S);
+        PendingIntent sender = PendingIntent.getBroadcast(c, 0, i, 0);
+        AlarmManager alarmManager = (AlarmManager) c.getSystemService(Context.ALARM_SERVICE);
+        alarmManager.cancel(sender);
+        showToast("Powiadomienie wylaczone");
+    }
 
-	@Override
-	public void onReceive(Context c, Intent i) {
-		NotificationCompat.Builder mBuilder =
-			    new NotificationCompat.Builder(c)
-			    .setSmallIcon(R.drawable.ic_note)
-			    .setContentTitle("Powiadomienie ")
-			    .setContentText("Testowe powiadomienie o danej godzinie");	
-		Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-		mBuilder.setSound(alarmSound);
-		NotificationManager powiadomienie = 
-		        (NotificationManager) c.getSystemService(c.NOTIFICATION_SERVICE);
-		powiadomienie.notify(1, mBuilder.build());	
-		
-	}//onReceive
-	
-	private void showToast(String tekst)
-	{
-		CharSequence text = tekst;
-		int duration = Toast.LENGTH_SHORT;
-		Toast toast = Toast.makeText(c, text, duration);
-		toast.show();
-	}
-	
-	
+    @Override
+    public void onReceive(Context c, Intent i) {
+        NotificationCompat.Builder mBuilder =
+                new NotificationCompat.Builder(c)
+                        .setSmallIcon(R.drawable.ic_note)
+                        .setContentTitle("Powiadomienie ")
+                        .setContentText("Testowe powiadomienie o danej godzinie");
+        Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        mBuilder.setSound(alarmSound);
+        NotificationManager powiadomienie =
+                (NotificationManager) c.getSystemService(c.NOTIFICATION_SERVICE);
+        powiadomienie.notify(1, mBuilder.build());
+
+    }//onReceive
+
+    private void showToast(String tekst) {
+        CharSequence text = tekst;
+        int duration = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(c, text, duration);
+        toast.show();
+    }
+
+
 }//class

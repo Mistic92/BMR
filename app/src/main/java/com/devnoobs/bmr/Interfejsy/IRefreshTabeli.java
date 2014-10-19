@@ -11,5 +11,5 @@
 package com.devnoobs.bmr.Interfejsy;
 
 public interface IRefreshTabeli {
-	public void refreshTabela();
+    public void refreshTabela();
 }

@@ -11,19 +11,19 @@
 package com.devnoobs.bmr;
 
 import android.annotation.SuppressLint;
-import android.app.ActionBar;
-import android.app.ActionBar.Tab;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -47,26 +47,26 @@ import com.google.ads.AdView;
 import com.google.analytics.tracking.android.EasyTracker;
 
 
-
 @SuppressLint("NewApi")
 
-public class MainActivity extends FragmentActivity implements ActionBar.TabListener, AdListener,IReklamy {
+public class MainActivity extends FragmentActivity implements ActionBar.TabListener, AdListener,
+        IReklamy {
 
-	/**
-	 * The {@link android.support.v4.view.PagerAdapter} that will provide
-	 * fragments for each of the sections. We use a
-	 * {@link android.support.v4.app.FragmentPagerAdapter} derivative, which
-	 * will keep every loaded fragment in memory. If this becomes too memory
-	 * intensive, it may be best to switch to a
-	 * {@link android.support.v4.app.FragmentStatePagerAdapter}.
-	 */
-	//private SectionsPagerAdapter mSectionsPagerAdapter;
-	private ViewPager mViewPager;
-	private AdView adView;
-	private Tab tab;
-	private FragmentUstawienia fu;
-	//Tracker tracker ;
-	
+    /**
+     * The {@link android.support.v4.view.PagerAdapter} that will provide
+     * fragments for each of the sections. We use a
+     * {@link android.support.v4.app.FragmentPagerAdapter} derivative, which
+     * will keep every loaded fragment in memory. If this becomes too memory
+     * intensive, it may be best to switch to a
+     * {@link android.support.v4.app.FragmentStatePagerAdapter}.
+     */
+    //private SectionsPagerAdapter mSectionsPagerAdapter;
+    private ViewPager mViewPager;
+    private AdView adView;
+    private ActionBar.Tab tab;
+    private FragmentUstawienia fu;
+    //Tracker tracker ;
+
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -74,146 +74,83 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     private CharSequence mDrawerTitle;
     private CharSequence mTitle;
     private String[] nazwy_menu;
-	
-	@Override
-	protected void onCreate(Bundle savedInstanceState) 
-	{
-	       super.onCreate(savedInstanceState);
-	        setContentView(R.layout.activity_main);
 
-	        mTitle = mDrawerTitle = getTitle();
-	        nazwy_menu = getResources().getStringArray(R.array.tabela_menu);
-	        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-	        mDrawerList = (ListView) findViewById(R.id.left_drawer);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
+        setContentView(R.layout.activity_main);
 
-	        // set a custom shadow that overlays the main content when the drawer opens
-	        mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
-	        // set up the drawer's list view with items and click listener
-	        mDrawerList.setAdapter(new ArrayAdapter<String>(this,
-	                R.layout.drawer_list_item, nazwy_menu));
-	        mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarGlowny);
+        if (toolbar != null) {
+            // setActionBar(toolbar);
+        }
 
-	        // enable ActionBar app icon to behave as action to toggle nav drawer
-	        getActionBar().setDisplayHomeAsUpEnabled(true);
-	        getActionBar().setHomeButtonEnabled(true);
 
-	        // ActionBarDrawerToggle ties together the the proper interactions
-	        // between the sliding drawer and the action bar app icon
-	        mDrawerToggle = new ActionBarDrawerToggle(
-	                this,                  /* host Activity */
-	                mDrawerLayout,         /* DrawerLayout object */
-	                R.drawable.ic_drawer,  /* nav drawer image to replace 'Up' caret */
-	                R.string.rozwin_drawer,  /* "open drawer" description for accessibility */
-	                R.string.zwin_drawer  /* "close drawer" description for accessibility */
-	                ) {
-	            public void onDrawerClosed(View view) {
-	                getActionBar().setTitle(mTitle);
-	                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
-	            }
+        mTitle = mDrawerTitle = getTitle();
+        nazwy_menu = getResources().getStringArray(R.array.tabela_menu);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerList = (ListView) findViewById(R.id.left_drawer);
 
-	            public void onDrawerOpened(View drawerView) {
-	                getActionBar().setTitle(mDrawerTitle);
-	                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
-	            }
-	        };
-	        mDrawerLayout.setDrawerListener(mDrawerToggle);
+        // set a custom shadow that overlays the main content when the drawer opens
+        mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
+        // set up the drawer's list view with items and click listener
+        mDrawerList.setAdapter(new ArrayAdapter<String>(this,
+                R.layout.drawer_list_item, nazwy_menu));
+        mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
-	        if (savedInstanceState == null) {
-	            selectItem(0);
-	        }
-		  //  adView = (AdView) findViewById(R.id.adView);
-		 //   adView.loadAd(new AdRequest());
-		
-		
-		
-	/*	
-		
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-		
-		//inicjalizacja tutaj aby dodac listenera
-		fu = new FragmentUstawienia();
-		fu.addListenerReklamy(this);
-		
-		//tracker = GoogleAnalytics.getInstance(this).getTracker("UA-18780283-6"); 
-		// Set up the action bar.
-		final ActionBar actionBar = getActionBar();
-		//actionBar.hide();
-		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-		
-		// Create the adapter that will return a fragment for each of the three
-		// primary sections of the app.
-		mSectionsPagerAdapter = new SectionsPagerAdapter(
-				getSupportFragmentManager());
+        // enable ActionBar app icon to behave as action to toggle nav drawer
+//        getActionBar().setDisplayHomeAsUpEnabled(true);
+//        getActionBar().setHomeButtonEnabled(true);
 
-		// Set up the ViewPager with the sections adapter.
-		//mViewPager = (ViewPager) findViewById(R.id.pager);
-		//mViewPager.setAdapter(mSectionsPagerAdapter);
-		//actionBar.setTitle(getString(R.string.app_name));
-	
-	/*	
-		if(android.os.Build.VERSION.SDK_INT>=android.os.Build.VERSION_CODES.KITKAT)
-		{
-			mViewPager.setOnSystemUiVisibilityChangeListener(this);
-			mViewPager.setSystemUiVisibility(View.SYSTEM_UI_FLAG_IMMERSIVE);
-			mViewPager.setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
-			mViewPager.setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
-		}
-		
-	*/	
-		
-		/*
-		 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-		        Window w = getWindow(); // in Activity's onCreate() for instance
-		        w.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION, WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-		        //w.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-		    }
-		
+        // ActionBarDrawerToggle ties together the the proper interactions
+        // between the sliding drawer and the action bar app icon
+//        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.rozwin_drawer,
+// R.string.zwin_drawer)
+//        {
+//            public void onDrawerClosed(View view) {
+//                // getActionBar().setTitle(mTitle);
+//                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
+//            }
+//
+//            public void onDrawerOpened(View drawerView) {
+//                // getActionBar().setTitle(mDrawerTitle);
+//                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
+//            }
+//        };
 
-		// When swiping between different sections, select the corresponding
-		// tab. We can also use ActionBar.Tab#select() to do this if we have
-		// a reference to the Tab.
-		mViewPager
-				.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-					@Override
-					public void onPageSelected(int position) {
-						actionBar.setSelectedNavigationItem(position);
-					}
-				});
 
-		// For each of the sections in the app, add a tab to the action bar.
-		for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
-			// Create a tab with text corresponding to the page title defined by
-			// the adapter. Also specify this Activity object, which implements
-			// the TabListener interface, as the callback (listener) for when
-			// this tab is selected.
-			actionBar.addTab(actionBar.newTab().setText(mSectionsPagerAdapter.getPageTitle(i)).setTabListener(this));
-		}
-		//ustawienie ikonek w pasku
+        mDrawerToggle = new ActionBarDrawerToggle(
+                this,                  /* host Activity */
+                mDrawerLayout,         /* DrawerLayout object */
+                // toolbar,  /* nav drawer image to replace 'Up' caret */
+                R.string.rozwin_drawer,  /* "open drawer" description for accessibility */
+                R.string.zwin_drawer  /* "close drawer" description for accessibility */
+        ) {
+            public void onDrawerClosed(View view) {
+                // getActionBar().setTitle(mTitle);
+                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
+            }
 
-		
-		Tab ab = getActionBar().getTabAt(0);
-		ab.setIcon(R.drawable.ic_kalkulator);	
-		ab = getActionBar().getTabAt(1);
-		ab.setIcon(R.drawable.ic_tabela);
-		ab = getActionBar().getTabAt(2);
-		ab.setIcon(R.drawable.ic_wykres);		
-		ab = getActionBar().getTabAt(3);
-		ab.setIcon(R.drawable.ic_ustawienia);	
+            public void onDrawerOpened(View drawerView) {
+                // getActionBar().setTitle(mDrawerTitle);
+                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
+            }
+        };
 
-		
-		 // Create the adView
-	    adView = (AdView) findViewById(R.id.adView);
-	    adView.loadAd(new AdRequest());
-	   // adView.setAdListener(this);
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
 
-		 */
-        
-        
-        
-	}//oncreate
+        if (savedInstanceState == null) {
+            selectItem(0);
+        }
 
-	
+
+        //  adView = (AdView) findViewById(R.id.adView);
+        //   adView.loadAd(new AdRequest());
+
+
+    }//oncreate
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -226,23 +163,40 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         // If the nav drawer is open, hide action items related to the content view
-      //  boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
+        //  boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
         //menu.findItem(R.id.action_websearch).setVisible(!drawerOpen);
         return super.onPrepareOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-         // The action bar home/up action should open or close the drawer.
-         // ActionBarDrawerToggle will take care of this.
+        // The action bar home/up action should open or close the drawer.
+        // ActionBarDrawerToggle will take care of this.
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
         // Handle action buttons
-		return true;
- 
+        return true;
 
-        
+
+    }
+
+    @Override
+    public void onTabSelected(ActionBar.Tab tab, android.support.v4.app.FragmentTransaction
+            fragmentTransaction) {
+        mViewPager.setCurrentItem(tab.getPosition());
+    }
+
+    @Override
+    public void onTabUnselected(ActionBar.Tab tab, android.support.v4.app.FragmentTransaction
+            fragmentTransaction) {
+
+    }
+
+    @Override
+    public void onTabReselected(ActionBar.Tab tab, android.support.v4.app.FragmentTransaction
+            fragmentTransaction) {
+
     }
 
     /* The click listner for ListView in the navigation drawer */
@@ -255,44 +209,51 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
     private void selectItem(int position) {
         // update the main content by replacing fragments
-    	
-    	if(position==0)
-    	{
-    		Fragment bmr = (Fragment) new FragmentBMR();
-            FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.content_frame, bmr).commit();
-    	}
-    	else if(position==1)
-    	{
-    		Fragment tabele = (Fragment) new FragmentTabele();
-            FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.content_frame, tabele).commit();
-    	}
-    	else if(position==2)
-    	{
-    		Fragment wykresy = (Fragment) new FragmentWykres();
-            FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.content_frame, wykresy).commit();
-    	}
-    	else if(position==3)
-    	{
-    		Fragment ustawienia = (Fragment) new FragmentUstawienia();
-            FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.content_frame, ustawienia).commit();	
-    	}
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction tran = fragmentManager.beginTransaction();
+        tran.setCustomAnimations(R.anim.abc_slide_in_bottom, R.anim.abc_slide_out_bottom);
+        if (position == 0) {
+            Fragment bmr = (Fragment) new FragmentBMR();
+
+            tran.replace(R.id.content_frame, bmr);
+            tran.commit();
+            // fragmentManager.beginTransaction().replace(R.id.content_frame, bmr).commit();
+
+        } else if (position == 1) {
+            Fragment tabele = (Fragment) new FragmentTabele();
+//            FragmentManager fragmentManager = getFragmentManager();
+//            fragmentManager.beginTransaction() .replace(R.id.content_frame, tabele).commit();
+            tran.replace(R.id.content_frame, tabele);
+            tran.commit();
+
+        } else if (position == 2) {
+            Fragment wykresy = (Fragment) new FragmentWykres();
+//            FragmentManager fragmentManager = getFragmentManager();
+//            fragmentManager.beginTransaction().replace(R.id.content_frame, wykresy).commit();
+            tran.replace(R.id.content_frame, wykresy);
+            tran.commit();
+
+        } else if (position == 3) {
+            Fragment ustawienia = (Fragment) new FragmentUstawienia();
+//            FragmentManager fragmentManager = getFragmentManager();
+//            fragmentManager.beginTransaction().replace(R.id.content_frame, ustawienia).commit();
+            tran.replace(R.id.content_frame, ustawienia);
+            tran.commit();
+
+        }
 
         // update selected item and title, then close the drawer
         mDrawerList.setItemChecked(position, true);
-        setTitle(nazwy_menu[position]);
+        // setTitle(nazwy_menu[position]);
         mDrawerLayout.closeDrawer(mDrawerList);
-       
+
     }
 
-    @Override
-    public void setTitle(CharSequence title) {
-        mTitle = title;
-        getActionBar().setTitle(mTitle);
-    }
+//    @Override
+//    public void setTitle(CharSequence title) {
+//        mTitle = title;
+//        getActionBar().setTitle(mTitle);
+//    }
 
     /**
      * When using the ActionBarDrawerToggle, you must call it during
@@ -312,47 +273,45 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         // Pass any configuration change to the drawer toggls
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
-	
-	
-	
-	
-	
-	  @Override
-	  public void onStart() {
-	    super.onStart();	   
-	    EasyTracker.getInstance(this).activityStart(this);  // Add this method.
 
-	  }
 
-	  @Override
-	  public void onStop() {
-	    super.onStop();	   
-	    EasyTracker.getInstance(this).activityStop(this);  // Add this method.
-	  }
-	
-	
-	@Override
-	public void onTabSelected(Tab tab,
-			FragmentTransaction fragmentTransaction) {
-		// When the given tab is selected, switch to the corresponding page in
-		// the ViewPager.
-		mViewPager.setCurrentItem(tab.getPosition());
-	}
+    @Override
+    public void onStart() {
+        super.onStart();
+        EasyTracker.getInstance(this).activityStart(this);  // Add this method.
 
-	@Override
-	public void onTabUnselected(Tab tab,
-			FragmentTransaction fragmentTransaction) {
-	}
+    }
 
-	@Override
-	public void onTabReselected(Tab tab,
-			FragmentTransaction fragmentTransaction) {
-	}
-	
+    @Override
+    public void onStop() {
+        super.onStop();
+        EasyTracker.getInstance(this).activityStop(this);  // Add this method.
+    }
+
+
+//    @Override
+//    public void onTabSelected(Tab tab,
+//                              FragmentTransaction fragmentTransaction) {
+//        // When the given tab is selected, switch to the corresponding page in
+//        // the ViewPager.
+//
+//        mViewPager.setCurrentItem(tab.getPosition());
+//    }
+//
+//    @Override
+//    public void onTabUnselected(Tab tab,
+//                                FragmentTransaction fragmentTransaction) {
+//    }
+//
+//    @Override
+//    public void onTabReselected(Tab tab,
+//                                FragmentTransaction fragmentTransaction) {
+//    }
+
 	
 
 /*
-	/**
+    /**
 	 * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
 	 * one of the sections/tabs/pages.
 	 
@@ -372,16 +331,20 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 			switch(position)
 			{
 			case 0:
-				//tracker.send(MapBuilder.createAppView().set(Fields.SCREEN_NAME, "Kalkulator").build());
+				//tracker.send(MapBuilder.createAppView().set(Fields.SCREEN_NAME,
+				"Kalkulator").build());
 				return FragmentBMR.init(position);
 			case 1:
-				//tracker.send(MapBuilder.createAppView().set(Fields.SCREEN_NAME, "Wyniki").build());
+				//tracker.send(MapBuilder.createAppView().set(Fields.SCREEN_NAME,
+				"Wyniki").build());
 				return FragmentTabele.init(position);
 			case 2: 
-				//tracker.send(MapBuilder.createAppView().set(Fields.SCREEN_NAME, "Wykresy").build());
+				//tracker.send(MapBuilder.createAppView().set(Fields.SCREEN_NAME,
+				"Wykresy").build());
 				return FragmentWykres.init(position);
 			case 3:
-				//tracker.send(MapBuilder.createAppView().set(Fields.SCREEN_NAME, "Ustawienia").build());
+				//tracker.send(MapBuilder.createAppView().set(Fields.SCREEN_NAME,
+				"Ustawienia").build());
 				return fu.init(position);
 			}
 			return null;
@@ -397,79 +360,76 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	}//class section adapter
 
 	*/
-	
-	@Override
-	public void onDismissScreen(Ad arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+
+    @Override
+    public void onDismissScreen(Ad arg0) {
+        // TODO Auto-generated method stub
+
+    }
 
 
-	@Override
-	public void onFailedToReceiveAd(Ad arg0, ErrorCode arg1) {
-		//adView.setVisibility(View.GONE); 
-		 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-		      // super.setTheme(android.R.style.Theme_Holo_Light_NoActionBar_TranslucentDecor);
-			// Window w = getWindow(); 
+    @Override
+    public void onFailedToReceiveAd(Ad arg0, ErrorCode arg1) {
+        //adView.setVisibility(View.GONE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            // super.setTheme(android.R.style.Theme_Holo_Light_NoActionBar_TranslucentDecor);
+            // Window w = getWindow();
 
-		    //    w.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION, WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-		    }
-		
-	}
+            //    w.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION,
+            // WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        }
 
-
-	@Override
-	public void onLeaveApplication(Ad arg0) {
-		
-	}
+    }
 
 
-	@Override
-	public void onPresentScreen(Ad arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void onLeaveApplication(Ad arg0) {
+
+    }
 
 
-	@Override
-	public void onReceiveAd(Ad arg0) {
-		
-	}
+    @Override
+    public void onPresentScreen(Ad arg0) {
+        // TODO Auto-generated method stub
+
+    }
 
 
-	@Override
-	public void zmienReklamy(boolean stan) {
-		
-		//Toast toast = Toast.makeText(getApplicationContext(), "test",5 );
-		//toast.show();
-		
-		if(stan==true)
-		{
-			adView.setVisibility(View.VISIBLE); 
-		    adView.loadAd(new AdRequest());
-			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) 
-			{	
-			        Window w = getWindow(); // in Activity's onCreate() for instance
-			        w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-			       // w.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION, WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-			        //w.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-			    }
-		}
-		else
-		{
-			adView.setVisibility(View.GONE); 
-			 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) 
-			 {
-			      super.setTheme(android.R.style.Theme_Holo_Light_NoActionBar_TranslucentDecor);
-				 Window w = getWindow(); 
-			       w.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION, WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-			    }
-		    
-		}
-		
-	}
+    @Override
+    public void onReceiveAd(Ad arg0) {
+
+    }
 
 
-	
+    @Override
+    public void zmienReklamy(boolean stan) {
+
+        //Toast toast = Toast.makeText(getApplicationContext(), "test",5 );
+        //toast.show();
+
+        if (stan == true) {
+            adView.setVisibility(View.VISIBLE);
+            adView.loadAd(new AdRequest());
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                Window w = getWindow(); // in Activity's onCreate() for instance
+                w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+                // w.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION,
+                // WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+                //w.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
+                // WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            }
+        } else {
+            adView.setVisibility(View.GONE);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                super.setTheme(android.R.style.Theme_Holo_Light_NoActionBar_TranslucentDecor);
+                Window w = getWindow();
+                w.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION,
+                        WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+            }
+
+        }
+
+    }
+
 
 }//klasa glowna

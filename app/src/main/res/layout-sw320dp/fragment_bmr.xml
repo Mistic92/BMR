@@ -16,6 +16,7 @@
             android:layout_height="fill_parent"
             android:layout_weight="1">
 
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -236,8 +237,8 @@
             android:id="@+id/linearLayoutBrakuDanychWynikow"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone"
             android:layout_marginBottom="5dp"
+            android:visibility="gone"
             >
 
             <LinearLayout
@@ -282,7 +283,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
 
-               >
+                >
 
                 <!-- PODPIS KARTY -->
 

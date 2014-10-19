@@ -12,7 +12,6 @@ package com.devnoobs.bmr.Interfejsy;
 
 import java.util.Calendar;
 
-public interface WyborDadyDialogFragmentListener
-{
-	void onYesButton(Calendar poczatek, Calendar koniec);
+public interface WyborDadyDialogFragmentListener {
+    void onYesButton(Calendar poczatek, Calendar koniec);
 }

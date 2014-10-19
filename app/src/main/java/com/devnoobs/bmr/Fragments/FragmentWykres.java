@@ -89,7 +89,7 @@ public class FragmentWykres extends Fragment implements OnItemSelectedListener,
     }
 
 		/*    
-	    @Override
+        @Override
 	    public void onResume()
 	    {
 	    	super.onResume();

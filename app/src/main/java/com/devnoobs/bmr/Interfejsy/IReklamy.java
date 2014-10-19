@@ -11,5 +11,5 @@
 package com.devnoobs.bmr.Interfejsy;
 
 public interface IReklamy {
-	public void zmienReklamy(boolean stan);
+    public void zmienReklamy(boolean stan);
 }

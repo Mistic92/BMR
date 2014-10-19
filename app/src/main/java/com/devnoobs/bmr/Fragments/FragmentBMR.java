@@ -312,7 +312,7 @@ public class FragmentBMR extends Fragment implements TextWatcher,
             try {
                 wiek = Integer.parseInt(pole_wiek.getText().toString());
             } catch (NumberFormatException e) {
-				/*
+                /*
 				 * editor.putInt(getString(R.string.text_wiek), 0);
 				 * editor.apply();
 				 */

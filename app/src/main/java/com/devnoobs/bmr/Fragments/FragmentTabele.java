@@ -11,6 +11,7 @@
 package com.devnoobs.bmr.Fragments;
 
 import android.annotation.TargetApi;
+import android.app.ActivityOptions;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
@@ -20,6 +21,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -39,7 +41,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.devnoobs.bmr.AdapterTabeli;
 import com.devnoobs.bmr.Baza.WynikiDataSource;
 import com.devnoobs.bmr.CustomAdapterWyniki;
 import com.devnoobs.bmr.CustomSpinner;
@@ -128,7 +129,7 @@ public class FragmentTabele extends Fragment implements OnClickListener,
         sharedPref = getActivity().getSharedPreferences(
                 getString(R.string.appPreferences), getActivity().MODE_PRIVATE);
 
-         //USTAWIENIE PIER... SPINERA
+        //USTAWIENIE PIER... SPINERA
         spinner = (Spinner) rootView.findViewById(R.id.spinner_zakres_dat);
         CustomSpinner cspin = new CustomSpinner(rootView.getContext());
         //	spinner = cspin;
@@ -144,7 +145,6 @@ public class FragmentTabele extends Fragment implements OnClickListener,
         contextFragmentTabele = rootView.getContext();
 
         tekstZakresu = (TextView) rootView.findViewById(R.id.textzakreswykresu);
-
 
 
 //        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerWyniki);
@@ -303,7 +303,7 @@ public class FragmentTabele extends Fragment implements OnClickListener,
 //		}
         //else
         //{
-			/*
+            /*
 		
 			SzczegolyWynikuActivity swa = new SzczegolyWynikuActivity();  
 			Intent intent = new Intent(getActivity(), swa.getClass());
@@ -389,7 +389,7 @@ public class FragmentTabele extends Fragment implements OnClickListener,
         Intent intent = new Intent(getActivity(), swa.getClass());
         swa.dodajListener(this);
         intent.putExtra("id", w.getWynik_id());
-        startActivity(intent);
+        startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity()).toBundle());
 
     }
 

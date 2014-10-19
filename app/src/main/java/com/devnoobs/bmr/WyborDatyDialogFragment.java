@@ -26,34 +26,38 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 
-
 @SuppressLint("ValidFragment")
-public class WyborDatyDialogFragment extends DialogFragment  {
+public class WyborDatyDialogFragment extends DialogFragment {
 
-	private DatePicker wybor_poczatek;
-	private DatePicker wybor_koniec;
-	
+    private DatePicker wybor_poczatek;
+    private DatePicker wybor_koniec;
+
 
     //interfejs itp do wysylania kalendarzy w swiat ;p
-    private static ArrayList<WyborDadyDialogFragmentListener> listeners = new ArrayList<WyborDadyDialogFragmentListener>();
+    private static ArrayList<WyborDadyDialogFragmentListener> listeners = new
+            ArrayList<WyborDadyDialogFragmentListener>();
+
     public void addListener(WyborDadyDialogFragmentListener toAdd) {
         listeners.add(toAdd);
-    } 
+    }
+
     public void notifyYesButton(Calendar poczatek, Calendar koniec) {
         for (WyborDadyDialogFragmentListener hl : listeners)
             hl.onYesButton(poczatek, koniec);
     }
+
     //wymagane przez dialogfragment
-	public WyborDatyDialogFragment() {}
-	
-	//interfejs w klasie
-	public interface WyborDatyDialogFragmentListener {
+    public WyborDatyDialogFragment() {
+    }
+
+    //interfejs w klasie
+    public interface WyborDatyDialogFragmentListener {
         void onFinishEditDialog(String inputText);
     }
-	
-	public static WyborDatyDialogFragment newInstance(int num) {
-		WyborDatyDialogFragment f = new WyborDatyDialogFragment();
-		
+
+    public static WyborDatyDialogFragment newInstance(int num) {
+        WyborDatyDialogFragment f = new WyborDatyDialogFragment();
+
         // Supply num input as an argument.
         Bundle args = new Bundle();
         args.putInt("num", num);
@@ -61,89 +65,83 @@ public class WyborDatyDialogFragment extends DialogFragment  {
 
         return f;
     }
-	
-	
-	  @Override
-	    public void onCreate(Bundle savedInstanceState) {
-	        super.onCreate(savedInstanceState);
-
-	    }
-   
-	    
-	    @Override
-	    public Dialog onCreateDialog(Bundle savedInstanceState) {   
-
-	        LayoutInflater factory = LayoutInflater.from(getActivity());
-	        final View v = factory.inflate(R.layout.wybor_daty_dialog_fragment, null);
-
-	        wybor_poczatek = (DatePicker) v.findViewById(R.id.datePickerPoczatek);
-	        wybor_poczatek.setCalendarViewShown(false);
-	        
-	        wybor_koniec = (DatePicker) v.findViewById(R.id.datePickerKoniec);
-	        wybor_koniec.setCalendarViewShown(false);	
-	        
-
-	        
-	        return new AlertDialog.Builder(getActivity())                
-	                .setTitle(getString(R.string.wybierz_zakres_dat))
-	                .setView(v)
-	                .setPositiveButton(R.string.wybierz,
-	                    new DialogInterface.OnClickListener() {
-	                        public void onClick(DialogInterface dialog, int whichButton) 
-	                        {                          
-	                	    	Calendar kalendarz_poczatek = przygotujKalendarzPoczatek();
-	                	        Calendar kalendarz_koniec = przygotujKalendarzKoniec();
-	                	        notifyYesButton(kalendarz_poczatek, kalendarz_koniec);
-	                	        
-	                        }
-	                    }
-	                )
-	                .setNegativeButton(R.string.anuluj,
-	                    new DialogInterface.OnClickListener() {
-	                        public void onClick(DialogInterface dialog, int whichButton) {
-
-	                        }
-	                    }
-	                )
-	                .create();
-	    }//oncreatedialog
-	    
-	    private Calendar przygotujKalendarzPoczatek()
-	    {
-	    	Calendar kalendarz_poczatek = Calendar.getInstance();
-	        int rok_poczatek;
-	        int miesiac_poczatek;
-	        int dzien_poczatek;
-
-	        rok_poczatek = wybor_poczatek.getYear();
-	        miesiac_poczatek=wybor_poczatek.getMonth();
-	        dzien_poczatek=wybor_poczatek.getDayOfMonth();
-
-	        kalendarz_poczatek.set(rok_poczatek, miesiac_poczatek, dzien_poczatek);
-
-	        return kalendarz_poczatek;
-
-	    }//kalendarzpoczatek
-
-	    private Calendar przygotujKalendarzKoniec()
-	    {
-	        Calendar kalendarz_koniec = Calendar.getInstance();
-	        int rok_koniec;
-	        int miesiac_koniec;
-	        int dzien_koniec;
-
-	        rok_koniec=wybor_koniec.getYear();
-	        miesiac_koniec=wybor_koniec.getMonth();
-	        dzien_koniec=wybor_koniec.getDayOfMonth();
-
-	        kalendarz_koniec.set(rok_koniec, miesiac_koniec, dzien_koniec);
-	        kalendarz_koniec.add(Calendar.HOUR_OF_DAY, 23);
-	        kalendarz_koniec.add(Calendar.MINUTE, 55);
-	        return kalendarz_koniec;
-
-	    }//kalendarzkoniec
 
 
-	
-	
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
+
+
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+        LayoutInflater factory = LayoutInflater.from(getActivity());
+        final View v = factory.inflate(R.layout.wybor_daty_dialog_fragment, null);
+
+        wybor_poczatek = (DatePicker) v.findViewById(R.id.datePickerPoczatek);
+        wybor_poczatek.setCalendarViewShown(false);
+
+        wybor_koniec = (DatePicker) v.findViewById(R.id.datePickerKoniec);
+        wybor_koniec.setCalendarViewShown(false);
+
+
+        return new AlertDialog.Builder(getActivity())
+                .setTitle(getString(R.string.wybierz_zakres_dat))
+                .setView(v)
+                .setPositiveButton(R.string.wybierz,
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                Calendar kalendarz_poczatek = przygotujKalendarzPoczatek();
+                                Calendar kalendarz_koniec = przygotujKalendarzKoniec();
+                                notifyYesButton(kalendarz_poczatek, kalendarz_koniec);
+
+                            }
+                        }
+                )
+                .setNegativeButton(R.string.anuluj,
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int whichButton) {
+
+                            }
+                        }
+                )
+                .create();
+    }//oncreatedialog
+
+    private Calendar przygotujKalendarzPoczatek() {
+        Calendar kalendarz_poczatek = Calendar.getInstance();
+        int rok_poczatek;
+        int miesiac_poczatek;
+        int dzien_poczatek;
+
+        rok_poczatek = wybor_poczatek.getYear();
+        miesiac_poczatek = wybor_poczatek.getMonth();
+        dzien_poczatek = wybor_poczatek.getDayOfMonth();
+
+        kalendarz_poczatek.set(rok_poczatek, miesiac_poczatek, dzien_poczatek);
+
+        return kalendarz_poczatek;
+
+    }//kalendarzpoczatek
+
+    private Calendar przygotujKalendarzKoniec() {
+        Calendar kalendarz_koniec = Calendar.getInstance();
+        int rok_koniec;
+        int miesiac_koniec;
+        int dzien_koniec;
+
+        rok_koniec = wybor_koniec.getYear();
+        miesiac_koniec = wybor_koniec.getMonth();
+        dzien_koniec = wybor_koniec.getDayOfMonth();
+
+        kalendarz_koniec.set(rok_koniec, miesiac_koniec, dzien_koniec);
+        kalendarz_koniec.add(Calendar.HOUR_OF_DAY, 23);
+        kalendarz_koniec.add(Calendar.MINUTE, 55);
+        return kalendarz_koniec;
+
+    }//kalendarzkoniec
+
+
 }
