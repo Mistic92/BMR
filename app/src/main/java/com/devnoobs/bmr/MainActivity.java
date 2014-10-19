@@ -85,6 +85,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener, AdL
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarGlowny);
         if (toolbar != null) {
             // setActionBar(toolbar);
+           // setActionBar(toolbar);
         }
 
 
