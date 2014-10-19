@@ -122,12 +122,11 @@
     <string name="informacja_szczegoly">The result will be automatically \ n updated after returning \ n to the main window.</string>
 
     
-    <!-- NIE TLUMACZYC, DON'T TRANSLATE NAZWY DLA SHAREDPREFS -->
+    <!-- NIE TLUMACZYC, DO NOT TRANSLATE, NAZWY DLA SHAREDPREFS, NAMES FOR SHAREDPREFS -->
     <string name="shared_waga">Waga(kg)</string>
     <string name="title_activity_szczegoly_wyniku">Szczegóły wyniku</string>
     <string name="action_settings">Settings</string>
     <string name="appPreferences">com.devnoobs.bmr.appPreferences</string>
     <string name="imperial">imperial</string>
-    
-
+    <string name="ostatniZakres">ostatniZakres</string>
 </resources>

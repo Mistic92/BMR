@@ -11,13 +11,14 @@
 package com.devnoobs.bmr;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -49,7 +50,7 @@ import com.google.analytics.tracking.android.EasyTracker;
 
 @SuppressLint("NewApi")
 
-public class MainActivity extends FragmentActivity implements ActionBar.TabListener, AdListener,
+public class MainActivity extends Activity implements ActionBar.TabListener, AdListener,
         IReklamy {
 
     /**
@@ -211,7 +212,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction tran = fragmentManager.beginTransaction();
-        tran.setCustomAnimations(R.anim.abc_slide_in_bottom, R.anim.abc_slide_out_bottom);
+       // tran.setCustomAnimations(R.anim.abc_slide_in_bottom, R.anim.abc_slide_out_bottom);
         if (position == 0) {
             Fragment bmr = (Fragment) new FragmentBMR();
 

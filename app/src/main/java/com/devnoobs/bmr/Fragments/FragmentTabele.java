@@ -24,6 +24,7 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -163,6 +164,7 @@ public class FragmentTabele extends Fragment implements OnClickListener,
         //naprawic refresh
         //wczytajTabele(7);
         //dodaj_wynik.setOnClickListener(this);
+        //TODO po longpress z wybranej daty przeskakuje na tydzien
         ListaWynikow.setOnItemClickListener(this);
         ListaWynikow.setOnItemLongClickListener(this);
 
@@ -304,7 +306,7 @@ public class FragmentTabele extends Fragment implements OnClickListener,
         //else
         //{
             /*
-		
+
 			SzczegolyWynikuActivity swa = new SzczegolyWynikuActivity();  
 			Intent intent = new Intent(getActivity(), swa.getClass());
 			swa.dodajListener(this);
@@ -327,6 +329,14 @@ public class FragmentTabele extends Fragment implements OnClickListener,
     }
 
 
+    /**
+     * Spinner do wybierania zakresu
+     *
+     * @param parent
+     * @param view
+     * @param pos
+     * @param id
+     */
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int pos,
                                long id) {
@@ -389,7 +399,8 @@ public class FragmentTabele extends Fragment implements OnClickListener,
         Intent intent = new Intent(getActivity(), swa.getClass());
         swa.dodajListener(this);
         intent.putExtra("id", w.getWynik_id());
-        startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity()).toBundle());
+        startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity())
+                .toBundle());
 
     }
 
@@ -397,7 +408,7 @@ public class FragmentTabele extends Fragment implements OnClickListener,
     public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
         Wynik w = (Wynik) arg0.getItemAtPosition(position);
         showDialogUsuwanie(w.getWynik_id());
-        wczytajTydzien();
+       // wczytajTydzien();
         return false;
     }
 
@@ -408,6 +419,25 @@ public class FragmentTabele extends Fragment implements OnClickListener,
         ustawTekstZakresu(poczatek, koniec);
         // zmienAdapter(poczatek, koniec);
     }
+
+//    /**
+//     * Ustawia ostatni zapisany zakres dni
+//     */
+//    private void ustawOstatniZakresDni() {
+//
+//    }
+//
+//
+//    private void ustawSharedPref(String tekst)
+//    {
+//        SharedPreferences.Editor editor = sharedPref.edit();
+//        try {
+//            editor.putString(getString(R.string.ostatniZakres),  tekst);
+//            editor.apply();
+//        } catch (Exception e) {
+//            Log.e("com.devnoobs.bmr", "", e.fillInStackTrace());
+//        }
+//    }
 
     private void wczytajTydzien() {
         Calendar koniec = Calendar.getInstance();

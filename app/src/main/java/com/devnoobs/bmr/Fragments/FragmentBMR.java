@@ -100,7 +100,7 @@ public class FragmentBMR extends Fragment implements TextWatcher,
 
     private TextView[] tablicaPolBMI = new TextView[8];
 
-    private CardView linearBrakDanych;// = (LinearLayout) getActivity().findViewById(R.id
+    private LinearLayout linearBrakDanych;// = (LinearLayout) getActivity().findViewById(R.id
     // .linearLayoutBrakuDanychWynikow);
     private LinearLayout linearWynikow;// = (LinearLayout) getActivity().findViewById(R.id
     // .linearLayoutWynikow);
@@ -145,8 +145,7 @@ public class FragmentBMR extends Fragment implements TextWatcher,
             Log.e("com.devnoobs.bmr", "", e.fillInStackTrace());
         }
 
-        this.linearBrakDanych = (android.support.v7.widget.CardView) rootView.findViewById(R.id
-                .linearLayoutBrakuDanychWynikow);
+        this.linearBrakDanych = (LinearLayout) rootView.findViewById(R.id.linearLayoutBrakuDanychWynikow);
         this.linearWynikow = (LinearLayout) rootView.findViewById(R.id.linearLayoutWynikow);
 
         pole_wiek = (EditText) rootView.findViewById(R.id.EditTextWiek);
