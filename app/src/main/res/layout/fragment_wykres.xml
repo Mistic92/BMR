@@ -52,7 +52,7 @@
 
             <TextView
                 android:id="@+id/textzakreswykresu"
-                style="@style/tekst_bmr"
+                style="@style/bmr_teksty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"

@@ -11,18 +11,16 @@
 package com.devnoobs.bmr;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.res.Configuration;
-import android.os.Build;
 import android.os.Bundle;
-
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -30,9 +28,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.devnoobs.bmr.Fragments.FragmentBMR;
@@ -40,17 +38,16 @@ import com.devnoobs.bmr.Fragments.FragmentTabele;
 import com.devnoobs.bmr.Fragments.FragmentUstawienia;
 import com.devnoobs.bmr.Fragments.FragmentWykres;
 import com.devnoobs.bmr.Interfejsy.IReklamy;
-import com.google.ads.Ad;
-import com.google.ads.AdListener;
-import com.google.ads.AdRequest;
-import com.google.ads.AdRequest.ErrorCode;
-import com.google.ads.AdView;
-import com.google.analytics.tracking.android.EasyTracker;
+import com.google.android.gms.analytics.GoogleAnalytics;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
+import java.util.HashMap;
 
 
 @SuppressLint("NewApi")
 
-public class MainActivity extends Activity implements ActionBar.TabListener, AdListener,
+public class MainActivity extends ActionBarActivity implements ActionBar.TabListener,
         IReklamy {
 
     /**
@@ -63,7 +60,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener, AdL
      */
     //private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
-    private AdView adView;
+    //private AdView adView;
     private ActionBar.Tab tab;
     private FragmentUstawienia fu;
     //Tracker tracker ;
@@ -75,19 +72,30 @@ public class MainActivity extends Activity implements ActionBar.TabListener, AdL
     private CharSequence mDrawerTitle;
     private CharSequence mTitle;
     private String[] nazwy_menu;
+    private static final String PROPERTY_ID = "UA-18780283-7";
+    //toolbar
+
+    ImageView menuIcon;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onCreate(final Bundle savedInstanceState) {
         getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
+        super.onCreate(savedInstanceState);
+        //final View view = findViewById(R.id.drawer_layout);
         setContentView(R.layout.activity_main);
+        Toolbar toolbar;
+        toolbar = (Toolbar) findViewById(R.id.toolbarGlowny);
+        toolbar.setNavigationIcon(R.drawable.ic_menu_white_18dp);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarGlowny);
         if (toolbar != null) {
-            // setActionBar(toolbar);
-           // setActionBar(toolbar);
+            setSupportActionBar(toolbar);
         }
+        //  toolbar.setLogo(R.drawable.ic_menu_white_18dp);
 
+
+        Tracker t = (getTracker(TrackerName.APP_TRACKER));
+        t.setScreenName("Home");
+        t.send(new HitBuilders.AppViewBuilder().build());
 
         mTitle = mDrawerTitle = getTitle();
         nazwy_menu = getResources().getStringArray(R.array.tabela_menu);
@@ -100,26 +108,6 @@ public class MainActivity extends Activity implements ActionBar.TabListener, AdL
         mDrawerList.setAdapter(new ArrayAdapter<String>(this,
                 R.layout.drawer_list_item, nazwy_menu));
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
-
-        // enable ActionBar app icon to behave as action to toggle nav drawer
-//        getActionBar().setDisplayHomeAsUpEnabled(true);
-//        getActionBar().setHomeButtonEnabled(true);
-
-        // ActionBarDrawerToggle ties together the the proper interactions
-        // between the sliding drawer and the action bar app icon
-//        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.rozwin_drawer,
-// R.string.zwin_drawer)
-//        {
-//            public void onDrawerClosed(View view) {
-//                // getActionBar().setTitle(mTitle);
-//                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
-//            }
-//
-//            public void onDrawerOpened(View drawerView) {
-//                // getActionBar().setTitle(mDrawerTitle);
-//                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
-//            }
-//        };
 
 
         mDrawerToggle = new ActionBarDrawerToggle(
@@ -146,13 +134,31 @@ public class MainActivity extends Activity implements ActionBar.TabListener, AdL
             selectItem(0);
         }
 
-
-        //  adView = (AdView) findViewById(R.id.adView);
-        //   adView.loadAd(new AdRequest());
-
-
     }//oncreate
 
+
+    public enum TrackerName {
+        APP_TRACKER, // Tracker used only in this app.
+        // ECOMMERCE_TRACKER, // Tracker used by all ecommerce transactions from a company.
+    }
+
+    public HashMap<TrackerName, Tracker> mTrackers = new HashMap<TrackerName, Tracker>();
+
+//todo skrocic to bo tylko apptracker uzywam
+
+    /**
+     *
+     * @param trackerId
+     * @return
+     */
+    public synchronized Tracker getTracker(TrackerName trackerId) {
+        if (!mTrackers.containsKey(trackerId)) {
+            GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
+            Tracker t = analytics.newTracker(PROPERTY_ID) ;
+            mTrackers.put(trackerId, t);
+        }
+        return mTrackers.get(trackerId);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -213,7 +219,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener, AdL
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction tran = fragmentManager.beginTransaction();
-       // tran.setCustomAnimations(R.anim.abc_slide_in_bottom, R.anim.abc_slide_out_bottom);
+        // tran.setCustomAnimations(R.anim.abc_slide_in_bottom, R.anim.abc_slide_out_bottom);
         if (position == 0) {
             Fragment bmr = (Fragment) new FragmentBMR();
 
@@ -277,20 +283,6 @@ public class MainActivity extends Activity implements ActionBar.TabListener, AdL
     }
 
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        EasyTracker.getInstance(this).activityStart(this);  // Add this method.
-
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        EasyTracker.getInstance(this).activityStop(this);  // Add this method.
-    }
-
-
 //    @Override
 //    public void onTabSelected(Tab tab,
 //                              FragmentTransaction fragmentTransaction) {
@@ -310,126 +302,91 @@ public class MainActivity extends Activity implements ActionBar.TabListener, AdL
 //                                FragmentTransaction fragmentTransaction) {
 //    }
 
-	
 
-/*
-    /**
-	 * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
-	 * one of the sections/tabs/pages.
-	 
-	public class SectionsPagerAdapter extends FragmentPagerAdapter {
-
-		public SectionsPagerAdapter(FragmentManager fm) {
-			super(fm);
-		}
-
-		/**
-		 * W zale�no�ci od pozycji pokazuje dany fragment
-		 
-		@Override
-		public Fragment getItem(int position) {
-			
- 
-			switch(position)
-			{
-			case 0:
-				//tracker.send(MapBuilder.createAppView().set(Fields.SCREEN_NAME,
-				"Kalkulator").build());
-				return FragmentBMR.init(position);
-			case 1:
-				//tracker.send(MapBuilder.createAppView().set(Fields.SCREEN_NAME,
-				"Wyniki").build());
-				return FragmentTabele.init(position);
-			case 2: 
-				//tracker.send(MapBuilder.createAppView().set(Fields.SCREEN_NAME,
-				"Wykresy").build());
-				return FragmentWykres.init(position);
-			case 3:
-				//tracker.send(MapBuilder.createAppView().set(Fields.SCREEN_NAME,
-				"Ustawienia").build());
-				return fu.init(position);
-			}
-			return null;
-
-		}
- 
-		@Override
-		public int getCount() {
-			// Show 4 total pages.
-			return 4;
-		}
-
-	}//class section adapter
-
-	*/
+    //    @Override
+//    public void onDismissScreen(Ad arg0) {
+//        // TODO Auto-generated method stub
+//
+//    }
+//
+//
+//    @Override
+//    public void onFailedToReceiveAd(Ad arg0, ErrorCode arg1) {
+//        //adView.setVisibility(View.GONE);
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+//            // super.setTheme(android.R.style.Theme_Holo_Light_NoActionBar_TranslucentDecor);
+//            // Window w = getWindow();
+//
+//            //    w.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION,
+//            // WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+//        }
+//
+//    }
+//
+//
+//    @Override
+//    public void onLeaveApplication(Ad arg0) {
+//
+//    }
+//
+//
+//    @Override
+//    public void onPresentScreen(Ad arg0) {
+//        // TODO Auto-generated method stub
+//
+//    }
+//
+//
+//    @Override
+//    public void onReceiveAd(Ad arg0) {
+//
+//    }
+//
+//
 
     @Override
-    public void onDismissScreen(Ad arg0) {
-        // TODO Auto-generated method stub
+    protected void onStart() {
+        super.onStart();
+        GoogleAnalytics.getInstance(MainActivity.this).reportActivityStart(this);
+        //Get an Analytics tracker to report app starts & uncaught exceptions etc.
 
     }
 
 
     @Override
-    public void onFailedToReceiveAd(Ad arg0, ErrorCode arg1) {
-        //adView.setVisibility(View.GONE);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            // super.setTheme(android.R.style.Theme_Holo_Light_NoActionBar_TranslucentDecor);
-            // Window w = getWindow();
-
-            //    w.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION,
-            // WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-        }
-
+    protected void onStop() {
+        super.onStop();
+        //Stop the analytics tracking
+        GoogleAnalytics.getInstance(MainActivity.this).reportActivityStop(this);
     }
-
-
-    @Override
-    public void onLeaveApplication(Ad arg0) {
-
-    }
-
-
-    @Override
-    public void onPresentScreen(Ad arg0) {
-        // TODO Auto-generated method stub
-
-    }
-
-
-    @Override
-    public void onReceiveAd(Ad arg0) {
-
-    }
-
 
     @Override
     public void zmienReklamy(boolean stan) {
 
         //Toast toast = Toast.makeText(getApplicationContext(), "test",5 );
         //toast.show();
-
-        if (stan == true) {
-            adView.setVisibility(View.VISIBLE);
-            adView.loadAd(new AdRequest());
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                Window w = getWindow(); // in Activity's onCreate() for instance
-                w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-                // w.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION,
-                // WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-                //w.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
-                // WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            }
-        } else {
-            adView.setVisibility(View.GONE);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                super.setTheme(android.R.style.Theme_Holo_Light_NoActionBar_TranslucentDecor);
-                Window w = getWindow();
-                w.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION,
-                        WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-            }
-
-        }
+//
+//        if (stan == true) {
+//            adView.setVisibility(View.VISIBLE);
+//            adView.loadAd(new AdRequest());
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+//                Window w = getWindow(); // in Activity's onCreate() for instance
+//                w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+//                // w.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION,
+//                // WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+//                //w.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
+//                // WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+//            }
+//        } else {
+//            adView.setVisibility(View.GONE);
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+//                super.setTheme(android.R.style.Theme_Holo_Light_NoActionBar_TranslucentDecor);
+//                Window w = getWindow();
+//                w.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION,
+//                        WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+//            }
+//
+//        }
 
     }
 

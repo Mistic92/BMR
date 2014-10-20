@@ -20,7 +20,6 @@ import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -40,6 +39,8 @@ import com.devnoobs.bmr.Baza.WynikiDataSource;
 import com.devnoobs.bmr.Dane;
 import com.devnoobs.bmr.Kalkulator;
 import com.devnoobs.bmr.R;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 public class FragmentBMR extends Fragment implements TextWatcher,
         OnCheckedChangeListener, OnClickListener {
@@ -137,6 +138,23 @@ public class FragmentBMR extends Fragment implements TextWatcher,
 
         wds = new WynikiDataSource(getActivity());
 
+        przygotowanieWidoku(rootView);
+
+        // adView = (AdView) rootView.findViewById(R.id.adView);
+        // adView.loadAd(new AdRequest());
+
+        AdView mAdView = (AdView) rootView.findViewById(R.id.adView);
+      //  mAdView.setAdSize(AdSize.SMART_BANNER);
+       // mAdView.setAdUnitId("ca-app-pub-6410364990892893/1240794727");
+        AdRequest adRequest = new AdRequest.Builder().build();
+        if (mAdView != null)
+            mAdView.loadAd(adRequest);
+
+        return rootView;
+    }
+
+
+    private void przygotowanieWidoku(View rootView) {
         try {
             sharedPref = getActivity().getSharedPreferences(
                     getString(R.string.appPreferences),
@@ -145,7 +163,8 @@ public class FragmentBMR extends Fragment implements TextWatcher,
             Log.e("com.devnoobs.bmr", "", e.fillInStackTrace());
         }
 
-        this.linearBrakDanych = (LinearLayout) rootView.findViewById(R.id.linearLayoutBrakuDanychWynikow);
+        this.linearBrakDanych = (LinearLayout) rootView.findViewById(R.id
+                .linearLayoutBrakuDanychWynikow);
         this.linearWynikow = (LinearLayout) rootView.findViewById(R.id.linearLayoutWynikow);
 
         pole_wiek = (EditText) rootView.findViewById(R.id.EditTextWiek);
@@ -262,11 +281,6 @@ public class FragmentBMR extends Fragment implements TextWatcher,
         radioGroupPlec.setOnCheckedChangeListener(this);
         radioGroupAktywnosc.setOnCheckedChangeListener(this);
         dodaj_wynik.setOnClickListener(this);
-
-        // adView = (AdView) rootView.findViewById(R.id.adView);
-        // adView.loadAd(new AdRequest());
-
-        return rootView;
     }
 
     /**
@@ -298,8 +312,6 @@ public class FragmentBMR extends Fragment implements TextWatcher,
     /**
      * Sprawdzenie warunkow dla obu listenerow. Sprazdzam czy dane sa realne i w
      * zaleznosci od tego zwraca boolean.
-     *
-     * @return
      */
     private boolean sprawdzeniePolTekstowych() {
         // TODO jesli brak danych to zamiast wynikow pojawia sie tekst o braku
@@ -312,7 +324,7 @@ public class FragmentBMR extends Fragment implements TextWatcher,
                 wiek = Integer.parseInt(pole_wiek.getText().toString());
             } catch (NumberFormatException e) {
                 /*
-				 * editor.putInt(getString(R.string.text_wiek), 0);
+                 * editor.putInt(getString(R.string.text_wiek), 0);
 				 * editor.apply();
 				 */
                 wynik = false;

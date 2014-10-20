@@ -25,26 +25,23 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
 
-    <!-- Moj actionbar -->
-    <style name="CustomActionBar">
-    </style>
 
     <!--Styl tekstow w kalkulatorze, teksty przy opisach typu wybierz plec, wiek, aktywnosc-->
-    <style name="tekst_bmr" parent="@android:style/TextAppearance.Medium">
+    <style name="bmr_teksty" parent="@android:style/TextAppearance.Medium">
         <item name="android:textColor">#5C5C5C</item>
-        <item name="android:textSize">22sp</item>
+        <item name="android:textSize">27sp</item>
         <item name="android:typeface">sans</item>
     </style>
 
     <!--Styl tekstow w kalkulatorze, przy tekstach typu "wybierz plec".-->
-    <style name="tekst_bmr_wybierz_cos" parent="tekst_bmr">
-        <item name="android:textSize">25sp</item>
+    <style name="bmr_inne_teksty" parent="bmr_teksty">
+        <item name="android:textSize">23sp</item>
     </style>
 
     <!--Styl edittextow w kalkulatorze-->
-    <style name="tekst_bmr_edittext" parent="@android:style/TextAppearance.Small">
+    <style name="bmr_edittext" parent="@android:style/TextAppearance.Small">
         <item name="android:textColor">#454545</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:typeface">sans</item>
     </style>
 

@@ -76,7 +76,7 @@
 
                         <TextView
                             android:id="@+id/textViewWaga"
-                            style="@style/tekst_bmr"
+                            style="@style/bmr_teksty"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="15dp"
@@ -100,7 +100,7 @@
 
                         <TextView
                             android:id="@+id/textViewBMI"
-                            style="@style/tekst_bmr"
+                            style="@style/bmr_teksty"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="15dp"
@@ -165,7 +165,7 @@
             <!-- Informacja -->
             <TextView
                 android:id="@+id/textViewInformacjaSzczegoly"
-                style="@style/tekst_bmr"
+                style="@style/bmr_teksty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="7dp"

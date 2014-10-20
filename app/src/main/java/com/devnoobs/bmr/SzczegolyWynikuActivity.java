@@ -10,17 +10,14 @@
 
 package com.devnoobs.bmr;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.transition.Explode;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,10 +28,7 @@ import android.widget.EditText;
 
 import com.devnoobs.bmr.Baza.WynikiDataSource;
 import com.devnoobs.bmr.Interfejsy.IRefreshTabeli;
-import com.google.analytics.tracking.android.EasyTracker;
-import com.google.analytics.tracking.android.Fields;
-import com.google.analytics.tracking.android.GoogleAnalytics;
-import com.google.analytics.tracking.android.Tracker;
+
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -89,11 +83,11 @@ public class SzczegolyWynikuActivity extends Activity implements TextWatcher, On
 
         c = this;
 
-        Tracker tracker = GoogleAnalytics.getInstance(this).getTracker("UA-18780283-6");
-        HashMap<String, String> hitParameters = new HashMap<String, String>();
-        hitParameters.put(Fields.HIT_TYPE, "appview");
-        hitParameters.put(Fields.SCREEN_NAME, "com.devnoobs.bmr.SzczegolyWynikuActivity");
-        tracker.send(hitParameters);
+//        Tracker tracker = GoogleAnalytics.getInstance(this).getTracker("UA-18780283-6");
+//        HashMap<String, String> hitParameters = new HashMap<String, String>();
+//        hitParameters.put(Fields.HIT_TYPE, "appview");
+//        hitParameters.put(Fields.SCREEN_NAME, "com.devnoobs.bmr.SzczegolyWynikuActivity");
+//        tracker.send(hitParameters);
 
     }//oncreate
 
@@ -101,7 +95,7 @@ public class SzczegolyWynikuActivity extends Activity implements TextWatcher, On
     public void onStart() {
         super.onStart();
         // GoogleAnalytics.getInstance(this).getTracker("UA-18780283-6");
-        EasyTracker.getInstance(this).activityStart(this);  // Add this method.
+//        EasyTracker.getInstance(this).activityStart(this);  // Add this method.
        /* tracker.(MapBuilder.createAppView().set(Fields.SCREEN_NAME, "Home Screen").build());
 
 
@@ -114,7 +108,7 @@ public class SzczegolyWynikuActivity extends Activity implements TextWatcher, On
     @Override
     public void onStop() {
         super.onStop();
-        EasyTracker.getInstance(this).activityStop(this);  // Add this method.
+//        EasyTracker.getInstance(this).activityStop(this);  // Add this method.
     }
 
 

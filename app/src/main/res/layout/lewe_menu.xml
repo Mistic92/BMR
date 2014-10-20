@@ -10,22 +10,15 @@
   ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   -->
 
-<android.support.v7.widget.Toolbar
-    android:id="@+id/toolbarGlowny"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/toolbar"
-    android:minHeight="?attr/actionBarSize"
-    >
+<ListView xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/left_drawer"
+              android:layout_width="240dp"
+              android:layout_height="match_parent"
+              android:layout_gravity="start"
+              android:background="#eeeeee"
+              android:choiceMode="singleChoice"
+              android:divider="@color/divider"
+              android:dividerHeight="1dp"
+              android:elevation="2dp">
 
-    <!--<ImageView-->
-        <!--android:id="@+id/menuIcon"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_gravity="center_vertical"-->
-        <!--android:contentDescription="@string/app_name"-->
-        <!--android:src="@drawable/ic_menu_white_24dp"-->
-        <!--android:clickable="true"-->
-        <!--/>-->
-</android.support.v7.widget.Toolbar>
+</ListView>

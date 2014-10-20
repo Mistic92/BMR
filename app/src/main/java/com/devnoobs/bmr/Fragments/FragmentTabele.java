@@ -11,7 +11,6 @@
 package com.devnoobs.bmr.Fragments;
 
 import android.annotation.TargetApi;
-import android.app.ActivityOptions;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
@@ -22,9 +21,6 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityOptionsCompat;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -81,10 +77,6 @@ public class FragmentTabele extends Fragment implements OnClickListener,
     private static Spinner spinner;
     private static ArrayAdapter<CharSequence> adapter;
 
-
-    private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
 
     private int fragVal;
 
@@ -408,7 +400,7 @@ public class FragmentTabele extends Fragment implements OnClickListener,
     public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
         Wynik w = (Wynik) arg0.getItemAtPosition(position);
         showDialogUsuwanie(w.getWynik_id());
-       // wczytajTydzien();
+        // wczytajTydzien();
         return false;
     }
 

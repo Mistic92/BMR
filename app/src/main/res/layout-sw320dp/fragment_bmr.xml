@@ -21,13 +21,13 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+
         >
-
-
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
+            android:paddingLeft="5dp"
             android:orientation="vertical"
             >
 
@@ -43,47 +43,92 @@
                 android:layout_marginBottom="5dp"
                 android:text="@string/title_bmr"/>
             <!-- PLEC -->
+            <!--<LinearLayout-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
 
-            <TextView
-                android:id="@+id/textViewWybierzPlec"
-                style="@style/tekst_bmr_wybierz_cos"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="@string/text_wybierz_plec"/>
+                <!--<TextView-->
+                    <!--android:id="@+id/textViewWybierzPlec"-->
+                    <!--style="@style/tekst_bmr_wybierz_cos"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="center_vertical"-->
+                    <!--android:layout_marginRight="5dp"-->
+                    <!--android:gravity="left"-->
+                    <!--android:text="@string/text_wybierz_plec"/>-->
 
-            <RadioGroup
-                android:id="@+id/radioGroupPlec"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:orientation="horizontal">
+                <!--<RadioGroup-->
+                    <!--android:id="@+id/radioGroupPlec"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:gravity="left"-->
+                    <!--android:orientation="vertical">-->
 
-                <RadioButton
-                    android:id="@+id/radio_plec0"
-                    style="@style/tekst_bmr"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="true"
-                    android:text="@string/text_mezczyzna"/>
+                    <!--<RadioButton-->
+                        <!--android:id="@+id/radio_plec0"-->
+                        <!--style="@style/tekst_bmr"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:checked="true"-->
+                        <!--android:text="@string/text_mezczyzna"/>-->
 
-                <RadioButton
-                    android:id="@+id/radio_plec1"
-                    style="@style/tekst_bmr"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/text_kobieta"/>
-            </RadioGroup>
+                    <!--<RadioButton-->
+                        <!--android:id="@+id/radio_plec1"-->
+                        <!--style="@style/tekst_bmr"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="@string/text_kobieta"/>-->
+                <!--</RadioGroup>-->
+            <!--</LinearLayout>-->
 
             <TableLayout
-                android:layout_width="180dp"
-                android:layout_height="fill_parent"
-                android:layout_gravity="center_horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
                 android:layout_marginTop="10dp"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
                 android:shrinkColumns="*"
                 android:stretchColumns="*">
+
+
+                <!-- PLEC -->
+                <TableRow>
+
+                    <TextView
+                        android:id="@+id/textViewWybierzPlec"
+                        style="@style/bmr_teksty"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="5dp"
+                        android:gravity="left"
+                        android:text="@string/text_wybierz_plec"/>
+
+                    <RadioGroup
+                        android:id="@+id/radioGroupPlec"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="left"
+                        android:orientation="vertical">
+
+                        <RadioButton
+                            android:id="@+id/radio_plec0"
+                            style="@style/bmr_inne_teksty"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:text="@string/text_mezczyzna"/>
+
+                        <RadioButton
+                            android:id="@+id/radio_plec1"
+                            style="@style/bmr_inne_teksty"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/text_kobieta"/>
+                    </RadioGroup>
+                </TableRow>
 
                 <!-- WIEK -->
 
@@ -91,17 +136,15 @@
 
                     <TextView
                         android:id="@+id/textViewWiek"
-                        style="@style/tekst_bmr"
+                        style="@style/bmr_teksty"
                         android:layout_width="22dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginBottom="10dp"
                         android:text="@string/text_wiek"/>
                     <!-- ustawienei dla wlasciwie calej tabeli do wprowadzania -->
 
                     <EditText
                         android:id="@+id/EditTextWiek"
-                        style="@style/tekst_bmr_edittext"
+                        style="@style/bmr_edittext"
                         android:layout_width="60dp"
                         android:layout_height="wrap_content"
                         android:ems="10"
@@ -116,16 +159,14 @@
 
                     <TextView
                         android:id="@+id/textViewWaga"
-                        style="@style/tekst_bmr"
+                        style="@style/bmr_teksty"
                         android:layout_width="10dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginBottom="10dp"
                         android:text="@string/text_waga"/>
 
                     <EditText
                         android:id="@+id/EditTextWaga"
-                        style="@style/tekst_bmr_edittext"
+                        style="@style/bmr_edittext"
                         android:layout_width="10dp"
                         android:layout_height="wrap_content"
                         android:ems="10"
@@ -140,16 +181,14 @@
 
                     <TextView
                         android:id="@+id/textViewWzrost"
-                        style="@style/tekst_bmr"
+                        style="@style/bmr_teksty"
                         android:layout_width="10dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginBottom="10dp"
                         android:text="@string/text_wzrost"/>
 
                     <EditText
                         android:id="@+id/EditTextWzrost"
-                        style="@style/tekst_bmr_edittext"
+                        style="@style/bmr_edittext"
                         android:layout_width="10dp"
                         android:layout_height="wrap_content"
                         android:ems="10"
@@ -163,10 +202,10 @@
 
             <TextView
                 android:id="@+id/textViewWybierzAktywnosc"
-                style="@style/tekst_bmr_wybierz_cos"
+                style="@style/bmr_teksty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
+
                 android:text="@string/text_wybierz_aktywnosc"/>
 
             <RadioGroup
@@ -177,7 +216,7 @@
 
                 <RadioButton
                     android:id="@+id/radio0"
-                    style="@style/tekst_bmr"
+                    style="@style/bmr_inne_teksty"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
@@ -185,14 +224,14 @@
 
                 <RadioButton
                     android:id="@+id/radio1"
-                    style="@style/tekst_bmr"
+                    style="@style/bmr_inne_teksty"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/typ_aktywnosc_lekka"/>
 
                 <RadioButton
                     android:id="@+id/radio2"
-                    style="@style/tekst_bmr"
+                    style="@style/bmr_inne_teksty"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
@@ -200,7 +239,7 @@
 
                 <RadioButton
                     android:id="@+id/radio3"
-                    style="@style/tekst_bmr"
+                    style="@style/bmr_inne_teksty"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
@@ -208,7 +247,7 @@
 
                 <RadioButton
                     android:id="@+id/radio4"
-                    style="@style/tekst_bmr"
+                    style="@style/bmr_inne_teksty"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
@@ -217,14 +256,14 @@
 
         </LinearLayout>
 
-        <com.google.ads.AdView
+        <com.google.android.gms.ads.AdView
+            xmlns:ads="http://schemas.android.com/apk/res-auto"
             android:id="@+id/adView"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             ads:adSize="SMART_BANNER"
             ads:adUnitId="ca-app-pub-6410364990892893/1240794727"
-            ads:loadAdOnCreate="true"
-            ads:testDevices="TEST_EMULATOR"/>
+        />
 
         <!-- INFO O BRAKU DANYCH DO WYLICZENIA WYNIKU -->
 
@@ -249,7 +288,7 @@
 
             <TextView
                 android:id="@+id/textViewBrakDanychDoWyniku"
-                style="@style/tekst_bmr"
+                style="@style/bmr_teksty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -283,7 +322,7 @@
 
             <TextView
                 android:id="@+id/textTwojWynikBmi"
-                style="@style/tekst_bmr"
+                style="@style/bmr_teksty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -410,7 +449,7 @@
 
             <TextView
                 android:id="@+id/textTwojWynikBmr"
-                style="@style/tekst_bmr"
+                style="@style/bmr_teksty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -430,7 +469,7 @@
 
             <TextView
                 android:id="@+id/text_info_Kalorie"
-                style="@style/tekst_bmr"
+                style="@style/bmr_teksty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -450,7 +489,7 @@
 
             <TextView
                 android:id="@+id/text_info_Weglowodany"
-                style="@style/tekst_bmr"
+                style="@style/bmr_teksty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -487,7 +526,7 @@
 
             <TextView
                 android:id="@+id/text_info_Bialko"
-                style="@style/tekst_bmr"
+                style="@style/bmr_teksty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -524,7 +563,7 @@
 
             <TextView
                 android:id="@+id/text_info_Tluszcz"
-                style="@style/tekst_bmr"
+                style="@style/bmr_teksty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
