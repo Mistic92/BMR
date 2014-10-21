@@ -20,7 +20,7 @@
     <bool name="ga_reportUncaughtExceptions">true</bool>
 
     <string name="ga_appName">BMR</string>
-    <string name="ga_appVersion">1.1.0beta</string>
+    <string name="ga_appVersion">1.0alfa</string>
 
     <!--<bool name="ga_debug">true</bool>-->
 

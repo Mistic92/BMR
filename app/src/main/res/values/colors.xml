@@ -12,10 +12,17 @@
 <resources>
 
     <color name="white">#ffffff</color>
-    <color name="toolbar">#3b50ce</color>
+    <color name="primary">#4e6cef</color>
+    <color name="primary_dark">#3b50ce</color>
+    <color name="accent">#ffa726</color>
+    <!--<color name="navbar"></color>-->
+
     <color name="tloGlowne">#fafafa</color>
     <color name="divider">#969e9e9e</color>
 
+    <color name="przyciski">#FFBB33</color>
+    <color name="edittexty">#5C5C5C</color>
+    <color name="textbmr">#454545</color>
 
     <color name="circle_background">#f2f2f2</color>
     <color name="line_background">#cccccc</color>

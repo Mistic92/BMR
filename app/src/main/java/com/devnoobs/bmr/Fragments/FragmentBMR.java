@@ -13,6 +13,7 @@ package com.devnoobs.bmr.Fragments;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Fragment;
+import android.app.backup.SharedPreferencesBackupHelper;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
@@ -281,6 +282,7 @@ public class FragmentBMR extends Fragment implements TextWatcher,
         radioGroupPlec.setOnCheckedChangeListener(this);
         radioGroupAktywnosc.setOnCheckedChangeListener(this);
         dodaj_wynik.setOnClickListener(this);
+
     }
 
     /**

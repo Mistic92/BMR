@@ -12,10 +12,7 @@
           xmlns:android="http://schemas.android.com/apk/res/android"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:background="?android:attr/activatedBackgroundIndicator"
+          style="@style/leweMenu"
           android:gravity="center_vertical"
           android:minHeight="?android:attr/listPreferredItemHeightSmall"
-          android:paddingLeft="16dp"
-          android:paddingRight="16dp"
-          android:textAppearance="?android:attr/textAppearanceListItemSmall"
-          android:textColor="#5C5C5C"/>
+          />

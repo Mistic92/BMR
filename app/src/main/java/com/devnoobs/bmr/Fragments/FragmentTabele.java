@@ -128,9 +128,9 @@ public class FragmentTabele extends Fragment implements OnClickListener,
         //	spinner = cspin;
         // Create an ArrayAdapter using the string array and a default spinner layout
         adapter = ArrayAdapter.createFromResource(rootView.getContext(),
-                R.array.tabela_zakres, android.R.layout.simple_spinner_item);
+                R.array.tabela_zakres, R.layout.spinner_item);
         //Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(R.layout.spinner_item);
         // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
@@ -456,6 +456,8 @@ public class FragmentTabele extends Fragment implements OnClickListener,
         String tekst = sdf.format(poczatek.getTime()) + " - " + sdf.format(koniec.getTime());
         ;
         tekstZakresu.setText(tekst);
+        tekstZakresu.setTextAppearance(contextFragmentTabele,R.style.tekstZakresuDat);
+
 
     }//ustawtekstzakresu
 
