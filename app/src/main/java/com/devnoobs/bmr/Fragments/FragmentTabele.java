@@ -21,6 +21,9 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -39,7 +42,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.devnoobs.bmr.Baza.WynikiDataSource;
-import com.devnoobs.bmr.CustomAdapterWyniki;
 import com.devnoobs.bmr.CustomSpinner;
 import com.devnoobs.bmr.Interfejsy.IRefreshTabeli;
 import com.devnoobs.bmr.Interfejsy.WyborDadyDialogFragmentListener;
@@ -47,6 +49,7 @@ import com.devnoobs.bmr.R;
 import com.devnoobs.bmr.SzczegolyWynikuActivity;
 import com.devnoobs.bmr.WyborDatyDialogFragment;
 import com.devnoobs.bmr.Wynik;
+import com.devnoobs.bmr.WynikAdapter;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -66,8 +69,9 @@ public class FragmentTabele extends Fragment implements OnClickListener,
     private Button dodaj_wynik;
     private SharedPreferences sharedPref;
 
-    private static ListView ListaWynikow;
+    //private static ListView listaWynikow;
     private BaseAdapter fAdapter;
+    private WynikAdapter wAdapter;
     private Context contextFragmentTabele;
     //	private ImageView refresh_button;
     public static boolean refresh = false;
@@ -77,6 +81,8 @@ public class FragmentTabele extends Fragment implements OnClickListener,
     private static Spinner spinner;
     private static ArrayAdapter<CharSequence> adapter;
 
+    //recycler itp
+    private static RecyclerView mRecyclerView;
 
     private int fragVal;
 
@@ -114,7 +120,14 @@ public class FragmentTabele extends Fragment implements OnClickListener,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_tabele, container, false);
         //dodaj_wynik = (Button) rootView.findViewById(R.id.buttonDodajWynik);
-        ListaWynikow = (ListView) rootView.findViewById(R.id.listViewWyniki);
+       // listaWynikow = (ListView) rootView.findViewById(R.id.listViewWyniki);
+
+
+        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerWyniki);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(contextFragmentTabele));
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+
+
         wds = new WynikiDataSource(getActivity());
         //	refresh_button = (ImageView) rootView.findViewById(R.id.button_tabele_refresh);
         //	refresh_button.setOnClickListener(this);
@@ -127,6 +140,8 @@ public class FragmentTabele extends Fragment implements OnClickListener,
         CustomSpinner cspin = new CustomSpinner(rootView.getContext());
         //	spinner = cspin;
         // Create an ArrayAdapter using the string array and a default spinner layout
+
+
         adapter = ArrayAdapter.createFromResource(rootView.getContext(),
                 R.array.tabela_zakres, R.layout.spinner_item);
         //Specify the layout to use when the list of choices appears
@@ -157,8 +172,9 @@ public class FragmentTabele extends Fragment implements OnClickListener,
         //wczytajTabele(7);
         //dodaj_wynik.setOnClickListener(this);
         //TODO po longpress z wybranej daty przeskakuje na tydzien
-        ListaWynikow.setOnItemClickListener(this);
-        ListaWynikow.setOnItemLongClickListener(this);
+//        listaWynikow.setOnItemClickListener(this);
+//        listaWynikow.setOnItemLongClickListener(this);
+
 
 
         return rootView;
@@ -174,8 +190,10 @@ public class FragmentTabele extends Fragment implements OnClickListener,
     public void wczytajTabele(long poczatek, long koniec) {
 
         ArrayList<Wynik> lista = wds.getData(poczatek, koniec, "DESC");
-        fAdapter = new CustomAdapterWyniki(lista, contextFragmentTabele);
-        ListaWynikow.setAdapter(fAdapter);
+      //  fAdapter = new AdapterWynikow(lista, contextFragmentTabele);
+        wAdapter = new WynikAdapter(lista, R.layout.listview_wynik, contextFragmentTabele);
+       // listaWynikow.setAdapter(fAdapter);
+        mRecyclerView.setAdapter(wAdapter);
     }//wczytajtabele
 
 

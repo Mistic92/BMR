@@ -43,6 +43,7 @@
         android:focusableInTouchMode="true"
         android:orientation="vertical"
         android:paddingBottom="10dp"
+
         android:paddingTop="5dp">
 
         <TextView
@@ -57,8 +58,9 @@
 
 
     <LinearLayout
+        xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/LinearLayoutTabela"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:focusableInTouchMode="true"
         android:orientation="vertical"
@@ -66,13 +68,19 @@
 
         <!-- TABELA -->
         <!-- "#E3E3E3" -->
-        <ListView
-            android:id="@+id/listViewWyniki"
+        <!--<ListView-->
+            <!--android:id="@+id/listViewWyniki"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent">-->
+        <!--</ListView>-->
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerWyniki"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        </ListView>
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"
 
-
+            />
 
         <!-- KONIEC TABELI WYNIKOW -->
     </LinearLayout>
