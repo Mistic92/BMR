@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 Łukasz Byjoś
+ * Copyright (c) 2015 Łukasz Byjoś
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
  *
@@ -24,6 +24,7 @@ import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -46,10 +47,14 @@ import com.devnoobs.bmr.CustomSpinner;
 import com.devnoobs.bmr.Interfejsy.IRefreshTabeli;
 import com.devnoobs.bmr.Interfejsy.WyborDadyDialogFragmentListener;
 import com.devnoobs.bmr.R;
+import com.devnoobs.bmr.RecyclerItemClickListener;
 import com.devnoobs.bmr.SzczegolyWynikuActivity;
 import com.devnoobs.bmr.WyborDatyDialogFragment;
 import com.devnoobs.bmr.Wynik;
 import com.devnoobs.bmr.WynikAdapter;
+import com.github.mrengineer13.snackbar.SnackBar;
+
+import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -60,7 +65,8 @@ public class FragmentTabele extends Fragment implements OnClickListener,
         OnItemClickListener,
         OnItemLongClickListener,
         WyborDadyDialogFragmentListener,
-        IRefreshTabeli {
+        IRefreshTabeli
+{
 
     private WynikiDataSource wds;
     private EditText bmi;
@@ -81,12 +87,16 @@ public class FragmentTabele extends Fragment implements OnClickListener,
     private static Spinner spinner;
     private static ArrayAdapter<CharSequence> adapter;
 
+    private static Calendar _poczatek;
+    private static Calendar _koniec;
+
     //recycler itp
     private static RecyclerView mRecyclerView;
 
     private int fragVal;
 
-    public static FragmentTabele init(int val) {
+    public static FragmentTabele init(int val)
+    {
         FragmentTabele truitonFrag = new FragmentTabele();
         // Supply val input as an argument.
         Bundle args = new Bundle();
@@ -97,7 +107,8 @@ public class FragmentTabele extends Fragment implements OnClickListener,
 
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         fragVal = getArguments() != null ? getArguments().getInt("val") : 1;
     }
@@ -117,10 +128,11 @@ public class FragmentTabele extends Fragment implements OnClickListener,
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             Bundle savedInstanceState)
+    {
         View rootView = inflater.inflate(R.layout.fragment_tabele, container, false);
         //dodaj_wynik = (Button) rootView.findViewById(R.id.buttonDodajWynik);
-       // listaWynikow = (ListView) rootView.findViewById(R.id.listViewWyniki);
+        // listaWynikow = (ListView) rootView.findViewById(R.id.listViewWyniki);
 
 
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerWyniki);
@@ -174,7 +186,32 @@ public class FragmentTabele extends Fragment implements OnClickListener,
         //TODO po longpress z wybranej daty przeskakuje na tydzien
 //        listaWynikow.setOnItemClickListener(this);
 //        listaWynikow.setOnItemLongClickListener(this);
+        mRecyclerView.addOnItemTouchListener(
+                new RecyclerItemClickListener(contextFragmentTabele,
+                        new RecyclerItemClickListener.OnItemClickListener()
+                        {
+                            @Override
+                            public void onItemClick(View view, int position)
+                            {
+                                try
+                                {
+                                    TextView tv = (TextView) view.findViewById(R.id
+                                            .listview_text_data);
+                                    String s = tv.getText().toString();
+                                    Toast.makeText(getActivity(), "dziala", Toast.LENGTH_LONG);
+                                    Log.println(Log.INFO, "devnoobs", "DZIALA " + s);
+                                    SnackBar mSnackBar = new SnackBar(getActivity());
+                                    mSnackBar.show("It works! " + s);
 
+
+                                } catch (Exception e)
+                                {
+                                    Toast.makeText(getActivity(), "BLAD :<", Toast.LENGTH_LONG);
+                                    Log.println(Log.ERROR, "devnoobs", "nie dziala ");
+                                }
+                            }
+                        })
+        );
 
 
         return rootView;
@@ -182,22 +219,24 @@ public class FragmentTabele extends Fragment implements OnClickListener,
 
 
     /**
-     * Metoda wczytujaca liste dla ldni oparta na ListView. Ponizej na tabeli
-     *
-     * @param poczatek
-     * @param koniec
+     Metoda wczytujaca liste dla ldni oparta na ListView. Ponizej na tabeli
+
+     @param poczatek
+     @param koniec
      */
-    public void wczytajTabele(long poczatek, long koniec) {
+    public void wczytajTabele(long poczatek, long koniec)
+    {
 
         ArrayList<Wynik> lista = wds.getData(poczatek, koniec, "DESC");
-      //  fAdapter = new AdapterWynikow(lista, contextFragmentTabele);
+        //  fAdapter = new AdapterWynikow(lista, contextFragmentTabele);
         wAdapter = new WynikAdapter(lista, R.layout.listview_wynik, contextFragmentTabele);
-       // listaWynikow.setAdapter(fAdapter);
+        // listaWynikow.setAdapter(fAdapter);
         mRecyclerView.setAdapter(wAdapter);
     }//wczytajtabele
 
 
-    public void showDialogDodawanie() {
+    public void showDialogDodawanie()
+    {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         // Get the layout inflater
@@ -214,24 +253,30 @@ public class FragmentTabele extends Fragment implements OnClickListener,
         ib = Math.round(ib * 100.0) / 100.0;
         iw = Math.round(iw * 100.0) / 100.0;
 
-        if (iw != 0 && ib != 0) {
+        if (iw != 0 && ib != 0)
+        {
             bmi.setText(Double.toString(ib));
             waga.setText(Double.toString(iw));
         }
         builder.setView(widok)
                 // Add action buttons
 
-                .setPositiveButton("Dodaj", new DialogInterface.OnClickListener() {
+                .setPositiveButton("Dodaj", new DialogInterface.OnClickListener()
+                {
                     @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        try {
+                    public void onClick(DialogInterface dialog, int id)
+                    {
+                        try
+                        {
 
                             double b = Double.parseDouble(bmi.getText().toString());
                             double w = Double.parseDouble(waga.getText().toString());
-                            try {
+                            try
+                            {
                                 String n = notatka.getText().toString();
                                 wds.addWynik(b, w, n);
-                            } catch (Exception e) {
+                            } catch (Exception e)
+                            {
                                 wds.addWynik(b, w);
                             }
                             // wds.addWynik(b, w);
@@ -239,7 +284,8 @@ public class FragmentTabele extends Fragment implements OnClickListener,
                                     "Wynik dodano.", Toast.LENGTH_SHORT)
                                     .show();
                             wczytajTydzien();
-                        } catch (NullPointerException e) {
+                        } catch (NullPointerException e)
+                        {
                             Toast.makeText(widok.getContext(),
                                     "Pola nie zosta� wype�nione.", Toast.LENGTH_SHORT)
                                     .show();
@@ -247,8 +293,10 @@ public class FragmentTabele extends Fragment implements OnClickListener,
 
                     }
                 })
-                .setNegativeButton("Anuluj", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
+                .setNegativeButton("Anuluj", new DialogInterface.OnClickListener()
+                {
+                    public void onClick(DialogInterface dialog, int id)
+                    {
 
                         dialog.cancel();
                     }
@@ -259,7 +307,8 @@ public class FragmentTabele extends Fragment implements OnClickListener,
 
     }//showDialogDodawanie		
 
-    private void showDialogUsuwanie(final int id) {
+    private void showDialogUsuwanie(final int id)
+    {
         AlertDialog.Builder alertDialog2 = new AlertDialog.Builder(getActivity());
 
         // Setting Dialog Title
@@ -270,8 +319,10 @@ public class FragmentTabele extends Fragment implements OnClickListener,
 
         // Setting Positive "Yes" Btn
         alertDialog2.setPositiveButton("Tak",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
+                new DialogInterface.OnClickListener()
+                {
+                    public void onClick(DialogInterface dialog, int which)
+                    {
                         Toast.makeText(getActivity(),
                                 "Usuni�to", Toast.LENGTH_SHORT)
                                 .show();
@@ -281,8 +332,10 @@ public class FragmentTabele extends Fragment implements OnClickListener,
                 });
         // Setting Negative "NO" Btn
         alertDialog2.setNegativeButton("Nie",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
+                new DialogInterface.OnClickListener()
+                {
+                    public void onClick(DialogInterface dialog, int which)
+                    {
                         dialog.cancel();
                     }
                 });
@@ -295,7 +348,8 @@ public class FragmentTabele extends Fragment implements OnClickListener,
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
-    public void onClick(View v) {
+    public void onClick(View v)
+    {
         //showWynikDialog().show();
         // the text could tell you if its a plus button or minus button
        /*/
@@ -306,7 +360,8 @@ public class FragmentTabele extends Fragment implements OnClickListener,
 			break;
 		}
 		*/
-        if (v.getId() == dodaj_wynik.getId()) {
+        if (v.getId() == dodaj_wynik.getId())
+        {
             showDialogDodawanie();
         }
 //		else if(v.getId()==refresh_button.getId())
@@ -340,61 +395,101 @@ public class FragmentTabele extends Fragment implements OnClickListener,
 
 
     /**
-     * Spinner do wybierania zakresu
-     *
-     * @param parent
-     * @param view
-     * @param pos
-     * @param id
+     Spinner do wybierania zakresu
+
+     @param parent
+     @param view
+     @param pos
+     @param id
      */
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int pos,
-                               long id) {
+                               long id)
+    {
         Calendar koniec = Calendar.getInstance();
         Calendar poczatek = Calendar.getInstance();
-        if (pos == 0) {
+        if (pos == 0)
+        {
             poczatek.add(Calendar.DAY_OF_MONTH, -7);
             wczytajTabele(poczatek.getTimeInMillis(), koniec.getTimeInMillis());
             ustawTekstZakresu(poczatek, koniec);
-        } else if (pos == 1) {
+        } else if (pos == 1)
+        {
             poczatek.add(Calendar.DAY_OF_MONTH, -14);
             wczytajTabele(poczatek.getTimeInMillis(), koniec.getTimeInMillis());
             ustawTekstZakresu(poczatek, koniec);
-        } else if (pos == 2) {
+        } else if (pos == 2)
+        {
             poczatek.add(Calendar.MONTH, -1);
             wczytajTabele(poczatek.getTimeInMillis(), koniec.getTimeInMillis());
             ustawTekstZakresu(poczatek, koniec);
-        } else if (pos == 3) {
+        } else if (pos == 3)
+        {
             wyborDaty();
         }
     }
 
     @Override
-    public void onNothingSelected(AdapterView<?> arg0) {
+    public void onNothingSelected(AdapterView<?> arg0)
+    {
     }
 
 
-    private void wyborDaty() {
+    /**
 
+     */
+    private void wyborDaty()
+    {
+
+        Integer apiLvl = Integer.valueOf(Build.VERSION.SDK_INT);
+
+
+        if (apiLvl < 21)
+        {
+            //	Fragment wybor = new WyborDatyDialogFragment();
+            // ((WyborDatyDialogFragment) wybor).addListener(this);
+            // FragmentManager fragmentManager = getFragmentManager();
+            // fragmentManager.beginTransaction().replace(R.id.content_frame, wybor).commit();
+            //  fragmentManager.beginTransaction().show(wybor).commit();
+
+            // Create and show the dialog.
+            WyborDatyDialogFragment dialog = new WyborDatyDialogFragment();
+            dialog.setWyborDadyDialogFragmentListener(this);
+//            dialog.addListener(this);
+//            dialog.show(ft, "dialog");
+            showDialog(dialog);
+        } else
+        {
+
+            //z parametrem true poniewaz jest api lolipopa i sie nie miesci kalendarz ;d
+            WyborDatyDialogFragment dialog = new WyborDatyDialogFragment("p");
+//            dialog.addListener(this);
+            dialog.setWyborDadyDialogFragmentListener(this);
+            showDialog(dialog);
+//            dialog.show(ft, "dialog");
+
+            //todo zrobic w osobnym watku widocznie
+//            dialog = new WyborDatyDialogFragment("k");
+//            dialog.show(ft, "dialog");
+
+        }
+    }
+
+    /**
+     @param dialog
+     */
+    private void showDialog(WyborDatyDialogFragment dialog)
+    {
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         Fragment prev = getFragmentManager().findFragmentByTag("DatyDialog");
-        if (prev != null) {
+        if (prev != null)
+        {
             ft.remove(prev);
         }
         ft.addToBackStack(null);
-
-        //	Fragment wybor = new WyborDatyDialogFragment();
-        // ((WyborDatyDialogFragment) wybor).addListener(this);
-        // FragmentManager fragmentManager = getFragmentManager();
-        // fragmentManager.beginTransaction().replace(R.id.content_frame, wybor).commit();
-        //  fragmentManager.beginTransaction().show(wybor).commit();
-
-        // Create and show the dialog.
-        WyborDatyDialogFragment dialog = new WyborDatyDialogFragment();
-        dialog.addListener(this);
+//        dialog.addListener(this);
+        dialog.setCancelable(false);
         dialog.show(ft, "dialog");
-
-
     }
 
 
@@ -403,7 +498,8 @@ public class FragmentTabele extends Fragment implements OnClickListener,
      * TYM JEST URUCHAMIANY INTENT SZCZEGOLOW
      */
     public void onItemClick(AdapterView<?> arg0, View view, int position,
-                            long id) {
+                            long id)
+    {
         Wynik w = (Wynik) arg0.getItemAtPosition(position);
         SzczegolyWynikuActivity swa = new SzczegolyWynikuActivity();
         Intent intent = new Intent(getActivity(), swa.getClass());
@@ -415,7 +511,8 @@ public class FragmentTabele extends Fragment implements OnClickListener,
     }
 
     @Override
-    public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
+    public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int position, long arg3)
+    {
         Wynik w = (Wynik) arg0.getItemAtPosition(position);
         showDialogUsuwanie(w.getWynik_id());
         // wczytajTydzien();
@@ -424,10 +521,30 @@ public class FragmentTabele extends Fragment implements OnClickListener,
 
 
     @Override
-    public void onYesButton(Calendar poczatek, Calendar koniec) {
+    public void onYesButton(Calendar poczatek, Calendar koniec)
+    {
         wczytajTabele(poczatek.getTimeInMillis(), koniec.getTimeInMillis());
         ustawTekstZakresu(poczatek, koniec);
         // zmienAdapter(poczatek, koniec);
+    }
+
+    @Override
+    public void onYesButtonStart(Calendar poczatek)
+    {
+        _poczatek = poczatek;
+        WyborDatyDialogFragment dialog = new WyborDatyDialogFragment("k");
+//        dialog.addListener(this);
+        dialog.setWyborDadyDialogFragmentListener(this);
+        showDialog(dialog);
+
+    }
+
+    @Override
+    public void onYesButtonEnd(Calendar koniec)
+    {
+        _koniec = koniec;
+        wczytajTabele(_poczatek.getTimeInMillis(), koniec.getTimeInMillis());
+        ustawTekstZakresu(_poczatek, koniec);
     }
 
 //    /**
@@ -449,7 +566,8 @@ public class FragmentTabele extends Fragment implements OnClickListener,
 //        }
 //    }
 
-    private void wczytajTydzien() {
+    private void wczytajTydzien()
+    {
         Calendar koniec = Calendar.getInstance();
         Calendar poczatek = Calendar.getInstance();
         poczatek.add(Calendar.DAY_OF_MONTH, -7);
@@ -457,31 +575,35 @@ public class FragmentTabele extends Fragment implements OnClickListener,
     }
 
     /**
-     * @param poczatek
-     * @param koniec
+     @param poczatek
+     @param koniec
      */
-    private void ustawTekstZakresu(Calendar poczatek, Calendar koniec) {
+    private void ustawTekstZakresu(Calendar poczatek, Calendar koniec)
+    {
         Calendar minusrok = Calendar.getInstance();
         minusrok.add(Calendar.YEAR, -1);
         SimpleDateFormat sdf;
-        if (!poczatek.after(minusrok)) {
+        if (!poczatek.after(minusrok))
+        {
             sdf = new SimpleDateFormat("dd MMMM yyyy");
             tekstZakresu.setTextSize(17f);
-        } else {
+        } else
+        {
             sdf = new SimpleDateFormat("dd MMMM");
             tekstZakresu.setTextSize(20f);
         }
         String tekst = sdf.format(poczatek.getTime()) + " - " + sdf.format(koniec.getTime());
         ;
         tekstZakresu.setText(tekst);
-        tekstZakresu.setTextAppearance(contextFragmentTabele,R.style.tekstZakresuDat);
+        tekstZakresu.setTextAppearance(contextFragmentTabele, R.style.tekstZakresuDat);
 
 
     }//ustawtekstzakresu
 
 
     @Override
-    public void refreshTabela() {
+    public void refreshTabela()
+    {
         wczytajTydzien();
 
     }

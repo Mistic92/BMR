@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 Łukasz Byjoś
+ * Copyright (c) 2015 Łukasz Byjoś
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
  *
@@ -15,9 +15,9 @@ package com.devnoobs.bmr;
 
 public final class BuildConfig {
   public static final boolean DEBUG = Boolean.parseBoolean("true");
-  public static final String PACKAGE_NAME = "com.devnoobs.bmr";
+  public static final String APPLICATION_ID = "com.devnoobs.bmr";
   public static final String BUILD_TYPE = "debug";
   public static final String FLAVOR = "";
-  public static final int VERSION_CODE = 10;
+  public static final int VERSION_CODE = 11;
   public static final String VERSION_NAME = "";
 }

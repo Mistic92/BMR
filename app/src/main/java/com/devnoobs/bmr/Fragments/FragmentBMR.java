@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 Łukasz Byjoś
+ * Copyright (c) 2015 Łukasz Byjoś
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
  *
@@ -42,6 +42,8 @@ import com.devnoobs.bmr.Kalkulator;
 import com.devnoobs.bmr.R;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+
+import java.util.ResourceBundle;
 
 public class FragmentBMR extends Fragment implements TextWatcher,
         OnCheckedChangeListener, OnClickListener {
@@ -708,7 +710,7 @@ public class FragmentBMR extends Fragment implements TextWatcher,
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         // Get the layout inflater
-        builder.setTitle("Wprowad� dane do dodania.");
+        builder.setTitle(getResources().getString(R.string.text_dodawanie_danych));
         LayoutInflater inflater = getActivity().getLayoutInflater();
         // Inflate and set the layout for the dialog
         // Pass null as the parent view because its going in the dialog layout
@@ -728,7 +730,7 @@ public class FragmentBMR extends Fragment implements TextWatcher,
         builder.setView(widok)
                 // Add action buttons
 
-                .setPositiveButton("Dodaj",
+                .setPositiveButton(getResources().getString(R.string.button_dodaj_wynik),
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int id) {
@@ -750,18 +752,18 @@ public class FragmentBMR extends Fragment implements TextWatcher,
                                     // ft.refresh=true;
                                     // ft.spinnerWyborWczytania(7);
                                     Toast.makeText(widok.getContext(),
-                                            "Wynik dodano.", Toast.LENGTH_SHORT)
+                                            getResources().getString(R.string.wynik_dodano), Toast.LENGTH_SHORT)
                                             .show();
                                 } catch (NullPointerException e) {
                                     Toast.makeText(widok.getContext(),
-                                            "Pola nie zosta� wype�nione.",
+                                            getResources().getString(R.string.warning_pola_nie_wypelnione),
                                             Toast.LENGTH_SHORT).show();
                                     e.printStackTrace();
                                 }
 
                             }
                         })
-                .setNegativeButton("Anuluj",
+                .setNegativeButton(getResources().getString(R.string.anuluj),
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
 

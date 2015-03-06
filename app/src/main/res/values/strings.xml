@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Copyright (c) 2014 Łukasz Byjoś
+  ~ Copyright (c) 2015 Łukasz Byjoś
   ~
   ~ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
   ~
@@ -40,6 +40,7 @@
     <string name="typ_aktywnosc_umiarkowana">moderate acvitity</string>
     <string name="typ_aktywnosc_duza">high activity</string>
     <string name="typ_aktywnosc_bduza">very high activity</string>
+    <string name="text_dodawanie_danych">Insert data to add</string>
     
     <!-- TABELA CALC -->
     <string name="wynikiBmiBrakDanych">No data to calculate</string>
@@ -83,27 +84,29 @@
     <string name="wybierz">Select</string>
     <string name="anuluj">Cancel</string>
     <string name="reklamy_off">Turn off ads</string>
+    <string name="wynik_dodano">Wynik dodano</string>
+    <string name="warning_pola_nie_wypelnione">Pola nie zostały wypełnione</string>
     
     
     <!-- WYKRESY -->
-    <string name="wartosciX">Pokaż wartości punktów</string>
-    <string name="wartosciY">Pokaż daty punktów (do 7 wyników)</string>
-    <string name="zakres_dat">Zakres dat</string>
+    <string name="wartosciX">Show the points</string>
+    <string name="wartosciY">Show date points (up to 7 results)</string>
+    <string name="zakres_dat">Date ranget</string>
     
     <!-- PODPISY KART -->
-    <string name="podpis_wyniki">Wyniki</string>
-    <string name="podpis_zakres">Ustawienia wykresów</string>
-    <string name="podpis_informacja">Informacja</string>
+    <string name="podpis_wyniki">Results</string>
+    <string name="podpis_zakres">Chart settings</string>
+    <string name="podpis_informacja">Information</string>
     
     <!-- TABELA WYNIKOW -->
-    <string name="text_data">Data</string>
+    <string name="text_data">Date</string>
     <string name="text_bmi">BMI</string>
 
     <string-array name="tabela_zakres">
-        <item>Zeszły tydzień</item>
-        <item>Zeszłe dwa tygodnie</item>
-        <item>Zeszły miesiąc</item>
-        <item>Wybrany okres&#8230;</item>
+        <item>Last week</item>
+        <item>Last two weeks</item>
+        <item>Last month</item>
+        <item>Selected period&#8230;</item>
     </string-array>
     
     <string-array name="tabela_menu">

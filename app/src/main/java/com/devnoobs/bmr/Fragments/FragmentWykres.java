@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 Łukasz Byjoś
+ * Copyright (c) 2015 Łukasz Byjoś
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
  *
@@ -14,6 +14,7 @@ import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -62,6 +63,11 @@ public class FragmentWykres extends Fragment implements OnItemSelectedListener,
 
     private LineGraph wykres_bmi;
     private LineGraph wykres_waga;
+
+    private static Calendar _poczatek;
+    private static Calendar _koniec;
+
+
     //maksymalna ilosc punktow z podpisami do wyswietlania
     private final int maksymalnaIloscPunktow = 11;
 
@@ -134,9 +140,9 @@ public class FragmentWykres extends Fragment implements OnItemSelectedListener,
     }
 
     /**
-     * Nie odpala sie tego bezposrednio tylko przez spinnerwyborwczytania
-     *
-     * @param ldni
+     Nie odpala sie tego bezposrednio tylko przez spinnerwyborwczytania
+     @param poczatek
+     @param koniec
      */
     private void wczytajWykresy(long poczatek, long koniec) {
         try {
@@ -297,26 +303,39 @@ public class FragmentWykres extends Fragment implements OnItemSelectedListener,
 
     }//onclick
 
-    private void wyborDaty() {
+    private void wyborDaty()
+    {
 
-        FragmentTransaction ft = getFragmentManager().beginTransaction();
-        Fragment prev = getFragmentManager().findFragmentByTag("DatyDialog");
-        if (prev != null) {
-            ft.remove(prev);
+        Integer apiLvl = Integer.valueOf(Build.VERSION.SDK_INT);
+
+
+        if (apiLvl < 21)
+        {
+            //	Fragment wybor = new WyborDatyDialogFragment();
+            // ((WyborDatyDialogFragment) wybor).addListener(this);
+            // FragmentManager fragmentManager = getFragmentManager();
+            // fragmentManager.beginTransaction().replace(R.id.content_frame, wybor).commit();
+            //  fragmentManager.beginTransaction().show(wybor).commit();
+
+            // Create and show the dialog.
+            WyborDatyDialogFragment dialog = new WyborDatyDialogFragment();
+            dialog.addListener(this);
+//            dialog.show(ft, "dialog");
+            showDialog(dialog);
+        } else
+        {
+
+            //z parametrem true poniewaz jest api lolipopa i sie nie miesci kalendarz ;d
+            WyborDatyDialogFragment dialog = new WyborDatyDialogFragment("p");
+            dialog.addListener(this);
+            showDialog(dialog);
+//            dialog.show(ft, "dialog");
+
+            //todo zrobic w osobnym watku widocznie
+//            dialog = new WyborDatyDialogFragment("k");
+//            dialog.show(ft, "dialog");
+
         }
-        ft.addToBackStack(null);
-
-        //	Fragment wybor = new WyborDatyDialogFragment();
-        // ((WyborDatyDialogFragment) wybor).addListener(this);
-        // FragmentManager fragmentManager = getFragmentManager();
-        // fragmentManager.beginTransaction().replace(R.id.content_frame, wybor).commit();
-        //  fragmentManager.beginTransaction().show(wybor).commit();
-
-        // Create and show the dialog.
-        WyborDatyDialogFragment dialog = new WyborDatyDialogFragment();
-        dialog.addListener(this);
-        dialog.show(ft, "dialog");
-
     }
 
 
@@ -324,6 +343,41 @@ public class FragmentWykres extends Fragment implements OnItemSelectedListener,
     public void onYesButton(Calendar poczatek, Calendar koniec) {
         wczytajWykresy(poczatek.getTimeInMillis(), koniec.getTimeInMillis());
         ustawTekstZakresu(poczatek, koniec);
+    }
+
+    @Override
+    public void onYesButtonStart(Calendar poczatek)
+    {
+        _poczatek = poczatek;
+        WyborDatyDialogFragment dialog = new WyborDatyDialogFragment("k");
+        dialog.addListener(this);
+        showDialog(dialog);
+
+    }
+
+    @Override
+    public void onYesButtonEnd(Calendar koniec)
+    {
+        _koniec = koniec;
+        wczytajWykresy(_poczatek.getTimeInMillis(), koniec.getTimeInMillis());
+        ustawTekstZakresu(_poczatek, koniec);
+    }
+
+    /**
+
+     @param dialog
+     */
+    private void showDialog(WyborDatyDialogFragment dialog)
+    {
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        Fragment prev = getFragmentManager().findFragmentByTag("DatyDialog");
+        if (prev != null)
+        {
+            ft.remove(prev);
+        }
+        ft.addToBackStack(null);
+        dialog.addListener(this);
+        dialog.show(ft, "dialog");
     }
 
     /**

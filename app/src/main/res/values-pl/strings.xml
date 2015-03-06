@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Copyright (c) 2014 Łukasz Byjoś
+  ~ Copyright (c) 2015 Łukasz Byjoś
   ~
   ~ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
   ~
@@ -40,6 +40,7 @@
     <string name="typ_aktywnosc_umiarkowana">Umiarkowana aktywność</string>
     <string name="typ_aktywnosc_duza">Duża aktywność</string>
     <string name="typ_aktywnosc_bduza">Bardzo duża aktywność</string>
+    <string name="text_dodawanie_danych">Wprowadź dane do dodania</string>
     
     <!-- TABELA CALC -->
     <string name="wynikiBmiBrakDanych">Brak danych do wyświetlenia wyniku</string>
@@ -83,6 +84,8 @@
     <string name="wybierz">Wybierz</string>
     <string name="anuluj">Anuluj</string>
     <string name="reklamy_off">Wyłącz reklamy</string>
+    <string name="wynik_dodano">Wynik dodano</string>
+    <string name="warning_pola_nie_wypelnione">Pola nie zostały wypełnione</string>
     
     
     <!-- WYKRESY -->

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 Łukasz Byjoś
+ * Copyright (c) 2015 Łukasz Byjoś
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
  *
@@ -10,13 +10,17 @@
 
 package com.devnoobs.bmr;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.devnoobs.bmr.Wynik;
 
@@ -25,6 +29,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import static android.support.v4.app.ActivityCompat.startActivity;
 import static android.support.v7.widget.RecyclerView.ViewHolder;
 
 /**
@@ -36,12 +41,18 @@ public class WynikAdapter extends RecyclerView.Adapter<WynikAdapter.ViewHolder> 
     private ArrayList<Wynik> _data;
     int rowLayout;
     Context mContext;
+    private Activity act;
+
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView image;//= (ImageView) v.findViewById(R.id.imgview_notatka);
         TextView data;// = (TextView) v.findViewById(R.id.listview_text_data);
         TextView bmi;// = (TextView) v.findViewById(R.id.listview_text_bmi);
         TextView waga;// = (TextView) v.findViewById(R.id.listview_text_waga);
+
+        public static Context _context;
+
+
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -50,12 +61,16 @@ public class WynikAdapter extends RecyclerView.Adapter<WynikAdapter.ViewHolder> 
             bmi = (TextView) itemView.findViewById(R.id.listview_text_bmi);
             waga = (TextView) itemView.findViewById(R.id.listview_text_waga);
         }
+
+
+
     }
 
     public WynikAdapter(ArrayList<Wynik> _data, int rowLayout, Context mContext) {
         this._data = _data;
         this.rowLayout = rowLayout;
         this.mContext = mContext;
+        ViewHolder._context=mContext;
     }
 
     @Override
