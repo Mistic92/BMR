@@ -54,6 +54,7 @@ import com.devnoobs.bmr.Wynik;
 import com.devnoobs.bmr.WynikAdapter;
 import com.github.mrengineer13.snackbar.SnackBar;
 
+import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
 import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
@@ -137,7 +138,8 @@ public class FragmentTabele extends Fragment implements OnClickListener,
 
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerWyniki);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(contextFragmentTabele));
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        mRecyclerView.setItemAnimator(new SlideInUpAnimator());
+
 
 
         wds = new WynikiDataSource(getActivity());
@@ -230,6 +232,7 @@ public class FragmentTabele extends Fragment implements OnClickListener,
         ArrayList<Wynik> lista = wds.getData(poczatek, koniec, "DESC");
         //  fAdapter = new AdapterWynikow(lista, contextFragmentTabele);
         wAdapter = new WynikAdapter(lista, R.layout.listview_wynik, contextFragmentTabele);
+
         // listaWynikow.setAdapter(fAdapter);
         mRecyclerView.setAdapter(wAdapter);
     }//wczytajtabele
@@ -305,7 +308,7 @@ public class FragmentTabele extends Fragment implements OnClickListener,
         //  return builder.create();
 
 
-    }//showDialogDodawanie		
+    }//showAddResultDialog
 
     private void showDialogUsuwanie(final int id)
     {

@@ -13,8 +13,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="8dp"
+    android:id="@+id/cardViewWynik"
 
+    android:layout_marginBottom="5dp"
     >
 <!-- android:id="@+id/listview_wynik_linearLayout"-->
 <LinearLayout
@@ -79,10 +80,11 @@
             <ImageView
                 android:id="@+id/imgview_notatka"
                 android:layout_width="wrap_content"
-                android:layout_height="15dp"
+                android:layout_height="17dp"
                 android:layout_gravity="center_vertical"
                 android:contentDescription="@string/app_name"
                 android:src="@drawable/ic_note"/>
+            <!---->
         </TableRow>
 
     </TableLayout>

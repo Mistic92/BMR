@@ -27,9 +27,7 @@
         <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginLeft="7dp"
-                android:layout_marginRight="7dp">
+                android:orientation="vertical">
 
 
             <!-- PODPIS KARTY -->
@@ -257,43 +255,27 @@
                 android:layout_marginBottom="5dp"
                 android:orientation="vertical"
                 android:visibility="gone"
-                android:layout_marginLeft="7dp"
-                android:layout_marginRight="7dp"
                 >
 
-            <android.support.v7.widget.CardView
-                    android:layout_width="fill_parent"
+
+            <TextView
+                    android:id="@+id/textViewPodpisWyniki"
+                    style="@style/podpisy_kart"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    >
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="5dp"
+                    android:text="@string/podpis_wyniki"/>
 
-                <LinearLayout
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="10dp"
-                        android:orientation="vertical"
-                        >
+            <TextView
+                    android:id="@+id/textViewBrakDanychDoWyniku"
+                    style="@style/bmr_teksty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/wynikiBmiBrakDanych">
+            </TextView>
 
-                    <TextView
-                            android:id="@+id/textViewPodpisWyniki"
-                            style="@style/podpisy_kart"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginBottom="5dp"
-                            android:text="@string/podpis_wyniki"/>
-
-                    <TextView
-                            android:id="@+id/textViewBrakDanychDoWyniku"
-                            style="@style/bmr_teksty"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:text="@string/wynikiBmiBrakDanych">
-                    </TextView>
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
         </LinearLayout>
 
         <!-- WYNIKI -->
@@ -304,8 +286,6 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginLeft="7dp"
-                android:layout_marginRight="7dp"
                 >
 
             <!-- PODPIS KARTY -->

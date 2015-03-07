@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2014 Łukasz Byjoś
+  ~ Copyright (c) 2015 Łukasz Byjoś
   ~
   ~ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
   ~
@@ -29,18 +29,18 @@
     <!--Styl tekstow w kalkulatorze, teksty przy opisach typu wybierz plec, wiek, aktywnosc-->
     <style name="bmr_teksty" parent="@android:style/TextAppearance.Medium">
         <item name="android:textColor">@color/textbmr</item>
-        <item name="android:textSize">27sp</item>
+        <item name="android:textSize">22sp</item>
         <item name="android:typeface">sans</item>
     </style>
 
     <!--Tekst wyswietlajacy wybrany zakres dat-->
     <style name="tekstZakresuDat" parent="bmr_teksty">
-        <item name="android:textSize">22sp</item>
+        <item name="android:textSize">19sp</item>
     </style>
 
     <!--Styl tekstow w kalkulatorze, przy tekstach typu "wybierz plec".-->
     <style name="bmr_inne_teksty" parent="bmr_teksty">
-        <item name="android:textSize">23sp</item>
+        <item name="android:textSize">22sp</item>
     </style>
 
     <!--Styl edittextow w kalkulatorze-->
@@ -116,7 +116,7 @@
     <!--Wygląd itemu w spinnerze wyboru daty-->
     <style name="spinner_item">
         <item name="android:textColor">@color/textbmr</item>
-        <item name="android:textSize">25sp</item>
+        <item name="android:textSize">23sp</item>
         <item name="android:paddingLeft">14dp</item>
         <item name="android:paddingBottom">7dp</item>
         <item name="android:paddingTop">7dp</item>

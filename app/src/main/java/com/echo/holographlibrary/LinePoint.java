@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 Łukasz Byjoś
+ * Copyright (c) 2015 Łukasz Byjoś
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
  *
@@ -20,21 +20,21 @@ public class LinePoint {
 	private Path path;
 	private Region region;
 	private String yValue;
-	
-	
+
+
 	public LinePoint(float x, float y) {
 		super();
 		this.x = x;
 		this.y = y;
 	}
-	
+
 	public LinePoint(float x, float y, String yValue) {
 		super();
 		this.x = x;
 		this.y = y;
 		this.yValue=yValue;
-	}	
-	
+	}
+
     public String getYValue() {
 		return yValue;
 	}

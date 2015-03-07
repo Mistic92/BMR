@@ -18,6 +18,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,48 +35,53 @@ import static android.support.v4.app.ActivityCompat.startActivity;
 import static android.support.v7.widget.RecyclerView.ViewHolder;
 
 /**
- * Created by Lukasz on 2014-10-22.
+ Created by Lukasz on 2014-10-22.
  */
-public class WynikAdapter extends RecyclerView.Adapter<WynikAdapter.ViewHolder> {
+public class WynikAdapter extends RecyclerView.Adapter<WynikAdapter.ViewHolder>
+{
 
 
     private ArrayList<Wynik> _data;
     int rowLayout;
     Context mContext;
     private Activity act;
+    private int lastPosition = -1;
 
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder
+    {
         ImageView image;//= (ImageView) v.findViewById(R.id.imgview_notatka);
         TextView data;// = (TextView) v.findViewById(R.id.listview_text_data);
         TextView bmi;// = (TextView) v.findViewById(R.id.listview_text_bmi);
         TextView waga;// = (TextView) v.findViewById(R.id.listview_text_waga);
-
+        android.support.v7.widget.CardView cardView;
         public static Context _context;
 
 
-
-        public ViewHolder(View itemView) {
+        public ViewHolder(View itemView)
+        {
             super(itemView);
             image = (ImageView) itemView.findViewById(R.id.imgview_notatka);
             data = (TextView) itemView.findViewById(R.id.listview_text_data);
             bmi = (TextView) itemView.findViewById(R.id.listview_text_bmi);
             waga = (TextView) itemView.findViewById(R.id.listview_text_waga);
+            cardView = (android.support.v7.widget.CardView) itemView.findViewById(R.id.cardViewWynik);
         }
 
 
-
     }
 
-    public WynikAdapter(ArrayList<Wynik> _data, int rowLayout, Context mContext) {
+    public WynikAdapter(ArrayList<Wynik> _data, int rowLayout, Context mContext)
+    {
         this._data = _data;
         this.rowLayout = rowLayout;
         this.mContext = mContext;
-        ViewHolder._context=mContext;
+        ViewHolder._context = mContext;
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType)
+    {
 
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(rowLayout, viewGroup, false);
         //View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.listview_wynik,viewGroup,false);
@@ -83,7 +90,8 @@ public class WynikAdapter extends RecyclerView.Adapter<WynikAdapter.ViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(ViewHolder viewHolder, int i)
+    {
         Wynik wynik = _data.get(i);
         // URL url = new URL(msg.getUrlLogo());
         if (wynik.getNotatka().length() > 0)
@@ -94,16 +102,34 @@ public class WynikAdapter extends RecyclerView.Adapter<WynikAdapter.ViewHolder> 
         viewHolder.data.setText(getDate(wynik.getData(), "dd/MM/yyyy HH:mm:ss"));
         viewHolder.bmi.setText(Double.toString(wynik.getBmi()));
         viewHolder.waga.setText(Double.toString(wynik.getWaga()));
-
+//        setAnimation(viewHolder.cardView,i);
     }
 
+    /**
+     * Here is the key method to apply the animation
+     */
+    private void setAnimation(View viewToAnimate, int position)
+    {
+        // If the bound view wasn't previously displayed on screen, it's animated
+        if (position > lastPosition)
+        {
+            Animation animation = AnimationUtils.loadAnimation(mContext, android.R.anim.fade_in);
+            viewToAnimate.startAnimation(animation);
+            lastPosition = position;
+        }
+    }
+
+
+
     @Override
-    public int getItemCount() {
+    public int getItemCount()
+    {
         return _data.size();
     }
 
 
-    private String getDate(long milliSeconds, String dateFormat) {
+    private String getDate(long milliSeconds, String dateFormat)
+    {
         // Create a DateFormatter object for displaying date in specified format.
         DateFormat formatter = new SimpleDateFormat(dateFormat);
 
