@@ -42,13 +42,12 @@ public class WynikiDataSource {
     }
 
     /**
-     * @param bmi
      * @param waga
      * @param notatka
      */
-    public void addWynik(double bmi, double waga, String notatka) {
+    public void addWynik(double waga, String notatka) {
         ContentValues contentValues = new ContentValues();
-        contentValues.put("bmi", bmi);
+//        contentValues.put("bmi", bmi);
         contentValues.put("waga", waga);
         contentValues.put("notatka", notatka);
         Calendar c = Calendar.getInstance();
@@ -60,12 +59,11 @@ public class WynikiDataSource {
     }//addwynik
 
     /**
-     * @param bmi
      * @param waga
      */
-    public void addWynik(double bmi, double waga) {
+    public void addWynik(double waga) {
         ContentValues contentValues = new ContentValues();
-        contentValues.put("bmi", bmi);
+//        contentValues.put("bmi", bmi);
         contentValues.put("waga", waga);
         Calendar c = Calendar.getInstance();
         long ical = c.getTimeInMillis();
@@ -81,7 +79,6 @@ public class WynikiDataSource {
     public void updateWynik(Wynik w) {
         ContentValues cv = new ContentValues();
         //cv.put("wynik_id", w.getWynik_id());
-        cv.put("bmi", w.getBmi());
         cv.put("waga", w.getWaga());
         // cv.put("data", w.getData());
         cv.put("notatka", w.getNotatka());
@@ -108,11 +105,10 @@ public class WynikiDataSource {
                     new String[]{Integer.toString(id)});
             cursor.moveToFirst();
             wynik.setWynik_id(cursor.getInt(0));
-            wynik.setBmi(cursor.getDouble(1));
-            wynik.setWaga(cursor.getDouble(2));
+            wynik.setWaga(cursor.getDouble(1));
             // Log.d("test", Long.toString(cursor.getLong(3)));
-            wynik.setData(cursor.getLong(3));
-            wynik.setNotatka(cursor.getString(4));
+            wynik.setData(cursor.getLong(2));
+            wynik.setNotatka(cursor.getString(3));
         } catch (Exception e) {
             Log.e("com.devnoobs.bmr", "getIdDataException", e.fillInStackTrace());
         }
@@ -150,11 +146,10 @@ public class WynikiDataSource {
                 Wynik wynik = new Wynik();
                 // Take values from the DB
                 wynik.setWynik_id(cursor.getInt(0));
-                wynik.setBmi(cursor.getDouble(1));
-                wynik.setWaga(cursor.getDouble(2));
+                wynik.setWaga(cursor.getDouble(1));
                 //  Log.d("test", Long.toString(cursor.getLong(3)));
-                wynik.setData(cursor.getLong(3));
-                wynik.setNotatka(cursor.getString(4));
+                wynik.setData(cursor.getLong(2));
+                wynik.setNotatka(cursor.getString(3));
 
                 wynikList.add(wynik);
                 cursor.moveToNext();

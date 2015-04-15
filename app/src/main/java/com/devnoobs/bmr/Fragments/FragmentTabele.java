@@ -277,14 +277,14 @@ public class FragmentTabele extends Fragment implements OnClickListener,
                             try
                             {
                                 String n = notatka.getText().toString();
-                                wds.addWynik(b, w, n);
+                                wds.addWynik( w, n);
                             } catch (Exception e)
                             {
-                                wds.addWynik(b, w);
+                                wds.addWynik(w);
                             }
                             // wds.addWynik(b, w);
                             Toast.makeText(widok.getContext(),
-                                    "Wynik dodano.", Toast.LENGTH_SHORT)
+                                    contextFragmentTabele.getString(R.string.result_added), Toast.LENGTH_SHORT)
                                     .show();
                             wczytajTydzien();
                         } catch (NullPointerException e)

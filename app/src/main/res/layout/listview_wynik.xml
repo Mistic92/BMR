@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (c) 2015 Łukasz Byjoś
   ~
   ~ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
@@ -9,85 +8,53 @@
   ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   -->
 
-<android.support.v7.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="47dp"
     android:id="@+id/cardViewWynik"
-
-    android:layout_marginBottom="5dp"
     >
-<!-- android:id="@+id/listview_wynik_linearLayout"-->
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:paddingLeft="5dp"
-    >
-    <TableLayout
-        android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
-        android:shrinkColumns="*"
-        android:stretchColumns="*"
-        >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="2dp"
+        android:paddingTop="2dp"
+        android:orientation="horizontal"
+        android:layout_gravity="center_vertical"
+        android:paddingLeft="5dp">
 
-        <TableRow>
+        <TextView
+            android:id="@+id/listview_text_wagaInfo"
+            style="@style/tekst_tabela_wyniki"
+            android:text="@string/text_waga"
+            android:layout_width="0dp"
+            android:layout_gravity="center_vertical|left"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5" />
 
-            <TextView
-                android:id="@+id/listview_text_data"
-                style="@style/dataWyniku"
-                android:layout_width="30dp"
-                android:paddingTop="2dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left|center_vertical"
-                android:layout_weight="0.5"
-                />
-        </TableRow>
+        <TextView
+            android:id="@+id/listview_text_waga"
+            style="@style/tekst_tabela_wyniki"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="0.5" />
 
-        <TableRow
-            android:layout_gravity="center_vertical">
+        <TextView
+            android:id="@+id/listview_text_data"
+            style="@style/dataWyniku"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5" />
 
-            <TextView
-                android:id="@+id/listview_text_wagaInfo"
-                style="@style/tekst_tabela_wyniki"
-                android:text="@string/text_waga"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"/>
+        <ImageView
+            android:id="@+id/imgview_notatka"
+            android:layout_width="2dp"
+            android:layout_height="17dp"
+            android:layout_gravity="center_vertical|right"
+            android:contentDescription="@string/app_name"
+            android:visibility="visible"
+            android:src="@drawable/ic_note" />
 
-            <TextView
-                android:id="@+id/listview_text_waga"
-                style="@style/tekst_tabela_wyniki"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"/>
+    </LinearLayout>
 
-            <TextView
-                android:id="@+id/listview_text_BMIInfo"
-                style="@style/tekst_tabela_wyniki"
-                android:text="@string/text_bmi"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"/>
-
-            <TextView
-                android:id="@+id/listview_text_bmi"
-                style="@style/tekst_tabela_wyniki"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"/>
-
-            <ImageView
-                android:id="@+id/imgview_notatka"
-                android:layout_width="wrap_content"
-                android:layout_height="17dp"
-                android:layout_gravity="center_vertical"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_note"/>
-            <!---->
-        </TableRow>
-
-    </TableLayout>
 </LinearLayout>
-
-</android.support.v7.widget.CardView>

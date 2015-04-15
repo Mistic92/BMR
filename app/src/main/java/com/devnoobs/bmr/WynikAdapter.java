@@ -21,6 +21,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,9 +53,9 @@ public class WynikAdapter extends RecyclerView.Adapter<WynikAdapter.ViewHolder>
     {
         ImageView image;//= (ImageView) v.findViewById(R.id.imgview_notatka);
         TextView data;// = (TextView) v.findViewById(R.id.listview_text_data);
-        TextView bmi;// = (TextView) v.findViewById(R.id.listview_text_bmi);
         TextView waga;// = (TextView) v.findViewById(R.id.listview_text_waga);
-        android.support.v7.widget.CardView cardView;
+//        android.support.v7.widget.CardView cardView;
+        LinearLayout linear;
         public static Context _context;
 
 
@@ -63,9 +64,9 @@ public class WynikAdapter extends RecyclerView.Adapter<WynikAdapter.ViewHolder>
             super(itemView);
             image = (ImageView) itemView.findViewById(R.id.imgview_notatka);
             data = (TextView) itemView.findViewById(R.id.listview_text_data);
-            bmi = (TextView) itemView.findViewById(R.id.listview_text_bmi);
             waga = (TextView) itemView.findViewById(R.id.listview_text_waga);
-            cardView = (android.support.v7.widget.CardView) itemView.findViewById(R.id.cardViewWynik);
+//            cardView = (android.support.v7.widget.CardView) itemView.findViewById(R.id.cardViewWynik);
+            linear = (LinearLayout) itemView.findViewById(R.id.cardViewWynik);
         }
 
 
@@ -100,7 +101,6 @@ public class WynikAdapter extends RecyclerView.Adapter<WynikAdapter.ViewHolder>
             viewHolder.image.setVisibility(View.INVISIBLE);
 
         viewHolder.data.setText(getDate(wynik.getData(), "dd/MM/yyyy HH:mm:ss"));
-        viewHolder.bmi.setText(Double.toString(wynik.getBmi()));
         viewHolder.waga.setText(Double.toString(wynik.getWaga()));
 //        setAnimation(viewHolder.cardView,i);
     }

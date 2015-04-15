@@ -16,7 +16,7 @@ public class Wynik {
     }
 
     private int wynik_id;
-    private double bmi;
+
     private double waga;
     private long data;
     private String notatka;
@@ -38,14 +38,6 @@ public class Wynik {
         this.wynik_id = wynik_id;
     }
 
-
-    public double getBmi() {
-        return bmi;
-    }
-
-    public void setBmi(double bmi) {
-        this.bmi = bmi;
-    }
 
     public double getWaga() {
         return waga;

@@ -823,10 +823,10 @@ public class FragmentBMR extends Fragment implements TextWatcher,
                                     try
                                     {
                                         String n = notatka.getText().toString();
-                                        wds.addWynik(b, w, n);
+                                        wds.addWynik(w, n);
                                     } catch (Exception e)
                                     {
-                                        wds.addWynik(b, w);
+                                        wds.addWynik(w);
                                     }
                                     // wds.addWynik(b, w);
                                     // TODO zrobic refresh po dodaniu

@@ -168,12 +168,6 @@ public class FragmentWykres extends Fragment implements OnItemSelectedListener,
                     bmip = new LinePoint();
                     bmip.setX(i);
                     bmip.setyValue(sdata);
-                    double dbmi = w.getBmi();
-                    if (dbmi > maxbmi)
-                        maxbmi = dbmi;
-                    if (dbmi < minbmi)
-                        minbmi = dbmi;
-                    bmip.setY((float) dbmi);
                     bmi.addPoint(bmip);
 
                     wagap = new LinePoint();
@@ -251,7 +245,7 @@ public class FragmentWykres extends Fragment implements OnItemSelectedListener,
             showToast(getString(R.string.error_wykres_brak_danych));
         } catch (Exception e) {
             showToast(getString(R.string.error_wczytywanie_wykresow));
-            Log.e("com.devnoobs.bmr wykresy", "wykres_wczytanie", e.fillInStackTrace());
+//            Log.e("com.devnoobs.bmr wykresy", "wykres_wczytanie", e.fillInStackTrace());
         }
     }
 

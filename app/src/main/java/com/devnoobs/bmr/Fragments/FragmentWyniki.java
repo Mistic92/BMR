@@ -14,6 +14,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,7 +23,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,6 +31,7 @@ import com.devnoobs.bmr.Baza.WynikiDataSource;
 import com.devnoobs.bmr.CustomSpinner;
 import com.devnoobs.bmr.Interfejsy.IRefreshTabeli;
 import com.devnoobs.bmr.Interfejsy.WyborDadyDialogFragmentListener;
+import com.devnoobs.bmr.Narzedzia.DividerItemDecoration;
 import com.devnoobs.bmr.R;
 import com.devnoobs.bmr.SzczegolyWynikuActivity;
 import com.devnoobs.bmr.WyborDatyDialogFragment;
@@ -39,8 +40,6 @@ import com.devnoobs.bmr.WynikAdapter;
 import com.echo.holographlibrary.Line;
 import com.echo.holographlibrary.LineGraph;
 import com.echo.holographlibrary.LinePoint;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -133,6 +132,8 @@ public class FragmentWyniki extends Fragment implements AdapterView.OnItemSelect
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerWyniki);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(contextFragmentTabele));
         mRecyclerView.setItemAnimator(new SlideInUpAnimator());
+        mRecyclerView.addItemDecoration(
+                new DividerItemDecoration(getActivity(), null));
         sharedPref = getActivity().getSharedPreferences(
                 getString(R.string.appPreferences), getActivity().MODE_PRIVATE);
 
@@ -155,6 +156,10 @@ public class FragmentWyniki extends Fragment implements AdapterView.OnItemSelect
     public void wczytajTabele(long poczatek, long koniec) {
 
         ArrayList<Wynik> lista = wds.getData(poczatek, koniec, "DESC");
+        int rozmiar = lista.size() * 47;
+        rozmiar = convertToDp(rozmiar);
+
+        mRecyclerView.getLayoutParams().height = rozmiar;
         //  fAdapter = new AdapterWynikow(lista, contextFragmentTabele);
         wAdapter = new WynikAdapter(lista, R.layout.listview_wynik, contextFragmentTabele);
 
@@ -163,6 +168,12 @@ public class FragmentWyniki extends Fragment implements AdapterView.OnItemSelect
         Log.i("d", "costam");
     }//wczytajtabele
 
+    public int convertToDp(int input) {
+        // Get the screen's density scale
+        final float scale = getResources().getDisplayMetrics().density;
+        // Convert the dps to pixels, based on density scale
+        return (int) (input * scale + 0.5f);
+    }
 
     public void showDialogDodawanie() {
 
@@ -197,9 +208,9 @@ public class FragmentWyniki extends Fragment implements AdapterView.OnItemSelect
                             double w = Double.parseDouble(waga.getText().toString());
                             try {
                                 String n = notatka.getText().toString();
-                                wds.addWynik(b, w, n);
+                                wds.addWynik(w, n);
                             } catch (Exception e) {
-                                wds.addWynik(b, w);
+                                wds.addWynik(w);
                             }
                             // wds.addWynik(b, w);
                             Toast.makeText(widok.getContext(),

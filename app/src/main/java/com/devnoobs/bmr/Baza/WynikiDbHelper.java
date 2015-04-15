@@ -23,11 +23,10 @@ import java.util.ArrayList;
 
 public class WynikiDbHelper extends SQLiteOpenHelper {
 
-    public static final int DATABASE_VERSION = 5;//na nexus 4
+    public static final int DATABASE_VERSION = 6;//na nexus 4
     public static final String DATABASE_NAME = "wyniki.db";
     public static final String TABLE_NAME = "wyniki";
     public static final String COLUMN_ID = "wynik_id";
-    public static final String COLUMN_BMI = "bmi";
     public static final String COLUMN_WAGA = "waga";
     public static final String COLUMN_DATA = "data";
     public static final String COLUMN_NOTATKA = "notatka";
@@ -37,7 +36,6 @@ public class WynikiDbHelper extends SQLiteOpenHelper {
     private static final String DATABASE_CREATE = "create table "
             + TABLE_NAME
             + "( wynik_id integer primary key autoincrement, "
-            + " bmi REAL not null,"
             + " waga REAL not null,"
             + " data INTEGER, "
             + " notatka TEXT"
@@ -76,7 +74,6 @@ public class WynikiDbHelper extends SQLiteOpenHelper {
             db = this.getWritableDatabase();
             for (Wynik w : wynikList) {
                 contentValues = new ContentValues();
-                contentValues.put("bmi", w.getBmi());
                 contentValues.put("waga", w.getWaga());
                 contentValues.put("data", w.getData());
 
@@ -121,9 +118,8 @@ public class WynikiDbHelper extends SQLiteOpenHelper {
                 Wynik wynik = new Wynik();
                 // Take values from the DB
                 wynik.setWynik_id(cursor.getInt(0));
-                wynik.setBmi(cursor.getDouble(1));
-                wynik.setWaga(cursor.getDouble(2));
-                wynik.setData(cursor.getLong(3));
+                wynik.setWaga(cursor.getDouble(1));
+                wynik.setData(cursor.getLong(2));
 
                 wynikList.add(wynik);
                 cursor.moveToNext();

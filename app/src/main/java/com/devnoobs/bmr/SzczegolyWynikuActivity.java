@@ -75,7 +75,6 @@ public class SzczegolyWynikuActivity extends Activity implements TextWatcher, On
         notatka.setText(wynik.getNotatka());
         notatka.addTextChangedListener(this);
         bmi = (EditText) this.findViewById(R.id.EditTextBMI);
-        bmi.setText(Double.toString(wynik.getBmi()));
         bmi.addTextChangedListener(this);
         waga = (EditText) this.findViewById(R.id.EditTextWaga);
         waga.setText(Double.toString(wynik.getWaga()));
@@ -138,7 +137,6 @@ public class SzczegolyWynikuActivity extends Activity implements TextWatcher, On
         double b = Double.parseDouble(bmi.getText().toString());
         double w = Double.parseDouble(waga.getText().toString());
         String n = notatka.getText().toString();
-        wynik.setBmi(b);
         wynik.setNotatka(n);
         wynik.setWaga(w);
         wds.updateWynik(wynik);

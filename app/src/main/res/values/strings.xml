@@ -133,4 +133,5 @@
     <string name="imperial">imperial</string>
     <string name="ostatniZakres">ostatniZakres</string>
     <string name="title_add_result">Wprowadź dane do dodania.</string>
+    <string name="result_added">Wynik dodano.</string>
 </resources>

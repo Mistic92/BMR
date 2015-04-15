@@ -89,7 +89,7 @@
     </style>
 
     <style name="dataWyniku" parent="tekst_tabela_wyniki">
-        <item name="android:textSize">19sp</item>
+        <item name="android:textSize">15sp</item>
     </style>
 
 
