@@ -20,6 +20,7 @@
     <string name="title_tabela">Your results</string>
     <string name="title_ustawienia">Settings</string>
     <string name="title_wykres">Charts</string>
+    <string name="title_wyniki">Results</string>
     
     <!-- KALKULATOR -->
     <string name="text_wybierz_plec">select sex</string>
