@@ -37,6 +37,7 @@ import com.devnoobs.bmr.Fragments.FragmentBMR;
 import com.devnoobs.bmr.Fragments.FragmentTabele;
 import com.devnoobs.bmr.Fragments.FragmentUstawienia;
 import com.devnoobs.bmr.Fragments.FragmentWykres;
+import com.devnoobs.bmr.Fragments.FragmentWyniki;
 import com.devnoobs.bmr.Interfejsy.IReklamy;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.HitBuilders;
@@ -249,23 +250,33 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
             tran.commit();
             // fragmentManager.beginTransaction().replace(R.id.content_frame, bmr).commit();
 
-        } else if (position == 1)
+        }
+        else if (position==1)
         {
-            Fragment tabele = (Fragment) new FragmentTabele();
-//            FragmentManager fragmentManager = getFragmentManager();
-//            fragmentManager.beginTransaction() .replace(R.id.content_frame, tabele).commit();
-            tran.replace(R.id.content_frame, tabele);
+            Fragment wyniki = (Fragment) new FragmentWyniki();
+            tran.replace(R.id.content_frame,wyniki);
             tran.commit();
+        }
+// else if (position == 1)
+//        {
+//            Fragment tabele = (Fragment) new FragmentTabele();
+////            FragmentManager fragmentManager = getFragmentManager();
+////            fragmentManager.beginTransaction() .replace(R.id.content_frame, tabele).commit();
+//            tran.replace(R.id.content_frame, tabele);
+//            tran.commit();
+//
+//        } else if (position == 2)
+//        {
+//            Fragment wykresy = (Fragment) new FragmentWykres();
+////            FragmentManager fragmentManager = getFragmentManager();
+////            fragmentManager.beginTransaction().replace(R.id.content_frame, wykresy).commit();
+//            tran.replace(R.id.content_frame, wykresy);
+//            tran.commit();
+//
+//        }
+//
 
-        } else if (position == 2)
-        {
-            Fragment wykresy = (Fragment) new FragmentWykres();
-//            FragmentManager fragmentManager = getFragmentManager();
-//            fragmentManager.beginTransaction().replace(R.id.content_frame, wykresy).commit();
-            tran.replace(R.id.content_frame, wykresy);
-            tran.commit();
-
-        } else if (position == 3)
+        else if (position == 2)
         {
             Fragment ustawienia = (Fragment) new FragmentUstawienia();
 //            FragmentManager fragmentManager = getFragmentManager();
