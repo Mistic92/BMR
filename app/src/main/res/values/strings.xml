@@ -113,7 +113,6 @@
     <string-array name="tabela_menu">
         <item>Calculator</item>
         <item>Your results</item>
-        <item>Charts</item>
         <item>Settings</item>
     </string-array>
     
@@ -133,4 +132,5 @@
     <string name="appPreferences">com.devnoobs.bmr.appPreferences</string>
     <string name="imperial">imperial</string>
     <string name="ostatniZakres">ostatniZakres</string>
+    <string name="title_add_result">Wprowadź dane do dodania.</string>
 </resources>

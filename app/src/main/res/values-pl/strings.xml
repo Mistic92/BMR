@@ -112,8 +112,7 @@
     
     <string-array name="tabela_menu">
         <item>Kalkulator</item>
-        <item>Tabela wyników</item>
-        <item>Wykresy</item>
+        <item>Wyniki</item>
         <item>Ustawienia</item>
     </string-array>
     
