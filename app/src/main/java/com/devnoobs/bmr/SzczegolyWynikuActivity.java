@@ -37,7 +37,6 @@ public class SzczegolyWynikuActivity extends Activity implements TextWatcher, On
 
     private WynikiDataSource wds;
     private EditText notatka;
-    private EditText bmi;
     private EditText waga;
     //zmienna jesli edytowano notatke to zmieni sie stan i pojdzie zapis
     private boolean edytowano = false;
@@ -74,8 +73,6 @@ public class SzczegolyWynikuActivity extends Activity implements TextWatcher, On
         notatka = (EditText) this.findViewById(R.id.EditTextNotatka);
         notatka.setText(wynik.getNotatka());
         notatka.addTextChangedListener(this);
-        bmi = (EditText) this.findViewById(R.id.EditTextBMI);
-        bmi.addTextChangedListener(this);
         waga = (EditText) this.findViewById(R.id.EditTextWaga);
         waga.setText(Double.toString(wynik.getWaga()));
         waga.addTextChangedListener(this);
@@ -134,7 +131,6 @@ public class SzczegolyWynikuActivity extends Activity implements TextWatcher, On
      */
     private void zrobUpdate() {
         //Log.d("TEST", "TEST");
-        double b = Double.parseDouble(bmi.getText().toString());
         double w = Double.parseDouble(waga.getText().toString());
         String n = notatka.getText().toString();
         wynik.setNotatka(n);

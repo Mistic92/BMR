@@ -297,44 +297,62 @@
                     >
 
                 <RelativeLayout
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="10dp">
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp">
 
                     <RelativeLayout
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            >
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="40dp"
+                        >
 
                         <TextView
-                                android:id="@+id/textViewPodpisWyniki2"
-                                style="@style/podpisy_kart"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerHorizontal="true"
-                                android:layout_marginBottom="5dp"
-                                android:text="@string/podpis_wyniki"/>
+                            android:id="@+id/textViewPodpisWyniki2"
+                            style="@style/podpisy_kart"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="5dp"
+                            android:text="@string/podpis_wyniki"/>
                         <!-- Twoj wynik BMI to -->
 
                         <TextView
-                                android:id="@+id/textTwojWynikBmi"
-                                style="@style/bmr_teksty"
-                                android:layout_below="@+id/textViewPodpisWyniki2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerHorizontal="true"
-                                android:text="@string/twoje_bmi">
+                            android:id="@+id/textTwojWynikBmi"
+                            style="@style/bmr_teksty"
+                            android:layout_below="@+id/textViewPodpisWyniki2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:text="@string/twoje_bmi">
                         </TextView>
 
                         <TextView
-                                android:id="@+id/textWynikBMI"
-                                style="@style/tekst_bmr_wyniki"
-                                android:layout_width="wrap_content"
-                                android:layout_below="@+id/textTwojWynikBmi"
-                                android:layout_height="wrap_content"
-                                android:layout_centerHorizontal="true"
-                                android:text="">
+                            android:id="@+id/textWynikBMI"
+                            style="@style/tekst_bmr_wyniki"
+                            android:layout_width="wrap_content"
+                            android:layout_below="@+id/textTwojWynikBmi"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:text="">
                         </TextView>
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_below="@+id/textWynikBMI"
+                            android:padding="10dp"
+                            >
+
+                            <TextView
+                                android:id="@+id/textBMIZnaczenie"
+                                style="@style/znaczeniaBMI"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=""/>
+
+                        </LinearLayout>
                         <!--android:layout_toLeftOf="@+id/buttonDodajWynikWBMR"-->
 
                         <!--<Button-->
@@ -348,125 +366,20 @@
                     </RelativeLayout>
 
                     <com.software.shell.fab.ActionButton
-                            android:id="@+id/buttonDodajWynikWBMR"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentBottom="true"
-                            android:layout_alignParentRight="true"
-                            />
-                </RelativeLayout>
-            </android.support.v7.widget.CardView>
-
-            <!-- znaczenia -->
-
-            <android.support.v7.widget.CardView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    >
-
-                <LinearLayout
-                        android:layout_width="fill_parent"
+                        android:id="@+id/buttonDodajWynikWBMR"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="10dp"
-                        >
 
-                    <TableLayout
-                            android:layout_width="280dp"
-                            android:layout_height="fill_parent"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginBottom="10dp"
-                            android:layout_marginTop="10dp"
-                            android:focusable="true"
-                            android:focusableInTouchMode="true"
-                            android:shrinkColumns="*"
-                            android:stretchColumns="*">
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"
 
-                        <TableRow>
+                        />
 
-                            <TextView
-                                    android:id="@+id/textBMIZnaczenie1"
-                                    style="@style/znaczeniaBMI"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/bmi1_wyglodzenie"/>
-                        </TableRow>
+                </RelativeLayout>
 
-                        <TableRow>
-
-                            <TextView
-                                    android:id="@+id/textBMIZnaczenie2"
-                                    style="@style/znaczeniaBMI"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/bmi2_wychudzenie"/>
-                        </TableRow>
-
-                        <TableRow>
-
-                            <TextView
-                                    android:id="@+id/textBMIZnaczenie3"
-                                    style="@style/znaczeniaBMI"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/bmi3_niedowaga"/>
-                        </TableRow>
-
-                        <TableRow>
-
-                            <TextView
-                                    android:id="@+id/textBMIZnaczenie4"
-                                    style="@style/znaczeniaBMI"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/bmi4_idealna"/>
-                        </TableRow>
-
-                        <TableRow>
-
-                            <TextView
-                                    android:id="@+id/textBMIZnaczenie5"
-                                    style="@style/znaczeniaBMI"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/bmi5_nadwaga"/>
-                        </TableRow>
-
-                        <TableRow>
-
-                            <TextView
-                                    android:id="@+id/textBMIZnaczenie6"
-                                    style="@style/znaczeniaBMI"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/bmi6_1stopienotylosc"/>
-                        </TableRow>
-
-                        <TableRow>
-
-                            <TextView
-                                    android:id="@+id/textBMIZnaczenie7"
-                                    style="@style/znaczeniaBMI"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/bmi7_2stopienotylosc"/>
-                        </TableRow>
-
-                        <TableRow>
-
-                            <TextView
-                                    android:id="@+id/textBMIZnaczenie8"
-                                    style="@style/znaczeniaBMI"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/bmi8_3stopienotylosc"/>
-                        </TableRow>
-                    </TableLayout>
-
-                    <!-- Koniec znaczen BMI -->
-                </LinearLayout>
             </android.support.v7.widget.CardView>
+
+
 
             <!-- twoje bmr -->
 

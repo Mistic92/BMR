@@ -22,14 +22,14 @@
         android:layout_gravity="center_vertical"
         android:paddingLeft="5dp">
 
-        <TextView
-            android:id="@+id/listview_text_wagaInfo"
-            style="@style/tekst_tabela_wyniki"
-            android:text="@string/text_waga"
-            android:layout_width="0dp"
-            android:layout_gravity="center_vertical|left"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5" />
+        <!--<TextView-->
+            <!--android:id="@+id/listview_text_wagaInfo"-->
+            <!--style="@style/tekst_tabela_wyniki"-->
+            <!--android:text="@string/text_waga"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_gravity="center_vertical|left"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="0.5" />-->
 
         <TextView
             android:id="@+id/listview_text_waga"
@@ -37,6 +37,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
             android:layout_weight="0.5" />
 
         <TextView
@@ -44,6 +45,7 @@
             style="@style/dataWyniku"
             android:layout_width="20dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:layout_weight="0.5" />
 
         <ImageView

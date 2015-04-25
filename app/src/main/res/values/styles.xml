@@ -35,7 +35,7 @@
 
     <!--Tekst wyswietlajacy wybrany zakres dat-->
     <style name="tekstZakresuDat" parent="bmr_teksty">
-        <item name="android:textSize">19sp</item>
+        <item name="android:textSize">15sp</item>
     </style>
 
     <!--Styl tekstow w kalkulatorze, przy tekstach typu "wybierz plec".-->
@@ -89,7 +89,7 @@
     </style>
 
     <style name="dataWyniku" parent="tekst_tabela_wyniki">
-        <item name="android:textSize">15sp</item>
+        <item name="android:textSize">16sp</item>
     </style>
 
 
@@ -117,10 +117,16 @@
     <style name="spinner_item">
         <item name="android:textColor">@color/textbmr</item>
         <item name="android:textSize">23sp</item>
-        <item name="android:paddingLeft">14dp</item>
+        <item name="android:paddingLeft">10dp</item>
         <item name="android:paddingBottom">7dp</item>
         <item name="android:paddingTop">7dp</item>
         <item name="android:gravity">left</item>
+    </style>
+    <style name="spinner_date" parent="spinner_item">
+        <item name="android:textSize">17sp</item>
+        <item name="android:gravity">right</item>
+        <item name="android:paddingLeft">0dp</item>
+        <item name="android:paddingRight">5dp</item>
     </style>
 
     <style name="leweMenu">

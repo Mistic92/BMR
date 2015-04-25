@@ -43,9 +43,10 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.software.shell.fab.ActionButton;
 
+import org.w3c.dom.Text;
+
 public class FragmentBMR extends Fragment implements TextWatcher,
-        OnCheckedChangeListener, OnClickListener
-{
+        OnCheckedChangeListener, OnClickListener {
 
     private Fragment mFragment;
     WynikiDataSource wds;
@@ -57,11 +58,10 @@ public class FragmentBMR extends Fragment implements TextWatcher,
     // dodawanie wyniku przycisk
     private ActionButton addResultButton;
     private Button dodaj_wynik;
-    private EditText bmi;
     private EditText waga;
     private EditText notatka;
     public boolean imperial = false;
-    private final double mnoznik_imperial = 703.06957964;
+    private static final double mnoznik_imperial = 703.06957964;
 
     // Obiekty pol w tabeli pokazywania wynikow. Odpowiednio kcal i gramy
     TextView text_wynik_bmi;
@@ -96,21 +96,23 @@ public class FragmentBMR extends Fragment implements TextWatcher,
     private static final int minWaga = 20;
     private static final int minWzrost = 20;
 
-    private static final int[] tablicaIndeksowPolBMI = {
-            R.id.textBMIZnaczenie1, R.id.textBMIZnaczenie2,
-            R.id.textBMIZnaczenie3, R.id.textBMIZnaczenie4,
-            R.id.textBMIZnaczenie5, R.id.textBMIZnaczenie6,
-            R.id.textBMIZnaczenie7, R.id.textBMIZnaczenie8};
+//    private static final int[] tablicaIndeksowPolBMI = {
+//            R.id.textBMIZnaczenie1, R.id.textBMIZnaczenie2,
+//            R.id.textBMIZnaczenie3, R.id.textBMIZnaczenie4,
+//            R.id.textBMIZnaczenie5, R.id.textBMIZnaczenie6,
+//            R.id.textBMIZnaczenie7, R.id.textBMIZnaczenie8};
 
-    private TextView[] tablicaPolBMI = new TextView[8];
+//    private TextView[] tablicaPolBMI = new TextView[8];
+
+    private TextView twojeBmi;
+
 
     private LinearLayout linearBrakDanych;// = (LinearLayout) getActivity().findViewById(R.id
     // .linearLayoutBrakuDanychWynikow);
     private LinearLayout linearWynikow;// = (LinearLayout) getActivity().findViewById(R.id
     // .linearLayoutWynikow);
 
-    public static FragmentBMR init(int val)
-    {
+    public static FragmentBMR init(int val) {
         FragmentBMR truitonFrag = new FragmentBMR();
         // Supply val input as an argument.
         Bundle args = new Bundle();
@@ -120,8 +122,7 @@ public class FragmentBMR extends Fragment implements TextWatcher,
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         fragVal = getArguments() != null ? getArguments().getInt("val") : 1;
     }
@@ -135,8 +136,7 @@ public class FragmentBMR extends Fragment implements TextWatcher,
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState)
-    {
+                             Bundle savedInstanceState) {
         config = getResources().getConfiguration();
         View rootView;
         szerokosc = config.smallestScreenWidthDp;
@@ -156,19 +156,18 @@ public class FragmentBMR extends Fragment implements TextWatcher,
         if (mAdView != null)
             mAdView.loadAd(adRequest);
 
+        twojeBmi = (TextView) rootView.findViewById(R.id.textBMIZnaczenie);
+        oblicz(this.indeksPlci, this.indeksAktywnosc);
         return rootView;
     }
 
 
-    private void przygotowanieWidoku(View rootView)
-    {
-        try
-        {
+    private void przygotowanieWidoku(View rootView) {
+        try {
             sharedPref = getActivity().getSharedPreferences(
                     getString(R.string.appPreferences),
                     getActivity().MODE_PRIVATE);
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             Log.e("com.devnoobs.bmr", "", e.fillInStackTrace());
         }
 
@@ -202,8 +201,7 @@ public class FragmentBMR extends Fragment implements TextWatcher,
 
         // Pobieranie wartosci z przed wylaczenia programu i ich ustawianie w
         // polach
-        try
-        {
+        try {
             imperial = sharedPref.getBoolean(getString(R.string.imperial),
                     false);
             // ustawienie hintow przez metode
@@ -221,31 +219,25 @@ public class FragmentBMR extends Fragment implements TextWatcher,
                     getString(R.string.text_aktywnosc), 0);
 
             // jezeli waga wieksza od 0 to wartosc jest ustawiana w tym polu
-            if ((waga > minWaga) && (waga < maxWaga))
-            {
+            if ((waga > minWaga) && (waga < maxWaga)) {
                 pole_waga.setText(Double.toString(waga));
-            } else
-            {
+            } else {
                 // jesli nic nie zostanie ustawione to jest ustawiana szerokosc
                 // XXX nie wiem nawet czy to dziala :D
                 if (szerokosc < 320)
                     pole_waga.getLayoutParams().width = 30;
             }
-            if ((wzrost > minWzrost) && (wzrost < maxWzrost))
-            {
+            if ((wzrost > minWzrost) && (wzrost < maxWzrost)) {
                 pole_wzrost.setText(Double.toString(wzrost));
-            } else
-            {
+            } else {
                 if (szerokosc < 320)
                     pole_wzrost.getLayoutParams().width = 30;
             }
-            if ((wiek > minWiek) && (wiek < maxWiek))
-            {
+            if ((wiek > minWiek) && (wiek < maxWiek)) {
                 pole_wiek.setText(Integer.toString(wiek));
             }
             // switch do ustawiania plci
-            switch (indeksPlci)
-            {
+            switch (indeksPlci) {
                 case 0:
                     radioGroupPlec.check(R.id.radio_plec0);
                     break;
@@ -257,8 +249,7 @@ public class FragmentBMR extends Fragment implements TextWatcher,
                     break;
             }
 
-            switch (indeksAktywnosc)
-            {
+            switch (indeksAktywnosc) {
                 case 0:
                     radioGroupAktywnosc.check(R.id.radio0);
                     break;
@@ -279,19 +270,17 @@ public class FragmentBMR extends Fragment implements TextWatcher,
                     break;
             }
             // XXX
-            for (int i = 0; i < tablicaIndeksowPolBMI.length; i++)
-            {
-                tablicaPolBMI[i] = (TextView) rootView
-                        .findViewById(tablicaIndeksowPolBMI[i]);
-            }
+//            for (int i = 0; i < tablicaIndeksowPolBMI.length; i++)
+//            {
+//                tablicaPolBMI[i] = (TextView) rootView
+//                        .findViewById(tablicaIndeksowPolBMI[i]);
+//            }
 
-            if (sprawdzeniePolTekstowych())
-            {
+            if (sprawdzeniePolTekstowych()) {
                 oblicz(this.indeksPlci, this.indeksAktywnosc);
             }
 
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             Log.e("t", "Ustawianie starych danych", e.fillInStackTrace());
         }
 
@@ -310,62 +299,52 @@ public class FragmentBMR extends Fragment implements TextWatcher,
     /**
 
      */
-    private void styleAddResultButton()
-    {
+    private void styleAddResultButton() {
         addResultButton.setButtonColor(getResources().getColor(R.color.primary));
         addResultButton.setButtonColorPressed(getResources().getColor(R.color.primary_dark));
         addResultButton.setImageDrawable(getResources().getDrawable(R.drawable.fab_plus_icon));
     }
 
     /**
-     Sluzy do ustawiania hintow w polach tekstowych w zaleznosci od ustawien
-     programu
-
-     @param imperial
+     * Sluzy do ustawiania hintow w polach tekstowych w zaleznosci od ustawien
+     * programu
+     *
+     * @param imperial
      */
-    private void ustawienieHint(boolean imperial)
-    {
+    private void ustawienieHint(boolean imperial) {
         // jezeli imperial false to podpowiedz tekstu jest oznaczana jako
         // kilogramy
-        if (imperial == false)
-        {
+        if (imperial == false) {
             pole_waga.setHint(R.string.text_kilogramy);
             pole_wzrost.setHint(R.string.text_centymetry);
-        } else
-        {
+        } else {
             pole_waga.setHint(R.string.text_kilogramy_funty);
             pole_wzrost.setHint(R.string.text_cale);
         }
     }
 
     @Override
-    public void afterTextChanged(Editable s)
-    {
-        if (sprawdzeniePolTekstowych() == true)
-        {
+    public void afterTextChanged(Editable s) {
+        if (sprawdzeniePolTekstowych() == true) {
             oblicz(this.indeksPlci, this.indeksAktywnosc);
         }
 
     }// aftertextchanged
 
     /**
-     Sprawdzenie warunkow dla obu listenerow. Sprazdzam czy dane sa realne i w
-     zaleznosci od tego zwraca boolean.
+     * Sprawdzenie warunkow dla obu listenerow. Sprazdzam czy dane sa realne i w
+     * zaleznosci od tego zwraca boolean.
      */
-    private boolean sprawdzeniePolTekstowych()
-    {
+    private boolean sprawdzeniePolTekstowych() {
         // TODO jesli brak danych to zamiast wynikow pojawia sie tekst o braku
         // wynikow
         boolean wynik = false;
-        try
-        {
+        try {
             SharedPreferences.Editor editor = sharedPref.edit();
             int wiek = 0;
-            try
-            {
+            try {
                 wiek = Integer.parseInt(pole_wiek.getText().toString());
-            } catch (NumberFormatException e)
-            {
+            } catch (NumberFormatException e) {
                 /*
                  * editor.putInt(getString(R.string.text_wiek), 0);
 				 * editor.apply();
@@ -374,25 +353,21 @@ public class FragmentBMR extends Fragment implements TextWatcher,
             }
 
             double waga = 0;
-            try
-            {
+            try {
                 waga = Double.parseDouble(pole_waga.getText().toString());
-            } catch (NumberFormatException e)
-            {
+            } catch (NumberFormatException e) {
                 /*
-				 * editor.putFloat(getString(R.string.shared_waga), 0);
+                 * editor.putFloat(getString(R.string.shared_waga), 0);
 				 * editor.apply();
 				 */
                 wynik = false;
             }
 
             double wzrost = 0;
-            try
-            {
+            try {
                 wzrost = Double.parseDouble(pole_wzrost.getText().toString());
-            } catch (NumberFormatException e)
-            {
-				/*
+            } catch (NumberFormatException e) {
+                /*
 				 * editor.putFloat(getString(R.string.text_wzrost), 0);
 				 * editor.apply();
 				 */
@@ -426,8 +401,7 @@ public class FragmentBMR extends Fragment implements TextWatcher,
             if ((wiek < maxWiek && wiek > minWiek)
                     && (waga < maxWaga && waga > minWaga)
                     && (wzrost < maxWzrost && wzrost > minWzrost)
-                    && this.indeksPlci >= 0 && this.indeksAktywnosc >= 0)
-            {
+                    && this.indeksPlci >= 0 && this.indeksAktywnosc >= 0) {
                 wynik = true;
                 // editor.putInt(getString(R.string.text_wiek), 0);
                 // editor.putFloat(getString(R.string.shared_waga), 0);
@@ -442,21 +416,16 @@ public class FragmentBMR extends Fragment implements TextWatcher,
 			 * this.plec < 0 || this.aktywnosc < 0 ) { wynik = false; } else //
 			 * jedyne ktore zwroci true wynik = true;
 			 */
-        } catch (NullPointerException e)
-        {
-        } catch (NumberFormatException e)
-        {
-        } catch (Exception e)
-        {
+        } catch (NullPointerException e) {
+        } catch (NumberFormatException e) {
+        } catch (Exception e) {
             Log.e("BMR", "Exception fragment bmr", e.fillInStackTrace());
         }
 
-        if (wynik == false)
-        {
+        if (wynik == false) {
             linearBrakDanych.setVisibility(LinearLayout.VISIBLE);
             linearWynikow.setVisibility(LinearLayout.GONE);
-        } else
-        {
+        } else {
             linearBrakDanych.setVisibility(LinearLayout.GONE);
             linearWynikow.setVisibility(LinearLayout.VISIBLE);
         }
@@ -467,53 +436,44 @@ public class FragmentBMR extends Fragment implements TextWatcher,
 
     @Override
     public void beforeTextChanged(CharSequence s, int start, int count,
-                                  int after)
-    {
+                                  int after) {
     }
 
     @Override
-    public void onTextChanged(CharSequence s, int start, int before, int count)
-    {
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
     }// ontextchanged
 
     @Override
-    public void onCheckedChanged(RadioGroup arg0, int arg1)
-    {
-        if (sprawdzeniePolTekstowych() == true)
-        {
+    public void onCheckedChanged(RadioGroup arg0, int arg1) {
+        if (sprawdzeniePolTekstowych() == true) {
             oblicz(this.indeksPlci, this.indeksAktywnosc);
         }
 
     }// oncheckedchanged
 
     /**
-     @param id_plec
-     @param id_aktywnosc
-
-     @return
+     * @param id_plec
+     * @param id_aktywnosc
+     * @return
      */
 
     @SuppressLint("CommitPrefEdits")
-    private void oblicz(int id_plec, int id_aktywnosc)
-    {
-        try
-        {
+    private void oblicz(int id_plec, int id_aktywnosc) {
+        try {
             double wiek = Integer.parseInt(pole_wiek.getText().toString());
             double waga = Double.parseDouble(pole_waga.getText().toString());
             double wzrost = Double
                     .parseDouble(pole_wzrost.getText().toString());
 
             SharedPreferences.Editor editor = sharedPref.edit();
-            try
-            {
+            try {
                 editor.putFloat(getString(R.string.shared_waga), (float) waga);
                 editor.putInt(getString(R.string.text_wiek), (int) wiek);
                 editor.putFloat(getString(R.string.text_wzrost), (int) wzrost);
                 editor.putInt(getString(R.string.text_plec), id_plec);
                 editor.putInt(getString(R.string.text_aktywnosc), id_aktywnosc);
                 editor.apply();
-            } catch (Exception e)
-            {
+            } catch (Exception e) {
                 Log.e("com.devnoobs.bmr", "", e.fillInStackTrace());
             }
 
@@ -530,116 +490,17 @@ public class FragmentBMR extends Fragment implements TextWatcher,
             double bmi = (waga / (wzrost * wzrost));
             // w przypadku jednostek imperialnych wynik mnozy sie jeszcze razy
             // 703
-            if (imperial == true)
-            {
+            if (imperial == true) {
                 bmi *= mnoznik_imperial;
             }
             bmi = Math.round(bmi * 100.0) / 100.0;
             editor.putFloat(getString(R.string.text_bmi), (float) bmi);
             editor.apply();
 
-            zresetujTextBMI();
-            TextView twojebmi = null;
-			/*
-			 * // Reset wygl�du p�l od BMI TextView twojebmi = null;// =
-			 * (TextView) // getActivity().findViewById(R.id.radio2); try {
-			 * twojebmi = (TextView) getActivity().findViewById(
-			 * R.id.textBMIZnaczenie1); twojebmi = zresetujText(twojebmi);
-			 * twojebmi = (TextView) getActivity().findViewById(
-			 * R.id.textBMIZnaczenie2); twojebmi = zresetujText(twojebmi);
-			 * twojebmi = (TextView) getActivity().findViewById(
-			 * R.id.textBMIZnaczenie3); twojebmi = zresetujText(twojebmi);
-			 * twojebmi = (TextView) getActivity().findViewById(
-			 * R.id.textBMIZnaczenie4); twojebmi = zresetujText(twojebmi);
-			 * twojebmi = (TextView) getActivity().findViewById(
-			 * R.id.textBMIZnaczenie5); twojebmi = zresetujText(twojebmi);
-			 * twojebmi = (TextView) getActivity().findViewById(
-			 * R.id.textBMIZnaczenie6); twojebmi = zresetujText(twojebmi);
-			 * 
-			 * twojebmi = (TextView) getActivity().findViewById(
-			 * R.id.textBMIZnaczenie7); twojebmi = zresetujText(twojebmi);
-			 * twojebmi = (TextView) getActivity().findViewById(
-			 * R.id.textBMIZnaczenie8); twojebmi = zresetujText(twojebmi); }
-			 * catch (NullPointerException e) { // Log.w("Brak ustawionego bmi",
-			 * "com.devnoobs.bmr", // e.fillInStackTrace()); }
-			 */
-			/*
-			 * try { // Ustawienie wygl�du wybranego pola BMI. // Zolty jest w
-			 * komentarzu bo byl nieczytelny if (bmi < 16)// < 16,0 �
-			 * wyg�odzenie { twojebmi = (TextView) getActivity().findViewById(
-			 * R.id.textBMIZnaczenie1);
-			 * twojebmi.setTextColor(Color.parseColor("#CC0000")); } else if
-			 * (bmi >= 16 && bmi <= 16.99)// 16,0�16,99 � wychudzenie { twojebmi
-			 * = (TextView) getActivity().findViewById( R.id.textBMIZnaczenie2);
-			 * twojebmi.setTextColor(Color.parseColor("#CC0000")); } else if
-			 * (bmi >= 17 && bmi <= 18.49)// 17,0�18,49 � niedowaga { twojebmi =
-			 * (TextView) getActivity().findViewById( R.id.textBMIZnaczenie3);
-			 * twojebmi.setTextColor(Color.parseColor("#FF8800")); } else if
-			 * (bmi >= 18.5 && bmi <= 24.99)// 18,5�24,99 � idealna waga cia�a {
-			 * twojebmi = (TextView) getActivity().findViewById(
-			 * R.id.textBMIZnaczenie4);
-			 * twojebmi.setTextColor(Color.parseColor("#669900")); } else if
-			 * (bmi >= 25 && bmi <= 29.99)// 25,0�29,99 � nadwaga { twojebmi =
-			 * (TextView) getActivity().findViewById( R.id.textBMIZnaczenie5);
-			 * twojebmi.setTextColor(Color.parseColor("#FF8800")); } else if
-			 * (bmi >= 30 && bmi <= 34.99)// 30,0�34,99 � I stopie� // oty�o�ci
-			 * { twojebmi = (TextView) getActivity().findViewById(
-			 * R.id.textBMIZnaczenie6);
-			 * twojebmi.setTextColor(Color.parseColor("#FF8800")); } else if
-			 * (bmi >= 35 && bmi <= 39.99)// 35,0�39,99 � II stopie� // oty�o�ci
-			 * { twojebmi = (TextView) getActivity().findViewById(
-			 * R.id.textBMIZnaczenie7);
-			 * twojebmi.setTextColor(Color.parseColor("#CC0000")); } else if
-			 * (bmi > 40)// > 40,0 � III stopie� oty�o�ci { twojebmi =
-			 * (TextView) getActivity().findViewById( R.id.textBMIZnaczenie8);
-			 * twojebmi.setTextColor(Color.parseColor("#CC0000")); }
-			 */
+
 
             ustawieniePolaBMI(bmi);
-			/*
-			 * try { // Ustawienie wygl�du wybranego pola BMI. // Zolty jest w
-			 * komentarzu bo byl nieczytelny if (bmi < 16)// < 16,0 �
-			 * wyg�odzenie { twojebmi = tablicaPolBMI[0];
-			 * twojebmi.setTextColor(Color.parseColor("#CC0000")); } else if
-			 * (bmi >= 16 && bmi <= 16.99)// 16,0�16,99 � wychudzenie { twojebmi
-			 * = tablicaPolBMI[1];
-			 * twojebmi.setTextColor(Color.parseColor("#CC0000")); } else if
-			 * (bmi >= 17 && bmi <= 18.49)// 17,0�18,49 � niedowaga { twojebmi =
-			 * tablicaPolBMI[2];
-			 * twojebmi.setTextColor(Color.parseColor("#FF8800")); } else if
-			 * (bmi >= 18.5 && bmi <= 24.99)// 18,5�24,99 � idealna waga cia�a {
-			 * twojebmi = tablicaPolBMI[3];
-			 * twojebmi.setTextColor(Color.parseColor("#669900")); } else if
-			 * (bmi >= 25 && bmi <= 29.99)// 25,0�29,99 � nadwaga { twojebmi =
-			 * tablicaPolBMI[4];
-			 * twojebmi.setTextColor(Color.parseColor("#FF8800")); } else if
-			 * (bmi >= 30 && bmi <= 34.99)// 30,0�34,99 � I stopie� oty�o�ci {
-			 * twojebmi = tablicaPolBMI[5];
-			 * twojebmi.setTextColor(Color.parseColor("#FF8800")); } else if
-			 * (bmi >= 35 && bmi <= 39.99)// 35,0�39,99 � II stopie� oty�o�ci {
-			 * twojebmi = tablicaPolBMI[6];
-			 * twojebmi.setTextColor(Color.parseColor("#CC0000")); } else if
-			 * (bmi > 40)// > 40,0 � III stopie� oty�o�ci { twojebmi =
-			 * tablicaPolBMI[7];
-			 * twojebmi.setTextColor(Color.parseColor("#CC0000")); }
-			 * 
-			 * twojebmi.setTypeface(Typeface.DEFAULT_BOLD); if (szerokosc < 380)
-			 * { twojebmi.setTextSize(17); } else twojebmi.setTextSize(19); }
-			 * catch (NullPointerException e) { Log.w("com.devnoobs.bmr.bmr",
-			 * "com.devnoobs.bmr",e); }
-			 * 
-			 * 
-			 * // Ustawianie wynikow w polach tabeli
-			 * text_wynik_bmi.setText(Double.toString(bmi));
-			 * text_wynik_bmr.setText(Double.toString(bmr));
-			 * text_weglowodany.setText(Double.toString(weglowodany));
-			 * text_kalorie.setText(Double.toString(kalorie));
-			 * text_bialko.setText(Double.toString(bialko));
-			 * text_tluszcz.setText(Double.toString(tluszcz));
-			 * text_bialko_gram.setText(Double.toString(bialko_gram));
-			 * text_tluszcz_gram.setText(Double.toString(tluszcz_gram));
-			 * text_weglowodany_gram.setText(Double.toString(weglowodany_gram));
-			 */
+
             // Ustawianie wynikow w polach tabeli
             text_wynik_bmi.setText(Double.toString(bmi));
             text_wynik_bmr.setText(Double.toString(bmr));
@@ -658,110 +519,101 @@ public class FragmentBMR extends Fragment implements TextWatcher,
             text_weglowodany_gram.setText(Double.toString(weglowodany_gram)
                     + " " + getString(R.string.gram));
 
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             Log.e("com.devnoobs.bmr.bmr", "", e.fillInStackTrace());
         }
     }// oblicz
 
     /**
-     @param t
-
-     @return
+     * @param t
+     * @return
      */
-    private TextView zresetujText(TextView t)
-    {
+    private TextView zresetujText(TextView t) {
         t.setTypeface(Typeface.DEFAULT);
         t.setTextColor(Color.BLACK);
-        if (szerokosc < 380)
-        {
+        if (szerokosc < 380) {
             t.setTextSize(15);
         } else
             t.setTextSize(17);
         return t;
     }
 
-    private void ustawieniePolaBMI(double bmi)
-    {
-        TextView twojebmi = null;
-        try
-        {
+    private void ustawieniePolaBMI(double bmi) {
+//        TextView twojebmi = null;
+        String tekstBmi = "";
+        Context context = getActivity().getApplicationContext();
+        try {
             // Ustawienie wygl�du wybranego pola BMI.
             // Zolty jest w komentarzu bo byl nieczytelny
             if (bmi < 16)// < 16,0 � wyg�odzenie
             {
-                twojebmi = tablicaPolBMI[0];
-                twojebmi.setTextColor(Color.parseColor("#CC0000"));
+                tekstBmi = context.getResources().getString(R.string.bmi1_wyglodzenie);
+                twojeBmi.setTextColor(Color.parseColor("#CC0000"));
             } else if (bmi >= 16 && bmi <= 16.99)// 16,0�16,99 � wychudzenie
             {
-                twojebmi = tablicaPolBMI[1];
-                twojebmi.setTextColor(Color.parseColor("#CC0000"));
+                tekstBmi = context.getResources().getString(R.string.bmi2_wychudzenie);
+                twojeBmi.setTextColor(Color.parseColor("#CC0000"));
             } else if (bmi >= 17 && bmi <= 18.49)// 17,0�18,49 � niedowaga
             {
-                twojebmi = tablicaPolBMI[2];
-                twojebmi.setTextColor(Color.parseColor("#FF8800"));
+                tekstBmi = context.getResources().getString(R.string.bmi3_niedowaga);
+                twojeBmi.setTextColor(Color.parseColor("#FF8800"));
             } else if (bmi >= 18.5 && bmi <= 24.99)// 18,5�24,99 � idealna waga
             // cia�a
             {
-                twojebmi = tablicaPolBMI[3];
-                twojebmi.setTextColor(Color.parseColor("#669900"));
+                tekstBmi = context.getResources().getString(R.string.bmi4_idealna);
+                twojeBmi.setTextColor(Color.parseColor("#669900"));
             } else if (bmi >= 25 && bmi <= 29.99)// 25,0�29,99 � nadwaga
             {
-                twojebmi = tablicaPolBMI[4];
-                twojebmi.setTextColor(Color.parseColor("#FF8800"));
+                tekstBmi = context.getResources().getString(R.string.bmi5_nadwaga);
+                twojeBmi.setTextColor(Color.parseColor("#FF8800"));
             } else if (bmi >= 30 && bmi <= 34.99)// 30,0�34,99 � I stopie�
             // oty�o�ci
             {
-                twojebmi = tablicaPolBMI[5];
-                twojebmi.setTextColor(Color.parseColor("#FF8800"));
+                tekstBmi = context.getResources().getString(R.string.bmi6_1stopienotylosc);
+                twojeBmi.setTextColor(Color.parseColor("#FF8800"));
             } else if (bmi >= 35 && bmi <= 39.99)// 35,0�39,99 � II stopie�
             // oty�o�ci
             {
-                twojebmi = tablicaPolBMI[6];
-                twojebmi.setTextColor(Color.parseColor("#CC0000"));
+                tekstBmi = context.getResources().getString(R.string.bmi7_2stopienotylosc);
+                twojeBmi.setTextColor(Color.parseColor("#CC0000"));
             } else if (bmi > 40)// > 40,0 � III stopie� oty�o�ci
             {
-                twojebmi = tablicaPolBMI[7];
-                twojebmi.setTextColor(Color.parseColor("#CC0000"));
+                tekstBmi = context.getResources().getString(R.string.bmi8_3stopienotylosc);
+                twojeBmi.setTextColor(Color.parseColor("#CC0000"));
             }
 
-            twojebmi.setTypeface(Typeface.DEFAULT_BOLD);
-            if (szerokosc < 320)
-            {
-                twojebmi.setTextSize(17);
+            twojeBmi.setText(tekstBmi);
+
+            twojeBmi.setTypeface(Typeface.DEFAULT_BOLD);
+            if (szerokosc < 320) {
+                twojeBmi.setTextSize(17);
             } else
-                twojebmi.setTextSize(19);
-        } catch (NullPointerException e)
-        {
+                twojeBmi.setTextSize(19);
+        } catch (NullPointerException e) {
             Log.w("com.devnoobs.bmr.bmr", "com.devnoobs.bmr", e);
         }
     }
 
-    private void zresetujTextBMI()
-    {
-        try
-        {
-            TextView textBMI = null;
-            for (int i = 0; i < tablicaPolBMI.length; i++)
-            {
-                textBMI = tablicaPolBMI[i];
-                textBMI.setTypeface(Typeface.DEFAULT);
-                textBMI.setTextColor(Color.BLACK);
-                if (szerokosc < 380)
-                {
-                    textBMI.setTextSize(15);
-                } else
-                    textBMI.setTextSize(17);
-            }
-        } catch (NullPointerException ex)
-        {
-            Log.d("com.devnoobs.bmr.bmr", "", ex);
-        }
 
-    }
+//    private void zresetujTextBMI() {
+//        try {
+//            TextView textBMI = null;
+//            for (int i = 0; i < tablicaPolBMI.length; i++) {
+//                textBMI = tablicaPolBMI[i];
+//                textBMI.setTypeface(Typeface.DEFAULT);
+//                textBMI.setTextColor(Color.BLACK);
+//                if (szerokosc < 380) {
+//                    textBMI.setTextSize(15);
+//                } else
+//                    textBMI.setTextSize(17);
+//            }
+//        } catch (NullPointerException ex) {
+//            Log.d("com.devnoobs.bmr.bmr", "", ex);
+//        }
 
-    private void showToast(String tekst)
-    {
+
+
+    private void showToast(String tekst) {
         Context context = getActivity().getApplicationContext();
         CharSequence text = tekst;
         int duration = Toast.LENGTH_SHORT;
@@ -771,17 +623,14 @@ public class FragmentBMR extends Fragment implements TextWatcher,
     }// showtoast
 
     @Override
-    public void onClick(View v)
-    {
-        if (v.getId() == addResultButton.getId())
-        {
+    public void onClick(View v) {
+        if (v.getId() == addResultButton.getId()) {
             showAddResultDialog();
         }
 
     }// onclick
 
-    public void showAddResultDialog()
-    {
+    public void showAddResultDialog() {
         AlertDialog alertDialog;
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
@@ -791,7 +640,6 @@ public class FragmentBMR extends Fragment implements TextWatcher,
         // Inflate and set the layout for the dialog
         // Pass null as the parent view because its going in the dialog layout
         final View widok = inflater.inflate(R.layout.popup_dodawanie, null);
-        bmi = (EditText) widok.findViewById(R.id.popup_bmi);
         waga = (EditText) widok.findViewById(R.id.popup_waga);
         notatka = (EditText) widok.findViewById(R.id.popup_dodatkowy_tekst);
         double iw = sharedPref.getFloat(getString(R.string.shared_waga), 0);
@@ -799,33 +647,27 @@ public class FragmentBMR extends Fragment implements TextWatcher,
         ib = Math.round(ib * 100.0) / 100.0;
         iw = Math.round(iw * 100.0) / 100.0;
 
-        if (iw != 0 && ib != 0)
-        {
-            bmi.setText(Double.toString(ib));
+        if (iw != 0 && ib != 0) {
             waga.setText(Double.toString(iw));
         }
         builder.setView(widok)
                 // Add action buttons
 
                 .setPositiveButton(getResources().getString(R.string.button_dodaj_wynik),
-                        new DialogInterface.OnClickListener()
-                        {
+                        new DialogInterface.OnClickListener() {
                             @Override
-                            public void onClick(DialogInterface dialog, int id)
-                            {
-                                try
-                                {
+                            public void onClick(DialogInterface dialog, int id) {
+                                try {
 
-                                    double b = Double.parseDouble(bmi.getText()
-                                            .toString());
                                     double w = Double.parseDouble(waga
                                             .getText().toString());
-                                    try
-                                    {
+                                    try {
                                         String n = notatka.getText().toString();
                                         wds.addWynik(w, n);
-                                    } catch (Exception e)
-                                    {
+                                        Toast.makeText(widok.getContext(),
+                                                getResources().getString(R.string.wynik_dodano), Toast.LENGTH_SHORT)
+                                                .show();
+                                    } catch (Exception e) {
                                         wds.addWynik(w);
                                     }
                                     // wds.addWynik(b, w);
@@ -833,11 +675,8 @@ public class FragmentBMR extends Fragment implements TextWatcher,
                                     // FragmentTabele ft = new FragmentTabele();
                                     // ft.refresh=true;
                                     // ft.spinnerWyborWczytania(7);
-                                    Toast.makeText(widok.getContext(),
-                                            getResources().getString(R.string.wynik_dodano), Toast.LENGTH_SHORT)
-                                            .show();
-                                } catch (NullPointerException e)
-                                {
+
+                                } catch (NullPointerException e) {
                                     Toast.makeText(widok.getContext(),
                                             getResources().getString(R.string.warning_pola_nie_wypelnione),
                                             Toast.LENGTH_SHORT).show();
@@ -847,10 +686,8 @@ public class FragmentBMR extends Fragment implements TextWatcher,
                             }
                         })
                 .setNegativeButton(getResources().getString(R.string.anuluj),
-                        new DialogInterface.OnClickListener()
-                        {
-                            public void onClick(DialogInterface dialog, int id)
-                            {
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
 
                                 dialog.cancel();
                             }

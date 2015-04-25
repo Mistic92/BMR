@@ -248,7 +248,6 @@ public class FragmentTabele extends Fragment implements OnClickListener,
         // Inflate and set the layout for the dialog
         // Pass null as the parent view because its going in the dialog layout
         final View widok = inflater.inflate(R.layout.popup_dodawanie, null);
-        bmi = (EditText) widok.findViewById(R.id.popup_bmi);
         waga = (EditText) widok.findViewById(R.id.popup_waga);
         notatka = (EditText) widok.findViewById(R.id.popup_dodatkowy_tekst);
         double iw = sharedPref.getFloat(getString(R.string.shared_waga), 0);

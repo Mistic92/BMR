@@ -92,29 +92,7 @@
                         </EditText>
                     </TableRow>
 
-                    <!-- ROW BMI -->
-                    <TableRow
-                        android:id="@+id/tableRowSzczegolyBMI"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content">
 
-                        <TextView
-                            android:id="@+id/textViewBMI"
-                            style="@style/bmr_teksty"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="15dp"
-                            android:text="@string/text_bmi"
-                            />
-
-                        <EditText
-                            android:id="@+id/EditTextBMI"
-                            android:layout_width="20dp"
-                            android:layout_height="wrap_content"
-                            android:ems="10"
-                            android:inputType="numberDecimal">
-                        </EditText>
-                    </TableRow>
                 </TableLayout>
                 <!-- KONIEC TABELI SZCZEGOLOW -->
                 <EditText

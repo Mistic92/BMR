@@ -2,6 +2,7 @@ package com.devnoobs.bmr.Fragments;
 
 import android.app.AlertDialog;
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -14,11 +15,11 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
@@ -31,6 +32,7 @@ import com.devnoobs.bmr.Baza.WynikiDataSource;
 import com.devnoobs.bmr.CustomSpinner;
 import com.devnoobs.bmr.Interfejsy.IRefreshTabeli;
 import com.devnoobs.bmr.Interfejsy.WyborDadyDialogFragmentListener;
+import com.devnoobs.bmr.MainActivity;
 import com.devnoobs.bmr.Narzedzia.DividerItemDecoration;
 import com.devnoobs.bmr.R;
 import com.devnoobs.bmr.SzczegolyWynikuActivity;
@@ -40,10 +42,13 @@ import com.devnoobs.bmr.WynikAdapter;
 import com.echo.holographlibrary.Line;
 import com.echo.holographlibrary.LineGraph;
 import com.echo.holographlibrary.LinePoint;
+import com.software.shell.fab.ActionButton;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.List;
 
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
 
@@ -57,10 +62,14 @@ public class FragmentWyniki extends Fragment implements AdapterView.OnItemSelect
 
     private WynikiDataSource wds;
     private ArrayList<Wynik> lista;
+    private List<String> listaTekstowSpinner;
+
+    private ActionButton actionButton;
 
     private static Spinner spinner;
     private static ArrayAdapter<CharSequence> adapter;
     private static TextView tekstZakresu;
+//    private static TextView tekstZakresuSpinner;
 
     private double minwaga = 1000;
     private double maxwaga = 0;
@@ -73,7 +82,6 @@ public class FragmentWyniki extends Fragment implements AdapterView.OnItemSelect
 
     //--------------------------------------------//
     // TABELA
-    private EditText bmi;
     private EditText waga;
     private EditText notatka;
     private SharedPreferences sharedPref;
@@ -107,6 +115,10 @@ public class FragmentWyniki extends Fragment implements AdapterView.OnItemSelect
         wds = new WynikiDataSource(getActivity());
 
         //USTAWIENIE PIER... SPINERA
+        String[] myResArray = getResources().getStringArray(R.array.tabela_zakres);
+        listaTekstowSpinner = Arrays.asList(myResArray);
+
+
         spinner = (Spinner) rootView.findViewById(R.id.spinner_zakres_dat);
         CustomSpinner cspin = new CustomSpinner(rootView.getContext());
         //	spinner = cspin;
@@ -121,6 +133,7 @@ public class FragmentWyniki extends Fragment implements AdapterView.OnItemSelect
 
 
         tekstZakresu = (TextView) rootView.findViewById(R.id.textzakreswykresu);
+//        tekstZakresuSpinner = (TextView) rootView.findViewById(R.id.spinnerData);
 
         //refresh = (ImageView) rootView.findViewById(R.id.button_wykresy_refresh);
         //refresh.setOnClickListener(this);
@@ -140,11 +153,25 @@ public class FragmentWyniki extends Fragment implements AdapterView.OnItemSelect
         contextFragmentTabele = rootView.getContext();
 
         wczytajTydzien();
+        //        ACTION BUTTON
+        actionButton = (ActionButton) rootView.findViewById(R.id.action_button);
+        styleAddResultButton();
 
-
+        actionButton.setOnClickListener(this);
         return rootView;
+    }
 
-        // return super.onCreateView(inflater, container, savedInstanceState);
+    /**
+     * Ustawienia floating button
+     */
+    private void styleAddResultButton() {
+        actionButton.setButtonColor(getResources().getColor(R.color.primary));
+        actionButton.setButtonColorPressed(getResources().getColor(R.color.primary_dark));
+        actionButton.setImageDrawable(getResources().getDrawable(R.drawable.fab_plus_icon));
+        actionButton.setType(ActionButton.Type.MINI);
+//        actionButton.setShowAnimation((Animation) contextFragmentTabele.getResources().getAnimation(R.anim.fab_fade_in));
+        actionButton.setShowAnimation(ActionButton.Animations.JUMP_FROM_DOWN);
+        actionButton.setHideAnimation(ActionButton.Animations.JUMP_TO_DOWN);
     }
 
     /**
@@ -155,8 +182,8 @@ public class FragmentWyniki extends Fragment implements AdapterView.OnItemSelect
      */
     public void wczytajTabele(long poczatek, long koniec) {
 
-        ArrayList<Wynik> lista = wds.getData(poczatek, koniec, "DESC");
-        int rozmiar = lista.size() * 47;
+        ArrayList<Wynik> lista = wds.getData(poczatek, koniec, "ASC");
+        int rozmiar = lista.size() * 47 + 1;
         rozmiar = convertToDp(rozmiar);
 
         mRecyclerView.getLayoutParams().height = rozmiar;
@@ -184,7 +211,6 @@ public class FragmentWyniki extends Fragment implements AdapterView.OnItemSelect
         // Inflate and set the layout for the dialog
         // Pass null as the parent view because its going in the dialog layout
         final View widok = inflater.inflate(R.layout.popup_dodawanie, null);
-        bmi = (EditText) widok.findViewById(R.id.popup_bmi);
         waga = (EditText) widok.findViewById(R.id.popup_waga);
         notatka = (EditText) widok.findViewById(R.id.popup_dodatkowy_tekst);
         double iw = sharedPref.getFloat(getString(R.string.shared_waga), 0);
@@ -193,7 +219,6 @@ public class FragmentWyniki extends Fragment implements AdapterView.OnItemSelect
         iw = Math.round(iw * 100.0) / 100.0;
 
         if (iw != 0 && ib != 0) {
-            bmi.setText(Double.toString(ib));
             waga.setText(Double.toString(iw));
         }
         builder.setView(widok)
@@ -204,19 +229,19 @@ public class FragmentWyniki extends Fragment implements AdapterView.OnItemSelect
                     public void onClick(DialogInterface dialog, int id) {
                         try {
 
-                            double b = Double.parseDouble(bmi.getText().toString());
                             double w = Double.parseDouble(waga.getText().toString());
                             try {
                                 String n = notatka.getText().toString();
                                 wds.addWynik(w, n);
+                                Toast.makeText(widok.getContext(),
+                                        "Wynik dodano.", Toast.LENGTH_SHORT)
+                                        .show();
+                                refreshTabela();
                             } catch (Exception e) {
                                 wds.addWynik(w);
                             }
                             // wds.addWynik(b, w);
-                            Toast.makeText(widok.getContext(),
-                                    "Wynik dodano.", Toast.LENGTH_SHORT)
-                                    .show();
-                            wczytajTydzien();
+
                         } catch (NullPointerException e) {
                             Toast.makeText(widok.getContext(),
                                     "Pola nie zosta? wype?nione.", Toast.LENGTH_SHORT)
@@ -433,14 +458,18 @@ public class FragmentWyniki extends Fragment implements AdapterView.OnItemSelect
             tekstZakresu.setTextSize(20f);
         }
         String tekst = sdf.format(poczatek.getTime()) + " - " + sdf.format(koniec.getTime());
-        ;
+
+
+//        tekstZakresuSpinner.setText(tekst);
         tekstZakresu.setText(tekst);
 
     }//ustawtekstzakresu
 
     @Override
     public void onClick(View v) {
-
+        if (v.getId() == actionButton.getId()) {
+            showDialogDodawanie();
+        }
     }
 
     /**
@@ -517,8 +546,11 @@ public class FragmentWyniki extends Fragment implements AdapterView.OnItemSelect
 
     @Override
     public void refreshTabela() {
-        wczytajTydzien();
 
+        FragmentTransaction tr = getFragmentManager().beginTransaction();
+        Fragment wyniki = (Fragment) new FragmentWyniki();
+        tr.replace(R.id.content_frame,wyniki);
+        tr.commit();
     }
 
     /**

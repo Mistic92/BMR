@@ -98,10 +98,11 @@ public class WynikAdapter extends RecyclerView.Adapter<WynikAdapter.ViewHolder>
         if (wynik.getNotatka().length() > 0)
             viewHolder.image.setVisibility(View.VISIBLE);
         else
-            viewHolder.image.setVisibility(View.INVISIBLE);
+            viewHolder.image.setVisibility(View.GONE);
 
         viewHolder.data.setText(getDate(wynik.getData(), "dd/MM/yyyy HH:mm:ss"));
-        viewHolder.waga.setText(Double.toString(wynik.getWaga()));
+        String kg =  mContext.getResources().getString(R.string.kilogramy_skr);
+        viewHolder.waga.setText(Double.toString(wynik.getWaga())+" "+kg);
 //        setAnimation(viewHolder.cardView,i);
     }
 
