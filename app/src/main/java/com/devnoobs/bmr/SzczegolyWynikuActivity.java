@@ -10,12 +10,12 @@
 
 package com.devnoobs.bmr;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
@@ -29,11 +29,9 @@ import android.widget.EditText;
 import com.devnoobs.bmr.Baza.WynikiDataSource;
 import com.devnoobs.bmr.Interfejsy.IRefreshTabeli;
 
-
 import java.util.ArrayList;
-import java.util.HashMap;
 
-public class SzczegolyWynikuActivity extends Activity implements TextWatcher, OnClickListener {
+public class SzczegolyWynikuActivity extends AppCompatActivity implements TextWatcher, OnClickListener {
 
     private WynikiDataSource wds;
     private EditText notatka;

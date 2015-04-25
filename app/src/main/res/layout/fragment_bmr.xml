@@ -10,61 +10,56 @@
   ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   -->
 
-<ScrollView xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:layout_weight="1">
 
 
     <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
 
-            >
+        >
 
         <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginLeft="7dp"
-                android:layout_marginRight="7dp">
-
-
-            <!-- PODPIS KARTY -->
-
-            <!--<TextView-->
-            <!--android:id="@+id/textViewPodpisKalkulator"-->
-            <!--style="@style/podpisy_kart"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="center_horizontal"-->
-            <!--android:layout_marginBottom="5dp"-->
-            <!--android:text="@string/title_bmr"/>-->
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:orientation="vertical">
 
             <android.support.v7.widget.CardView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:padding="5dp">
+
+                <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    >
+                    android:orientation="vertical">
 
-                <TableLayout
+                    <TableLayout
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="left"
-                        android:padding="10dp"
                         android:focusable="true"
                         android:focusableInTouchMode="true"
+                        android:padding="10dp"
                         android:shrinkColumns="*"
                         android:stretchColumns="*">
 
 
-                    <!-- PLEC -->
-                    <TableRow>
+                        <!-- PLEC -->
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
 
-                        <TextView
+                            <android.support.v7.widget.AppCompatTextView
                                 android:id="@+id/textViewWybierzPlec"
                                 style="@style/bmr_teksty"
                                 android:layout_width="wrap_content"
@@ -72,226 +67,284 @@
                                 android:layout_gravity="center_vertical"
                                 android:layout_marginRight="5dp"
                                 android:gravity="left"
-                                android:text="@string/text_wybierz_plec"/>
+                                android:text="@string/text_wybierz_plec" />
 
-                        <RadioGroup
+                            <RadioGroup
                                 android:id="@+id/radioGroupPlec"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="left"
                                 android:orientation="vertical">
 
-                            <RadioButton
+                                <android.support.v7.widget.AppCompatRadioButton
                                     android:id="@+id/radio_plec0"
                                     style="@style/bmr_inne_teksty"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:checked="true"
-                                    android:text="@string/text_mezczyzna"/>
+                                    android:text="@string/text_mezczyzna" />
 
-                            <RadioButton
+                                <android.support.v7.widget.AppCompatRadioButton
                                     android:id="@+id/radio_plec1"
                                     style="@style/bmr_inne_teksty"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/text_kobieta"/>
-                        </RadioGroup>
-                    </TableRow>
+                                    android:text="@string/text_kobieta" />
+                            </RadioGroup>
+                        </TableRow>
+                    </TableLayout>
 
-                    <!-- WIEK -->
 
-                    <TableRow>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp">
 
-                        <TextView
-                                android:id="@+id/textViewWiek"
-                                style="@style/bmr_teksty"
-                                android:layout_width="22dp"
-                                android:layout_height="wrap_content"
-                                android:text="@string/text_wiek"/>
-                        <!-- ustawienei dla wlasciwie calej tabeli do wprowadzania -->
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/textViewWiek"
+                            style="@style/bmr_teksty"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:text="@string/text_wiek" />
 
-                        <EditText
+                        <LinearLayout
+                            android:id="@+id/layoutWieku"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/textViewWiek"
+                            android:layout_centerHorizontal="true"
+                            android:orientation="horizontal">
+
+                            <android.support.v7.widget.AppCompatButton
+                                android:id="@+id/odejmijWiek"
+                                style="@style/przyciskiAgr"
+                                android:text="-"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+                            <android.support.v7.widget.AppCompatEditText
                                 android:id="@+id/EditTextWiek"
                                 style="@style/bmr_edittext"
-                                android:layout_width="60dp"
+                                android:layout_width="@dimen/enter_data_width"
                                 android:layout_height="wrap_content"
                                 android:ems="10"
                                 android:gravity="left"
-                                android:inputType="numberDecimal">
-                        </EditText>
-                    </TableRow>
+                                android:inputType="numberDecimal" />
 
-                    <!-- WAGA -->
+                            <android.support.v7.widget.AppCompatButton
+                                android:id="@+id/dodajWiek"
+                                style="@style/przyciskiAgr"
+                                android:text="+"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
 
-                    <TableRow>
 
-                        <TextView
-                                android:id="@+id/textViewWaga"
-                                style="@style/bmr_teksty"
-                                android:layout_width="10dp"
-                                android:layout_height="wrap_content"
-                                android:text="@string/text_waga"/>
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/textViewWaga"
+                            style="@style/bmr_teksty"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/layoutWieku"
+                            android:layout_centerHorizontal="true"
+                            android:text="@string/text_waga" />
 
-                        <EditText
+                        <LinearLayout
+                            android:id="@+id/layoutWagi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/textViewWaga"
+                            android:layout_centerHorizontal="true"
+                            android:orientation="horizontal">
+
+                            <android.support.v7.widget.AppCompatButton
+                                android:id="@+id/odejmijWaga"
+                                android:layout_width="wrap_content"
+                                style="@style/przyciskiAgr"
+                                android:text="-"
+                                android:layout_height="wrap_content" />
+
+                            <android.support.v7.widget.AppCompatEditText
                                 android:id="@+id/EditTextWaga"
                                 style="@style/bmr_edittext"
-                                android:layout_width="10dp"
+                                android:layout_width="@dimen/enter_data_width"
                                 android:layout_height="wrap_content"
                                 android:ems="10"
                                 android:hint="@string/text_kilogramy"
-                                android:inputType="numberDecimal">
-                        </EditText>
-                    </TableRow>
+                                android:inputType="numberDecimal" />
 
-                    <!-- WZROST -->
+                            <android.support.v7.widget.AppCompatButton
+                                android:id="@+id/dodajWaga"
+                                style="@style/przyciskiAgr"
+                                android:text="+"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
 
-                    <TableRow>
 
-                        <TextView
-                                android:id="@+id/textViewWzrost"
-                                style="@style/bmr_teksty"
-                                android:layout_width="10dp"
-                                android:layout_height="wrap_content"
-                                android:text="@string/text_wzrost"/>
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/textViewWzrost"
+                            style="@style/bmr_teksty"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/layoutWagi"
+                            android:layout_centerHorizontal="true"
+                            android:text="@string/text_wzrost" />
 
-                        <EditText
+                        <LinearLayout
+                            android:id="@+id/layoutWzrostu"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/textViewWzrost"
+                            android:layout_centerHorizontal="true"
+                            android:orientation="horizontal">
+
+                            <android.support.v7.widget.AppCompatButton
+                                android:id="@+id/odejmijWzrost"
+                                style="@style/przyciskiAgr"
+                                android:text="-"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+                            <android.support.v7.widget.AppCompatEditText
                                 android:id="@+id/EditTextWzrost"
                                 style="@style/bmr_edittext"
-                                android:layout_width="10dp"
+                                android:layout_width="@dimen/enter_data_width"
                                 android:layout_height="wrap_content"
                                 android:ems="10"
                                 android:hint="@string/text_centymetry"
-                                android:inputType="numberDecimal">
-                        </EditText>
-                    </TableRow>
-                </TableLayout>
+                                android:inputType="numberDecimal" />
+
+                            <android.support.v7.widget.AppCompatButton
+                                android:id="@+id/dodajWzrost"
+                                style="@style/przyciskiAgr"
+                                android:text="+"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
+
+                    </RelativeLayout>
+                </LinearLayout>
             </android.support.v7.widget.CardView>
             <!-- AKTYWNOSC -->
 
             <android.support.v7.widget.CardView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    >
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp">
 
                 <LinearLayout
-                        android:layout_width="fill_parent"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/textViewWybierzAktywnosc"
+                        style="@style/bmr_teksty"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="10dp"
-                        android:orientation="vertical"
-                        >
 
-                    <TextView
-                            android:id="@+id/textViewWybierzAktywnosc"
-                            style="@style/bmr_teksty"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-
-                            android:text="@string/text_wybierz_aktywnosc"/>
+                        android:text="@string/text_wybierz_aktywnosc" />
 
                     <RadioGroup
-                            android:id="@+id/radioGroupAktywnosci"
+                        android:id="@+id/radioGroupAktywnosci"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal">
+
+                        <android.support.v7.widget.AppCompatRadioButton
+                            android:id="@+id/radio0"
+                            style="@style/bmr_inne_teksty"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal">
+                            android:checked="true"
+                            android:text="@string/typ_aktywnosc_brak" />
 
-                        <RadioButton
-                                android:id="@+id/radio0"
-                                style="@style/bmr_inne_teksty"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:checked="true"
-                                android:text="@string/typ_aktywnosc_brak"/>
+                        <android.support.v7.widget.AppCompatRadioButton
+                            android:id="@+id/radio1"
+                            style="@style/bmr_inne_teksty"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/typ_aktywnosc_lekka" />
 
-                        <RadioButton
-                                android:id="@+id/radio1"
-                                style="@style/bmr_inne_teksty"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/typ_aktywnosc_lekka"/>
+                        <android.support.v7.widget.AppCompatRadioButton
+                            android:id="@+id/radio2"
+                            style="@style/bmr_inne_teksty"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:text="@string/typ_aktywnosc_umiarkowana" />
 
-                        <RadioButton
-                                android:id="@+id/radio2"
-                                style="@style/bmr_inne_teksty"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:checked="true"
-                                android:text="@string/typ_aktywnosc_umiarkowana"/>
+                        <android.support.v7.widget.AppCompatRadioButton
+                            android:id="@+id/radio3"
+                            style="@style/bmr_inne_teksty"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:text="@string/typ_aktywnosc_duza" />
 
-                        <RadioButton
-                                android:id="@+id/radio3"
-                                style="@style/bmr_inne_teksty"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:checked="true"
-                                android:text="@string/typ_aktywnosc_duza"/>
-
-                        <RadioButton
-                                android:id="@+id/radio4"
-                                style="@style/bmr_inne_teksty"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:checked="true"
-                                android:text="@string/typ_aktywnosc_bduza"/>
+                        <android.support.v7.widget.AppCompatRadioButton
+                            android:id="@+id/radio4"
+                            style="@style/bmr_inne_teksty"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:text="@string/typ_aktywnosc_bduza" />
                     </RadioGroup>
                 </LinearLayout>
             </android.support.v7.widget.CardView>
         </LinearLayout>
 
-        <com.google.android.gms.ads.AdView
-                xmlns:ads="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/adView"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                ads:adSize="SMART_BANNER"
-                ads:adUnitId="ca-app-pub-6410364990892893/1240794727"
-                />
+        <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            ads:adSize="SMART_BANNER"
+            ads:adUnitId="ca-app-pub-6410364990892893/1240794727" />
 
         <!-- INFO O BRAKU DANYCH DO WYLICZENIA WYNIKU -->
 
 
         <LinearLayout
-                android:id="@+id/linearLayoutBrakuDanychWynikow"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:orientation="vertical"
-                android:visibility="gone"
-                android:layout_marginLeft="7dp"
-                android:layout_marginRight="7dp"
-                >
+            android:id="@+id/linearLayoutBrakuDanychWynikow"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <android.support.v7.widget.CardView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    >
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp">
 
                 <LinearLayout
-                        android:layout_width="fill_parent"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/textViewPodpisWyniki"
+                        style="@style/podpisy_kart"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="10dp"
-                        android:orientation="vertical"
-                        >
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginBottom="5dp"
+                        android:text="@string/podpis_wyniki" />
 
-                    <TextView
-                            android:id="@+id/textViewPodpisWyniki"
-                            style="@style/podpisy_kart"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginBottom="5dp"
-                            android:text="@string/podpis_wyniki"/>
-
-                    <TextView
-                            android:id="@+id/textViewBrakDanychDoWyniku"
-                            style="@style/bmr_teksty"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:text="@string/wynikiBmiBrakDanych">
-                    </TextView>
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/textViewBrakDanychDoWyniku"
+                        style="@style/bmr_teksty"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="@string/wynikiBmiBrakDanych" />
                 </LinearLayout>
             </android.support.v7.widget.CardView>
         </LinearLayout>
@@ -300,77 +353,70 @@
 
 
         <LinearLayout
-                android:id="@+id/linearLayoutWynikow"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginLeft="7dp"
-                android:layout_marginRight="7dp"
-                >
+            android:id="@+id/linearLayoutWynikow"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:orientation="vertical">
 
             <!-- PODPIS KARTY -->
             <android.support.v7.widget.CardView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    >
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp">
 
                 <RelativeLayout
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="10dp">
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp">
 
                     <RelativeLayout
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                        android:paddingBottom="40dp"
-                            >
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="40dp">
 
-                        <TextView
-                                android:id="@+id/textViewPodpisWyniki2"
-                                style="@style/podpisy_kart"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerHorizontal="true"
-                                android:layout_marginBottom="5dp"
-                                android:text="@string/podpis_wyniki"/>
+                        <!--<android.support.v7.widget.AppCompatTextView-->
+                        <!--android:id="@+id/textViewPodpisWyniki2"-->
+                        <!--style="@style/podpisy_kart"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_centerHorizontal="true"-->
+                        <!--android:layout_marginBottom="5dp"-->
+                        <!--android:text="@string/podpis_wyniki" />-->
                         <!-- Twoj wynik BMI to -->
 
-                        <TextView
-                                android:id="@+id/textTwojWynikBmi"
-                                style="@style/bmr_teksty"
-                                android:layout_below="@+id/textViewPodpisWyniki2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerHorizontal="true"
-                                android:text="@string/twoje_bmi">
-                        </TextView>
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/textTwojWynikBmi"
+                            style="@style/bmr_teksty"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:text="@string/twoje_bmi" />
 
-                        <TextView
-                                android:id="@+id/textWynikBMI"
-                                style="@style/tekst_bmr_wyniki"
-                                android:layout_width="wrap_content"
-                                android:layout_below="@+id/textTwojWynikBmi"
-                                android:layout_height="wrap_content"
-                                android:layout_centerHorizontal="true"
-                                android:text="">
-                        </TextView>
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/textWynikBMI"
+                            style="@style/tekst_bmr_wyniki"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/textTwojWynikBmi"
+                            android:layout_centerHorizontal="true"
+                            android:text="" />
 
                         <LinearLayout
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
                             android:layout_below="@+id/textWynikBMI"
-                            android:padding="10dp"
-                            >
+                            android:orientation="vertical"
+                            android:padding="10dp">
 
-                            <TextView
+                            <android.support.v7.widget.AppCompatTextView
                                 android:id="@+id/textBMIZnaczenie"
                                 style="@style/znaczeniaBMI"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text=""/>
+                                android:text="" />
 
                         </LinearLayout>
                         <!--android:layout_toLeftOf="@+id/buttonDodajWynikWBMR"-->
@@ -385,15 +431,15 @@
                         <!--android:text="@string/button_zapisz_wynik"/>-->
                     </RelativeLayout>
 
-                    <com.software.shell.fab.ActionButton
-                            android:id="@+id/buttonDodajWynikWBMR"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-
-                            android:layout_alignParentBottom="true"
-                            android:layout_alignParentRight="true"
-
-                            />
+                    <android.support.v7.widget.AppCompatButton
+                        android:id="@+id/buttonDodajWynikWBMR"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginLeft="5dp"
+                        android:text="@string/button_dodaj_wynik"
+                        style="@style/buttons" />
 
                 </RelativeLayout>
             </android.support.v7.widget.CardView>
@@ -404,166 +450,151 @@
             <!-- twoje bmr -->
 
             <android.support.v7.widget.CardView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    >
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp">
 
                 <LinearLayout
-                        android:layout_width="fill_parent"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/textTwojWynikBmr"
+                        style="@style/bmr_teksty"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="10dp"
-                        >
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/twoje_bmr"></android.support.v7.widget.AppCompatTextView>
 
-                    <TextView
-                            android:id="@+id/textTwojWynikBmr"
-                            style="@style/bmr_teksty"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="8dp"
-                            android:text="@string/twoje_bmr">
-                    </TextView>
-
-                    <TextView
-                            android:id="@+id/textWynikBMR"
-                            style="@style/tekst_bmr_wyniki"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:text="">
-                    </TextView>
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/textWynikBMR"
+                        style="@style/tekst_bmr_wyniki"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text=""></android.support.v7.widget.AppCompatTextView>
                     <!-- kalorie potrzebne -->
 
-                    <TextView
-                            android:id="@+id/text_info_Kalorie"
-                            style="@style/bmr_teksty"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:text="@string/kalorie">
-                    </TextView>
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/text_info_Kalorie"
+                        style="@style/bmr_teksty"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="@string/kalorie"></android.support.v7.widget.AppCompatTextView>
 
-                    <TextView
-                            android:id="@+id/textKalorie"
-                            style="@style/tekst_bmr_wyniki"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:text="">
-                    </TextView>
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/textKalorie"
+                        style="@style/tekst_bmr_wyniki"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text=""></android.support.v7.widget.AppCompatTextView>
 
                     <!-- weglowodany -->
 
-                    <TextView
-                            android:id="@+id/text_info_Weglowodany"
-                            style="@style/bmr_teksty"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="8dp"
-                            android:text="@string/weglowodany">
-                    </TextView>
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/text_info_Weglowodany"
+                        style="@style/bmr_teksty"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/weglowodany"></android.support.v7.widget.AppCompatTextView>
 
                     <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:orientation="horizontal">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/textWeglowodany"
+                            style="@style/tekst_bmr_wyniki"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
-                            android:orientation="horizontal">
+                            android:layout_marginRight="10dp"
+                            android:text=""></android.support.v7.widget.AppCompatTextView>
 
-                        <TextView
-                                android:id="@+id/textWeglowodany"
-                                style="@style/tekst_bmr_wyniki"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_marginRight="10dp"
-                                android:text="">
-                        </TextView>
-
-                        <TextView
-                                android:id="@+id/textWeglowodanyGram"
-                                style="@style/tekst_bmr_wyniki"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:text="">
-                        </TextView>
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/textWeglowodanyGram"
+                            style="@style/tekst_bmr_wyniki"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text=""></android.support.v7.widget.AppCompatTextView>
                     </LinearLayout>
                     <!-- bialko -->
 
-                    <TextView
-                            android:id="@+id/text_info_Bialko"
-                            style="@style/bmr_teksty"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="8dp"
-                            android:text="@string/bialko">
-                    </TextView>
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/text_info_Bialko"
+                        style="@style/bmr_teksty"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/bialko"></android.support.v7.widget.AppCompatTextView>
 
                     <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:orientation="horizontal">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/textBialko"
+                            style="@style/tekst_bmr_wyniki"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
-                            android:orientation="horizontal">
+                            android:layout_marginRight="10dp"
+                            android:text=""></android.support.v7.widget.AppCompatTextView>
 
-                        <TextView
-                                android:id="@+id/textBialko"
-                                style="@style/tekst_bmr_wyniki"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_marginRight="10dp"
-                                android:text="">
-                        </TextView>
-
-                        <TextView
-                                android:id="@+id/textBialkoGram"
-                                style="@style/tekst_bmr_wyniki"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:text="">
-                        </TextView>
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/textBialkoGram"
+                            style="@style/tekst_bmr_wyniki"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text=""></android.support.v7.widget.AppCompatTextView>
                     </LinearLayout>
                     <!-- tluszcz -->
 
-                    <TextView
-                            android:id="@+id/text_info_Tluszcz"
-                            style="@style/bmr_teksty"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="8dp"
-                            android:text="@string/tluszcz">
-                    </TextView>
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/text_info_Tluszcz"
+                        style="@style/bmr_teksty"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/tluszcz"></android.support.v7.widget.AppCompatTextView>
 
                     <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:orientation="horizontal">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/textTluszcz"
+                            style="@style/tekst_bmr_wyniki"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
-                            android:orientation="horizontal">
+                            android:layout_marginRight="10dp"
+                            android:text=""></android.support.v7.widget.AppCompatTextView>
 
-                        <TextView
-                                android:id="@+id/textTluszcz"
-                                style="@style/tekst_bmr_wyniki"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_marginRight="10dp"
-                                android:text="">
-                        </TextView>
-
-                        <TextView
-                                android:id="@+id/textTluszczGram"
-                                style="@style/tekst_bmr_wyniki"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:text="">
-                        </TextView>
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/textTluszczGram"
+                            style="@style/tekst_bmr_wyniki"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text=""></android.support.v7.widget.AppCompatTextView>
                     </LinearLayout>
                 </LinearLayout>
             </android.support.v7.widget.CardView>

@@ -10,21 +10,24 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!--
-        Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
-    -->
     <style name="AppBaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowNoTitle">true</item>
-        <item name="windowActionBar">false</item>
-        <item name="android:windowTranslucentNavigation">false</item>
-        <item name="android:windowTranslucentStatus">false</item>
+
     </style>
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
-
+        <!--<item name="android:colorPrimary">@color/primary</item>-->
+        <!--<item name="android:colorPrimaryDark">@color/primary_dark</item>-->
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <!--<item name="android:navigationBarColor">@color/primary_dark</item>-->
+        <!--<item name="android:colorAccent">@color/accentColor</item>-->
     </style>
-
+    <!--
+    <item name="android:windowTranslucentNavigation">false</item>
+            <item name="android:windowTranslucentStatus">false</item>
+            <item name="android:windowNoTitle">true</item>
+            <item name="windowActionBar">false</item>
+            -->
 
     <!--Styl tekstow w kalkulatorze, teksty przy opisach typu wybierz plec, wiek, aktywnosc-->
     <style name="bmr_teksty" parent="@android:style/TextAppearance.Medium">
@@ -95,11 +98,17 @@
 
     <!-- BUTTONY -->
     <style name="buttons">
-        <item name="android:background">@color/przyciski</item>
-        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:background">@color/primary</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
         <item name="android:textSize">14sp</item>
-        <item name="android:padding">1dp</item>
+        <item name="android:padding">5dp</item>
         <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="przyciskiAgr" parent="buttons">
+        <item name="android:textSize">25sp</item>
+        <item name="android:background">@color/cardview_light_background</item>
+        <item name="android:textColor">@color/textbmr</item>
     </style>
 
     <style name="buttony_ustawienia" parent="buttons">

@@ -29,6 +29,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                style="@style/tekst_bmr_wyniki"
                 android:text="@string/text_waga"/>
 
             <EditText
@@ -36,6 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
+                style="@style/bmr_edittext"
                 android:layout_marginLeft="4dp"
                 android:layout_marginRight="4dp"
                 android:layout_marginTop="4dp"
@@ -50,10 +52,11 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:ems="10"
+        style="@style/bmr_edittext"
         android:hint="@string/hint_notatki"
         android:inputType="textMultiLine"
         android:maxLength="60"
-        android:textSize="14dp">
+        android:textSize="14sp">
 
         <requestFocus/>
     </EditText>

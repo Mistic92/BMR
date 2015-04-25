@@ -20,6 +20,9 @@ import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.v7.widget.AppCompatButton;
+import android.support.v7.widget.AppCompatEditText;
+import android.support.v7.widget.AppCompatTextView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -27,7 +30,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
@@ -41,38 +43,42 @@ import com.devnoobs.bmr.Kalkulator;
 import com.devnoobs.bmr.R;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.software.shell.fab.ActionButton;
-
-import org.w3c.dom.Text;
 
 public class FragmentBMR extends Fragment implements TextWatcher,
         OnCheckedChangeListener, OnClickListener {
 
     private Fragment mFragment;
     WynikiDataSource wds;
-    EditText pole_wiek;// = (EditText) findViewById(R.id.EditTextWiek);
-    EditText pole_waga;// = (EditText) findViewById(R.id.EditTextWaga);
-    EditText pole_wzrost;// = (EditText) findViewById(R.id.EditTextWzrost);
+    AppCompatEditText pole_wiek;// = (EditText) findViewById(R.id.EditTextWiek);
+    AppCompatEditText pole_waga;// = (EditText) findViewById(R.id.EditTextWaga);
+    AppCompatEditText pole_wzrost;// = (EditText) findViewById(R.id.EditTextWzrost);
     RadioGroup radioGroupPlec;
     RadioGroup radioGroupAktywnosc;
     // dodawanie wyniku przycisk
-    private ActionButton addResultButton;
-    private Button dodaj_wynik;
+    private AppCompatButton addResultButton;
     private EditText waga;
     private EditText notatka;
     public boolean imperial = false;
     private static final double mnoznik_imperial = 703.06957964;
 
     // Obiekty pol w tabeli pokazywania wynikow. Odpowiednio kcal i gramy
-    TextView text_wynik_bmi;
-    TextView text_wynik_bmr;
-    TextView text_kalorie;
-    TextView text_bialko;
-    TextView text_tluszcz;
-    TextView text_weglowodany;
-    TextView text_bialko_gram;
-    TextView text_tluszcz_gram;
-    TextView text_weglowodany_gram;
+    AppCompatTextView text_wynik_bmi;
+    AppCompatTextView text_wynik_bmr;
+    AppCompatTextView text_kalorie;
+    AppCompatTextView text_bialko;
+    AppCompatTextView text_tluszcz;
+    AppCompatTextView text_weglowodany;
+    AppCompatTextView text_bialko_gram;
+    AppCompatTextView text_tluszcz_gram;
+    AppCompatTextView text_weglowodany_gram;
+    //
+    AppCompatButton odejmijWaga;
+    AppCompatButton dodajWaga;
+    AppCompatButton odejmijWiek;
+    AppCompatButton dodajWiek;
+    AppCompatButton odejmijWzrost;
+    AppCompatButton dodajWzrost;
+
     // ////////////////////////////////////////
     // Wybor czy ustawiac layout z dopiskiem kcal i gram czy nie w zaleznosci od
     // szerokosci ekranu urzadzenia.
@@ -104,7 +110,7 @@ public class FragmentBMR extends Fragment implements TextWatcher,
 
 //    private TextView[] tablicaPolBMI = new TextView[8];
 
-    private TextView twojeBmi;
+    private AppCompatTextView twojeBmi;
 
 
     private LinearLayout linearBrakDanych;// = (LinearLayout) getActivity().findViewById(R.id
@@ -156,7 +162,7 @@ public class FragmentBMR extends Fragment implements TextWatcher,
         if (mAdView != null)
             mAdView.loadAd(adRequest);
 
-        twojeBmi = (TextView) rootView.findViewById(R.id.textBMIZnaczenie);
+        twojeBmi = (AppCompatTextView) rootView.findViewById(R.id.textBMIZnaczenie);
         oblicz(this.indeksPlci, this.indeksAktywnosc);
         return rootView;
     }
@@ -175,29 +181,42 @@ public class FragmentBMR extends Fragment implements TextWatcher,
                 .linearLayoutBrakuDanychWynikow);
         this.linearWynikow = (LinearLayout) rootView.findViewById(R.id.linearLayoutWynikow);
 
-        pole_wiek = (EditText) rootView.findViewById(R.id.EditTextWiek);
-        pole_waga = (EditText) rootView.findViewById(R.id.EditTextWaga);
-        pole_wzrost = (EditText) rootView.findViewById(R.id.EditTextWzrost);
+        pole_wiek = (AppCompatEditText) rootView.findViewById(R.id.EditTextWiek);
+        pole_waga = (AppCompatEditText) rootView.findViewById(R.id.EditTextWaga);
+        pole_wzrost = (AppCompatEditText) rootView.findViewById(R.id.EditTextWzrost);
         radioGroupPlec = (RadioGroup) rootView
                 .findViewById(R.id.radioGroupPlec);
         radioGroupAktywnosc = (RadioGroup) rootView
                 .findViewById(R.id.radioGroupAktywnosci);
-        text_wynik_bmi = (TextView) rootView.findViewById(R.id.textWynikBMI);
-        text_wynik_bmr = (TextView) rootView.findViewById(R.id.textWynikBMR);
-        text_kalorie = (TextView) rootView.findViewById(R.id.textKalorie);
-        text_bialko = (TextView) rootView.findViewById(R.id.textBialko);
-        text_tluszcz = (TextView) rootView.findViewById(R.id.textTluszcz);
-        text_weglowodany = (TextView) rootView
+        text_wynik_bmi = (AppCompatTextView) rootView.findViewById(R.id.textWynikBMI);
+        text_wynik_bmr = (AppCompatTextView) rootView.findViewById(R.id.textWynikBMR);
+        text_kalorie = (AppCompatTextView) rootView.findViewById(R.id.textKalorie);
+        text_bialko = (AppCompatTextView) rootView.findViewById(R.id.textBialko);
+        text_tluszcz = (AppCompatTextView) rootView.findViewById(R.id.textTluszcz);
+        text_weglowodany = (AppCompatTextView) rootView
                 .findViewById(R.id.textWeglowodany);
-        text_bialko_gram = (TextView) rootView
+        text_bialko_gram = (AppCompatTextView) rootView
                 .findViewById(R.id.textBialkoGram);
-        text_tluszcz_gram = (TextView) rootView
+        text_tluszcz_gram = (AppCompatTextView) rootView
                 .findViewById(R.id.textTluszczGram);
-        text_weglowodany_gram = (TextView) rootView
+        text_weglowodany_gram = (AppCompatTextView) rootView
                 .findViewById(R.id.textWeglowodanyGram);
 //        dodaj_wynik = (Button) rootView.findViewById(R.id.buttonDodajWynikWBMR);
-        addResultButton = (ActionButton) rootView.findViewById(R.id.buttonDodajWynikWBMR);
-        styleAddResultButton();
+
+
+        addResultButton = (AppCompatButton) rootView.findViewById(R.id.buttonDodajWynikWBMR);
+        dodajWiek = (AppCompatButton) rootView.findViewById(R.id.dodajWiek);
+        dodajWiek.setOnClickListener(this);
+        odejmijWiek = (AppCompatButton) rootView.findViewById(R.id.odejmijWiek);
+        odejmijWiek.setOnClickListener(this);
+        dodajWzrost = (AppCompatButton) rootView.findViewById(R.id.dodajWzrost);
+        dodajWzrost.setOnClickListener(this);
+        odejmijWzrost = (AppCompatButton) rootView.findViewById(R.id.odejmijWzrost);
+        odejmijWzrost.setOnClickListener(this);
+        dodajWaga = (AppCompatButton) rootView.findViewById(R.id.dodajWaga);
+        dodajWaga.setOnClickListener(this);
+        odejmijWaga = (AppCompatButton) rootView.findViewById(R.id.odejmijWaga);
+        odejmijWaga.setOnClickListener(this);
 
         // Pobieranie wartosci z przed wylaczenia programu i ich ustawianie w
         // polach
@@ -294,15 +313,17 @@ public class FragmentBMR extends Fragment implements TextWatcher,
 //        dodaj_wynik.setOnClickListener(this);
         addResultButton.setOnClickListener(this);
 
+
     }
 
-    /**
 
+    /**
+     * Ustawia style przyciskow
      */
-    private void styleAddResultButton() {
-        addResultButton.setButtonColor(getResources().getColor(R.color.primary));
-        addResultButton.setButtonColorPressed(getResources().getColor(R.color.primary_dark));
-        addResultButton.setImageDrawable(getResources().getDrawable(R.drawable.fab_plus_icon));
+    private void ustawStylePrzyciskow() {
+        //kolory
+
+
     }
 
     /**
@@ -368,14 +389,14 @@ public class FragmentBMR extends Fragment implements TextWatcher,
                 wzrost = Double.parseDouble(pole_wzrost.getText().toString());
             } catch (NumberFormatException e) {
                 /*
-				 * editor.putFloat(getString(R.string.text_wzrost), 0);
+                 * editor.putFloat(getString(R.string.text_wzrost), 0);
 				 * editor.apply();
 				 */
                 wynik = false;
             }
 
 			/*
-			 * private static final int maxWiek = 200; private static final int
+             * private static final int maxWiek = 200; private static final int
 			 * maxWaga = 400; private static final int maxWzrost = 250; private
 			 * static final int minWiek = 0; private static final int minWaga =
 			 * 20; private static final int minWzrost = 20;
@@ -411,7 +432,7 @@ public class FragmentBMR extends Fragment implements TextWatcher,
                 wynik = false;
 
 			/*
-			 * if (wiek > maxWiek || waga > maxWaga || wzrost > maxWzrost ||
+             * if (wiek > maxWiek || waga > maxWaga || wzrost > maxWzrost ||
 			 * wiek <= minWiek || waga <= minWaga || wzrost <= minWzrost ||
 			 * this.plec < 0 || this.aktywnosc < 0 ) { wynik = false; } else //
 			 * jedyne ktore zwroci true wynik = true;
@@ -496,7 +517,6 @@ public class FragmentBMR extends Fragment implements TextWatcher,
             bmi = Math.round(bmi * 100.0) / 100.0;
             editor.putFloat(getString(R.string.text_bmi), (float) bmi);
             editor.apply();
-
 
 
             ustawieniePolaBMI(bmi);
@@ -612,7 +632,6 @@ public class FragmentBMR extends Fragment implements TextWatcher,
 //        }
 
 
-
     private void showToast(String tekst) {
         Context context = getActivity().getApplicationContext();
         CharSequence text = tekst;
@@ -624,11 +643,65 @@ public class FragmentBMR extends Fragment implements TextWatcher,
 
     @Override
     public void onClick(View v) {
+
         if (v.getId() == addResultButton.getId()) {
             showAddResultDialog();
+        } else if (v.getId() == dodajWaga.getId()) {
+            dodajWartosc(0.1, pole_waga, false);
+        } else if (v.getId() == odejmijWaga.getId()) {
+            odejmijWartosc(0.1, pole_waga, false);
+        } else if (v.getId() == dodajWzrost.getId()) {
+            dodajWartosc(1.0, pole_wzrost, true);
+        } else if (v.getId() == odejmijWzrost.getId()) {
+            odejmijWartosc(1.0, pole_wzrost, true);
+        } else if (v.getId() == dodajWiek.getId()) {
+            dodajWartosc(1.0, pole_wiek, true);
+        } else if (v.getId() == odejmijWiek.getId()) {
+            odejmijWartosc(1.0, pole_wiek, true);
         }
 
     }// onclick
+
+    /**
+     * Dodaje wybrana wartosc do odpowiedniego pola
+     *
+     * @param wartosc
+     * @param pole
+     */
+    private void dodajWartosc(double wartosc, AppCompatEditText pole, boolean calkowite) {
+        double aktualnaWartosc = Double.parseDouble(pole.getText().toString());
+
+        if (!calkowite) {
+            Double dWynik = new Double(aktualnaWartosc + wartosc);
+            dWynik = Math.round(dWynik * 100.0) / 100.0;
+            pole.setText(Double.toString(dWynik));
+        } else {
+            Double dWynik = new Double(aktualnaWartosc + wartosc);
+
+            int wynik = dWynik.intValue();
+            pole.setText(Integer.toString(wynik));
+        }
+    }
+
+    /**
+     * Odejmuje wybrana wartosc dla wybranego pola
+     *
+     * @param wartosc
+     * @param pole
+     */
+    private void odejmijWartosc(double wartosc, AppCompatEditText pole, boolean calkowite) {
+        double aktualnaWartosc = Double.parseDouble(pole.getText().toString());
+        if (!calkowite) {
+            Double dWynik = new Double(aktualnaWartosc - wartosc);
+            dWynik = Math.round(dWynik * 100.0) / 100.0;
+            pole.setText(Double.toString(dWynik));
+        } else {
+            Double dWynik = new Double(aktualnaWartosc - wartosc);
+            int wynik = dWynik.intValue();
+            pole.setText(Integer.toString(wynik));
+        }
+
+    }
 
     public void showAddResultDialog() {
         AlertDialog alertDialog;
