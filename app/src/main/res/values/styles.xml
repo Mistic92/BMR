@@ -107,13 +107,16 @@
 
     <style name="przyciskiAgr" parent="buttons">
         <item name="android:textSize">25sp</item>
-        <item name="android:background">@color/cardview_light_background</item>
+        <item name="android:background">@android:color/transparent</item>
         <item name="android:textColor">@color/textbmr</item>
+        <item name="android:layout_marginRight">@dimen/spacing_medium</item>
+        <item name="android:layout_marginTop">4dp</item>
     </style>
 
     <style name="buttony_ustawienia" parent="buttons">
         <item name="android:textSize">12sp</item>
         <item name="android:padding">2dp</item>
+
     </style>
 
 

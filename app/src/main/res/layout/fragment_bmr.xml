@@ -108,6 +108,8 @@
                             android:layout_centerHorizontal="true"
                             android:text="@string/text_wiek" />
 
+                        <!-- WIEK -->
+
                         <LinearLayout
                             android:id="@+id/layoutWieku"
                             android:layout_width="wrap_content"
@@ -116,28 +118,39 @@
                             android:layout_centerHorizontal="true"
                             android:orientation="horizontal">
 
+                            <android.support.design.widget.TextInputLayout
+                                android:id="@+id/textLayoutWiek"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="@dimen/spacing_medium">
+
+                                <android.support.v7.widget.AppCompatEditText
+                                    android:id="@+id/EditTextWiek"
+                                    style="@style/bmr_edittext"
+                                    android:layout_width="@dimen/enter_data_width"
+                                    android:layout_height="@dimen/buttonHeight"
+                                    android:ems="10"
+                                    android:hint="@string/text_wLatach"
+                                    android:inputType="numberDecimal"
+                                    android:layout_marginRight="@dimen/spacing_medium"
+
+                                    />
+                            </android.support.design.widget.TextInputLayout>
+
                             <android.support.v7.widget.AppCompatButton
                                 android:id="@+id/odejmijWiek"
                                 style="@style/przyciskiAgr"
+                                android:layout_width="@dimen/buttonWidth"
+                                android:layout_height="@dimen/buttonHeight"
                                 android:text="-"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
-
-                            <android.support.v7.widget.AppCompatEditText
-                                android:id="@+id/EditTextWiek"
-                                style="@style/bmr_edittext"
-                                android:layout_width="@dimen/enter_data_width"
-                                android:layout_height="wrap_content"
-                                android:ems="10"
-                                android:gravity="left"
-                                android:inputType="numberDecimal" />
+                                android:layout_marginRight="@dimen/spacing_medium" />
 
                             <android.support.v7.widget.AppCompatButton
                                 android:id="@+id/dodajWiek"
                                 style="@style/przyciskiAgr"
-                                android:text="+"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:layout_width="@dimen/buttonWidth"
+                                android:layout_height="@dimen/buttonHeight"
+                                android:text="+" />
                         </LinearLayout>
 
 
@@ -150,6 +163,8 @@
                             android:layout_centerHorizontal="true"
                             android:text="@string/text_waga" />
 
+                        <!--WAGA-->
+
                         <LinearLayout
                             android:id="@+id/layoutWagi"
                             android:layout_width="wrap_content"
@@ -158,28 +173,36 @@
                             android:layout_centerHorizontal="true"
                             android:orientation="horizontal">
 
+                            <android.support.design.widget.TextInputLayout
+                                android:id="@+id/textLayoutWaga"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="@dimen/spacing_medium">
+
+                                <android.support.v7.widget.AppCompatEditText
+                                    android:id="@+id/EditTextWaga"
+                                    style="@style/bmr_edittext"
+                                    android:layout_width="@dimen/enter_data_width"
+                                    android:layout_height="@dimen/buttonHeight"
+                                    android:ems="10"
+                                    android:hint="@string/text_kilogramy"
+                                    android:inputType="numberDecimal"
+                                    android:layout_marginRight="@dimen/spacing_medium" />
+                            </android.support.design.widget.TextInputLayout>
+
                             <android.support.v7.widget.AppCompatButton
                                 android:id="@+id/odejmijWaga"
-                                android:layout_width="wrap_content"
                                 style="@style/przyciskiAgr"
-                                android:text="-"
-                                android:layout_height="wrap_content" />
-
-                            <android.support.v7.widget.AppCompatEditText
-                                android:id="@+id/EditTextWaga"
-                                style="@style/bmr_edittext"
-                                android:layout_width="@dimen/enter_data_width"
-                                android:layout_height="wrap_content"
-                                android:ems="10"
-                                android:hint="@string/text_kilogramy"
-                                android:inputType="numberDecimal" />
+                                android:layout_width="@dimen/buttonWidth"
+                                android:layout_height="@dimen/buttonHeight"
+                                android:text="-" />
 
                             <android.support.v7.widget.AppCompatButton
                                 android:id="@+id/dodajWaga"
                                 style="@style/przyciskiAgr"
-                                android:text="+"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:layout_width="@dimen/buttonWidth"
+                                android:layout_height="@dimen/buttonHeight"
+                                android:text="+" />
                         </LinearLayout>
 
 
@@ -192,6 +215,8 @@
                             android:layout_centerHorizontal="true"
                             android:text="@string/text_wzrost" />
 
+                        <!-- WZROST -->
+
                         <LinearLayout
                             android:id="@+id/layoutWzrostu"
                             android:layout_width="wrap_content"
@@ -200,28 +225,36 @@
                             android:layout_centerHorizontal="true"
                             android:orientation="horizontal">
 
+                            <android.support.design.widget.TextInputLayout
+                                android:id="@+id/textLayoutWzrost"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="@dimen/spacing_medium">
+
+                                <android.support.v7.widget.AppCompatEditText
+                                    android:id="@+id/EditTextWzrost"
+                                    style="@style/bmr_edittext"
+                                    android:layout_width="@dimen/enter_data_width"
+                                    android:layout_height="@dimen/buttonHeight"
+                                    android:ems="10"
+                                    android:hint="@string/text_centymetry"
+                                    android:inputType="numberDecimal"
+                                    android:layout_marginRight="@dimen/spacing_medium" />
+                            </android.support.design.widget.TextInputLayout>
+
                             <android.support.v7.widget.AppCompatButton
                                 android:id="@+id/odejmijWzrost"
                                 style="@style/przyciskiAgr"
-                                android:text="-"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
-
-                            <android.support.v7.widget.AppCompatEditText
-                                android:id="@+id/EditTextWzrost"
-                                style="@style/bmr_edittext"
-                                android:layout_width="@dimen/enter_data_width"
-                                android:layout_height="wrap_content"
-                                android:ems="10"
-                                android:hint="@string/text_centymetry"
-                                android:inputType="numberDecimal" />
+                                android:layout_width="@dimen/buttonWidth"
+                                android:layout_height="@dimen/buttonHeight"
+                                android:text="-" />
 
                             <android.support.v7.widget.AppCompatButton
                                 android:id="@+id/dodajWzrost"
                                 style="@style/przyciskiAgr"
-                                android:text="+"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:layout_width="@dimen/buttonWidth"
+                                android:layout_height="@dimen/buttonHeight"
+                                android:text="+" />
                         </LinearLayout>
 
                     </RelativeLayout>
@@ -433,13 +466,13 @@
 
                     <android.support.v7.widget.AppCompatButton
                         android:id="@+id/buttonDodajWynikWBMR"
+                        style="@style/buttons"
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
                         android:layout_alignParentBottom="true"
                         android:layout_alignParentRight="true"
                         android:layout_marginLeft="5dp"
-                        android:text="@string/button_dodaj_wynik"
-                        style="@style/buttons" />
+                        android:text="@string/button_dodaj_wynik" />
 
                 </RelativeLayout>
             </android.support.v7.widget.CardView>

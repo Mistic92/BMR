@@ -9,8 +9,7 @@
   ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   -->
 
-<resources xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+<resources>
 
     <string name="app_name">Dbaj o wagę</string>
     <string name="menu_oprogramie">O programie</string>
@@ -27,12 +26,13 @@
     <string name="text_mezczyzna">Mężczyzna</string>
     <string name="text_kobieta">Kobieta</string>
     <string name="text_waga">Waga</string>
-    <string name="text_kilogramy">kilogramy</string>
+    <string name="text_kilogramy">W kilogramach</string>
     <string name="text_kilogramy_funty">funty</string>
     <string name="text_wzrost">Wzrost</string>
-    <string name="text_centymetry">centymetry</string>
+    <string name="text_centymetry">W centymetrach</string>
     <string name="text_cale">cale</string>
     <string name="text_wiek">Wiek</string>
+    <string name="text_wLatach">W latach</string>
     <string name="text_plec">Płeć</string>
     <string name="text_aktywnosc">Typ aktywności</string>
     <string name="text_wybierz_aktywnosc">Wybierz typ aktywności</string>
@@ -127,11 +127,13 @@
     <string name="result_added">Wynik dodano</string>
     <string name="title_activity_szczegoly_wyniku">Szczegóły wyniku</string>
     <string name="action_settings">Settings</string>
+    <string name="title_add_result">Wprowadź dane</string>
     <string name="imperial">imperial</string>
     <string name="kilogramy_skr">kg</string>
     <!-- NIE TLUMACZYC, DON'T TRANSLATE NAZWY DLA SHAREDPREFS -->
     <string name="shared_waga">Waga(kg)</string>
     <string name="appPreferences">com.devnoobs.bmr.appPreferences</string>
     <!-- NIE TLUMACZYC, DON'T TRANSLATE NAZWY DLA SHAREDPREFS -->
+    <string name="noStartValue">Brak wartości początkowej</string>
 
 </resources>

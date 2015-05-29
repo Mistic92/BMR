@@ -21,10 +21,8 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityOptionsCompat;
-import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -37,7 +35,6 @@ import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,19 +44,16 @@ import com.devnoobs.bmr.CustomSpinner;
 import com.devnoobs.bmr.Interfejsy.IRefreshTabeli;
 import com.devnoobs.bmr.Interfejsy.WyborDadyDialogFragmentListener;
 import com.devnoobs.bmr.R;
-import com.devnoobs.bmr.RecyclerItemClickListener;
 import com.devnoobs.bmr.SzczegolyWynikuActivity;
 import com.devnoobs.bmr.WyborDatyDialogFragment;
 import com.devnoobs.bmr.Wynik;
 import com.devnoobs.bmr.WynikAdapter;
-import com.github.mrengineer13.snackbar.SnackBar;
-
-import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
-import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+
+import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
 
 public class FragmentTabele extends Fragment implements OnClickListener,
         OnItemSelectedListener,
@@ -188,32 +182,32 @@ public class FragmentTabele extends Fragment implements OnClickListener,
         //TODO po longpress z wybranej daty przeskakuje na tydzien
 //        listaWynikow.setOnItemClickListener(this);
 //        listaWynikow.setOnItemLongClickListener(this);
-        mRecyclerView.addOnItemTouchListener(
-                new RecyclerItemClickListener(contextFragmentTabele,
-                        new RecyclerItemClickListener.OnItemClickListener()
-                        {
-                            @Override
-                            public void onItemClick(View view, int position)
-                            {
-                                try
-                                {
-                                    TextView tv = (TextView) view.findViewById(R.id
-                                            .listview_text_data);
-                                    String s = tv.getText().toString();
-                                    Toast.makeText(getActivity(), "dziala", Toast.LENGTH_LONG);
-                                    Log.println(Log.INFO, "devnoobs", "DZIALA " + s);
-                                    SnackBar mSnackBar = new SnackBar(getActivity());
-                                    mSnackBar.show("It works! " + s);
-
-
-                                } catch (Exception e)
-                                {
-                                    Toast.makeText(getActivity(), "BLAD :<", Toast.LENGTH_LONG);
-                                    Log.println(Log.ERROR, "devnoobs", "nie dziala ");
-                                }
-                            }
-                        })
-        );
+//        mRecyclerView.addOnItemTouchListener(
+//                new RecyclerItemClickListener(contextFragmentTabele,
+//                        new RecyclerItemClickListener.OnItemClickListener()
+//                        {
+//                            @Override
+//                            public void onItemClick(View view, int position)
+//                            {
+//                                try
+//                                {
+//                                    TextView tv = (TextView) view.findViewById(R.id
+//                                            .listview_text_data);
+//                                    String s = tv.getText().toString();
+//                                    Toast.makeText(getActivity(), "dziala", Toast.LENGTH_LONG);
+//                                    Log.println(Log.INFO, "devnoobs", "DZIALA " + s);
+//                                    SnackBar mSnackBar = new SnackBar(getActivity());
+//                                    mSnackBar.show("It works! " + s);
+//
+//
+//                                } catch (Exception e)
+//                                {
+//                                    Toast.makeText(getActivity(), "BLAD :<", Toast.LENGTH_LONG);
+//                                    Log.println(Log.ERROR, "devnoobs", "nie dziala ");
+//                                }
+//                            }
+//                        })
+//        );
 
 
         return rootView;

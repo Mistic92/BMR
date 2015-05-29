@@ -20,6 +20,7 @@ import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.AppCompatTextView;
@@ -221,10 +222,12 @@ public class FragmentBMR extends Fragment implements TextWatcher,
         // Pobieranie wartosci z przed wylaczenia programu i ich ustawianie w
         // polach
         try {
-            imperial = sharedPref.getBoolean(getString(R.string.imperial),
-                    false);
-            // ustawienie hintow przez metode
-            ustawienieHint(imperial);
+
+            //TODO naprawic hint z imperial
+//            imperial = sharedPref.getBoolean(getString(R.string.imperial),
+//                    false);
+//            // ustawienie hintow przez metode
+//            ustawienieHint(imperial);
 
             double waga = sharedPref.getFloat(getString(R.string.shared_waga),
                     0);
@@ -240,18 +243,20 @@ public class FragmentBMR extends Fragment implements TextWatcher,
             // jezeli waga wieksza od 0 to wartosc jest ustawiana w tym polu
             if ((waga > minWaga) && (waga < maxWaga)) {
                 pole_waga.setText(Double.toString(waga));
-            } else {
-                // jesli nic nie zostanie ustawione to jest ustawiana szerokosc
-                // XXX nie wiem nawet czy to dziala :D
-                if (szerokosc < 320)
-                    pole_waga.getLayoutParams().width = 30;
             }
+//            else {
+//                // jesli nic nie zostanie ustawione to jest ustawiana szerokosc
+//                // XXX nie wiem nawet czy to dziala :D
+//                if (szerokosc < 320)
+//                    pole_waga.getLayoutParams().width = 30;
+//            }
             if ((wzrost > minWzrost) && (wzrost < maxWzrost)) {
                 pole_wzrost.setText(Double.toString(wzrost));
-            } else {
-                if (szerokosc < 320)
-                    pole_wzrost.getLayoutParams().width = 30;
             }
+//            else {
+//                if (szerokosc < 320)
+//                    pole_wzrost.getLayoutParams().width = 30;
+//            }
             if ((wiek > minWiek) && (wiek < maxWiek)) {
                 pole_wiek.setText(Integer.toString(wiek));
             }
@@ -669,18 +674,27 @@ public class FragmentBMR extends Fragment implements TextWatcher,
      * @param pole
      */
     private void dodajWartosc(double wartosc, AppCompatEditText pole, boolean calkowite) {
-        double aktualnaWartosc = Double.parseDouble(pole.getText().toString());
 
-        if (!calkowite) {
-            Double dWynik = new Double(aktualnaWartosc + wartosc);
-            dWynik = Math.round(dWynik * 100.0) / 100.0;
-            pole.setText(Double.toString(dWynik));
-        } else {
-            Double dWynik = new Double(aktualnaWartosc + wartosc);
+        try {
+            double aktualnaWartosc = Double.parseDouble(pole.getText().toString());
 
-            int wynik = dWynik.intValue();
-            pole.setText(Integer.toString(wynik));
+            if (!calkowite) {
+                Double dWynik = new Double(aktualnaWartosc + wartosc);
+                dWynik = Math.round(dWynik * 100.0) / 100.0;
+                pole.setText(Double.toString(dWynik));
+            } else {
+                Double dWynik = new Double(aktualnaWartosc + wartosc);
+                int wynik = dWynik.intValue();
+                pole.setText(Integer.toString(wynik));
+            }
+        } catch (NumberFormatException e) {
+            showSnackBar(getResources().getString(R.string.noStartValue));
+            e.printStackTrace();
         }
+    }
+
+    private void showSnackBar(String text) {
+        Snackbar.make(getView(), text, Snackbar.LENGTH_SHORT).show();
     }
 
     /**
@@ -690,15 +704,21 @@ public class FragmentBMR extends Fragment implements TextWatcher,
      * @param pole
      */
     private void odejmijWartosc(double wartosc, AppCompatEditText pole, boolean calkowite) {
-        double aktualnaWartosc = Double.parseDouble(pole.getText().toString());
-        if (!calkowite) {
+        try {
+            double aktualnaWartosc = Double.parseDouble(pole.getText().toString());
             Double dWynik = new Double(aktualnaWartosc - wartosc);
-            dWynik = Math.round(dWynik * 100.0) / 100.0;
-            pole.setText(Double.toString(dWynik));
-        } else {
-            Double dWynik = new Double(aktualnaWartosc - wartosc);
-            int wynik = dWynik.intValue();
-            pole.setText(Integer.toString(wynik));
+            if (!calkowite) {
+                dWynik = Math.round(dWynik * 100.0) / 100.0;
+                if (dWynik > 1)
+                    pole.setText(Double.toString(dWynik));
+            } else {
+                int wynik = dWynik.intValue();
+                if (wynik > 0)
+                    pole.setText(Integer.toString(wynik));
+            }
+        } catch (NumberFormatException e) {
+            showSnackBar(getResources().getString(R.string.noStartValue));
+            e.printStackTrace();
         }
 
     }
