@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+
+            android:title="@string/title_bmr" />
+        <item
+            android:id="@+id/nav_messages"
+
+            android:title="@string/title_wyniki" />
+        <item
+            android:id="@+id/nav_friends"
+
+            android:title="@string/title_ustawienia" />
+    </group>
+
+
+</menu>

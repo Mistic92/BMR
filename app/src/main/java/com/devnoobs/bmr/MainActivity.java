@@ -16,6 +16,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -29,7 +30,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -41,21 +41,21 @@ import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 
 @SuppressLint("NewApi")
 
-public class MainActivity extends AppCompatActivity implements IReklamy
-{
+public class MainActivity extends AppCompatActivity implements IReklamy {
 
     /**
-     The {@link android.support.v4.view.PagerAdapter} that will provide
-     fragments for each of the sections. We use a
-     {@link android.support.v4.app.FragmentPagerAdapter} derivative, which
-     will keep every loaded fragment in memory. If this becomes too memory
-     intensive, it may be best to switch to a
-     {@link android.support.v4.app.FragmentStatePagerAdapter}.
+     * The {@link android.support.v4.view.PagerAdapter} that will provide
+     * fragments for each of the sections. We use a
+     * {@link android.support.v4.app.FragmentPagerAdapter} derivative, which
+     * will keep every loaded fragment in memory. If this becomes too memory
+     * intensive, it may be best to switch to a
+     * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
     //private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
@@ -77,8 +77,7 @@ public class MainActivity extends AppCompatActivity implements IReklamy
     ImageView menuIcon;
 
     @Override
-    protected void onCreate(final Bundle savedInstanceState)
-    {
+    protected void onCreate(final Bundle savedInstanceState) {
         getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
         super.onCreate(savedInstanceState);
         //final View view = findViewById(R.id.drawer_layout);
@@ -87,17 +86,23 @@ public class MainActivity extends AppCompatActivity implements IReklamy
         toolbar = (Toolbar) findViewById(R.id.toolbarGlowny);
         toolbar.setNavigationIcon(R.drawable.ic_menu_white_18dp);
 
-        if (toolbar != null)
-        {
+        if (toolbar != null) {
             setSupportActionBar(toolbar);
-//            setActionBar(toolbar);
         }
-        //  toolbar.setLogo(R.drawable.ic_menu_white_18dp);
+//        final ActionBar ab = getSupportActionBar();
+//        ab.setHomeAsUpIndicator(R.drawable.ic_menu_white_18dp);
+//        ab.setDisplayHomeAsUpEnabled(true);
 
 
         Tracker t = (getTracker(TrackerName.APP_TRACKER));
         t.setScreenName("Home");
         t.send(new HitBuilders.AppViewBuilder().build());
+
+
+//        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+//        if (navigationView != null) {
+//            setupDrawerContent(navigationView);
+//        }
 
         mTitle = mDrawerTitle = getTitle();
         nazwy_menu = getResources().getStringArray(R.array.tabela_menu);
@@ -108,8 +113,9 @@ public class MainActivity extends AppCompatActivity implements IReklamy
         // set a custom shadow that overlays the main content when the drawer opens
         mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.RELATIVE_HORIZONTAL_GRAVITY_MASK);
         // set up the drawer's list view with items and click listener
-        mDrawerList.setAdapter(new ArrayAdapter<String>(this,
-                R.layout.drawer_list_item, nazwy_menu));
+
+        MenuAdapter menuAdapter = new MenuAdapter(this, generateMenu());
+        mDrawerList.setAdapter(menuAdapter);
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
         mActionBar = createActionBarHelper();
         mActionBar.init();
@@ -120,16 +126,13 @@ public class MainActivity extends AppCompatActivity implements IReklamy
                 // toolbar,  /* nav drawer image to replace 'Up' caret */
                 R.string.rozwin_drawer,  /* "open drawer" description for accessibility */
                 R.string.zwin_drawer  /* "close drawer" description for accessibility */
-        )
-        {
-            public void onDrawerClosed(View view)
-            {
+        ) {
+            public void onDrawerClosed(View view) {
                 getSupportActionBar().setTitle(mTitle);
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
 
-            public void onDrawerOpened(View drawerView)
-            {
+            public void onDrawerOpened(View drawerView) {
                 getSupportActionBar().setTitle(mDrawerTitle);
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
@@ -137,31 +140,48 @@ public class MainActivity extends AppCompatActivity implements IReklamy
 
 //        mDrawerLayout.setDrawerListener(mDrawerToggle);
 
-        if (savedInstanceState == null)
-        {
+        if (savedInstanceState == null) {
             selectItem(0);
         }
 
     }//oncreate
 
 
-    public enum TrackerName
-    {
+    private ArrayList<com.devnoobs.bmr.MenuItem> generateMenu() {
+        ArrayList<com.devnoobs.bmr.MenuItem> menuItems = new ArrayList<>();
+        menuItems.add(new com.devnoobs.bmr.MenuItem(R.drawable.ic_add_circle_outline_black_48dp, getResources().getString(R.string.title_bmr)));
+        menuItems.add(new com.devnoobs.bmr.MenuItem(R.drawable.ic_assessment_black_48dp, getResources().getString(R.string.title_wyniki)));
+        menuItems.add(new com.devnoobs.bmr.MenuItem(R.drawable.ic_settings_black_48dp, getResources().getString(R.string.title_ustawienia)));
+        return menuItems;
+    }
+
+    public enum TrackerName {
         APP_TRACKER, // Tracker used only in this app.
         // ECOMMERCE_TRACKER, // Tracker used by all ecommerce transactions from a company.
     }
 
     public HashMap<TrackerName, Tracker> mTrackers = new HashMap<TrackerName, Tracker>();
 
-    /**
-     @param trackerId
 
-     @return
+    private void setupDrawerContent(NavigationView navigationView) {
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        menuItem.setChecked(true);
+                        mDrawerLayout.closeDrawers();
+                        return true;
+                    }
+                });
+    }
+
+
+    /**
+     * @param trackerId
+     * @return
      */
-    public synchronized Tracker getTracker(TrackerName trackerId)
-    {
-        if (!mTrackers.containsKey(trackerId))
-        {
+    public synchronized Tracker getTracker(TrackerName trackerId) {
+        if (!mTrackers.containsKey(trackerId)) {
             GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
             Tracker t = analytics.newTracker(PROPERTY_ID);
             mTrackers.put(trackerId, t);
@@ -170,8 +190,7 @@ public class MainActivity extends AppCompatActivity implements IReklamy
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
+    public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main, menu);
         return super.onCreateOptionsMenu(menu);
@@ -179,8 +198,7 @@ public class MainActivity extends AppCompatActivity implements IReklamy
 
     /* Called whenever we call invalidateOptionsMenu() */
     @Override
-    public boolean onPrepareOptionsMenu(Menu menu)
-    {
+    public boolean onPrepareOptionsMenu(Menu menu) {
         // If the nav drawer is open, hide action items related to the content view
         //  boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
         //menu.findItem(R.id.action_websearch).setVisible(!drawerOpen);
@@ -199,63 +217,33 @@ public class MainActivity extends AppCompatActivity implements IReklamy
         return super.onOptionsItemSelected(item);
     }
 
-//    @Override
-//    public void onTabSelected(ActionBar.Tab tab, android.support.v4.app.FragmentTransaction
-//            fragmentTransaction)
-//    {
-//        mViewPager.setCurrentItem(tab.getPosition());
-//    }
-//
-//    @Override
-//    public void onTabUnselected(ActionBar.Tab tab, android.support.v4.app.FragmentTransaction
-//            fragmentTransaction)
-//    {
-//
-//    }
-//
-//    @Override
-//    public void onTabReselected(ActionBar.Tab tab, android.support.v4.app.FragmentTransaction
-//            fragmentTransaction)
-//    {
-//
-//    }
 
     /* The click listner for ListView in the navigation drawer */
-    private class DrawerItemClickListener implements ListView.OnItemClickListener
-    {
+    private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-        {
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             selectItem(position);
         }
     }
 
-    private void selectItem(int position)
-    {
+    private void selectItem(int position) {
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction tran = fragmentManager.beginTransaction();
 //        tran.setCustomAnimations(FragmentTransaction.TRANSIT_ENTER_MASK, FragmentTransaction.TRANSIT_EXIT_MASK);
 //         tran.setCustomAnimations(R.anim.abc_slide_in_bottom, R.anim.abc_slide_out_bottom);
-        if (position == 0)
-        {
+        if (position == 0) {
             Fragment bmr = (Fragment) new FragmentBMR();
 
             tran.replace(R.id.content_frame, bmr);
             tran.commit();
             // fragmentManager.beginTransaction().replace(R.id.content_frame, bmr).commit();
 
-        }
-        else if (position==1)
-        {
+        } else if (position == 1) {
             Fragment wyniki = (Fragment) new FragmentWyniki();
-            tran.replace(R.id.content_frame,wyniki);
+            tran.replace(R.id.content_frame, wyniki);
             tran.commit();
-        }
-
-
-        else if (position == 2)
-        {
+        } else if (position == 2) {
             Fragment ustawienia = (Fragment) new FragmentUstawienia();
 //            FragmentManager fragmentManager = getFragmentManager();
 //            fragmentManager.beginTransaction().replace(R.id.content_frame, ustawienia).commit();
@@ -278,21 +266,19 @@ public class MainActivity extends AppCompatActivity implements IReklamy
     }
 
     /**
-     When using the ActionBarDrawerToggle, you must call it during
-     onPostCreate() and onConfigurationChanged()...
+     * When using the ActionBarDrawerToggle, you must call it during
+     * onPostCreate() and onConfigurationChanged()...
      */
 
     @Override
-    protected void onPostCreate(Bundle savedInstanceState)
-    {
+    protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         // Sync the toggle state after onRestoreInstanceState has occurred.
         mDrawerToggle.syncState();
     }
 
     @Override
-    public void onConfigurationChanged(Configuration newConfig)
-    {
+    public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         // Pass any configuration change to the drawer toggls
         mDrawerToggle.onConfigurationChanged(newConfig);
@@ -300,8 +286,7 @@ public class MainActivity extends AppCompatActivity implements IReklamy
 
 
     @Override
-    protected void onStart()
-    {
+    protected void onStart() {
         super.onStart();
         GoogleAnalytics.getInstance(MainActivity.this).reportActivityStart(this);
         //Get an Analytics tracker to report app starts & uncaught exceptions etc.
@@ -310,16 +295,14 @@ public class MainActivity extends AppCompatActivity implements IReklamy
 
 
     @Override
-    protected void onStop()
-    {
+    protected void onStop() {
         super.onStop();
         //Stop the analytics tracking
         GoogleAnalytics.getInstance(MainActivity.this).reportActivityStop(this);
     }
 
     @Override
-    public void zmienReklamy(boolean stan)
-    {
+    public void zmienReklamy(boolean stan) {
 
 
     }

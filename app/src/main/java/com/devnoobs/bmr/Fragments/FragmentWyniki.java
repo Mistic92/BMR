@@ -2,7 +2,6 @@ package com.devnoobs.bmr.Fragments;
 
 import android.app.AlertDialog;
 import android.app.Fragment;
-import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -19,7 +18,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
@@ -32,7 +30,6 @@ import com.devnoobs.bmr.Baza.WynikiDataSource;
 import com.devnoobs.bmr.CustomSpinner;
 import com.devnoobs.bmr.Interfejsy.IRefreshTabeli;
 import com.devnoobs.bmr.Interfejsy.WyborDadyDialogFragmentListener;
-import com.devnoobs.bmr.MainActivity;
 import com.devnoobs.bmr.Narzedzia.DividerItemDecoration;
 import com.devnoobs.bmr.R;
 import com.devnoobs.bmr.SzczegolyWynikuActivity;
@@ -209,7 +206,7 @@ public class FragmentWyniki extends Fragment implements AdapterView.OnItemSelect
         builder.setTitle(contextFragmentTabele.getString(R.string.title_add_result));
         LayoutInflater inflater = getActivity().getLayoutInflater();
         // Inflate and set the layout for the dialog
-        // Pass null as the parent view because its going in the dialog layout
+        // Pass null as the parent view because its going in the dialog layout  XZx
         final View widok = inflater.inflate(R.layout.popup_dodawanie, null);
         waga = (EditText) widok.findViewById(R.id.popup_waga);
         notatka = (EditText) widok.findViewById(R.id.popup_dodatkowy_tekst);
